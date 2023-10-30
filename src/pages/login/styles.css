@@ -1,0 +1,44 @@
+.container{
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+#header {
+  display: flex;
+  top: 0;
+  width: 100%;
+  position: absolute;
+  padding: 32px;
+  justify-content: space-between;
+}
+
+#left-panel {
+  background-color: var(--indigo-300);
+}
+
+.checkbox-label {
+  font-size: 18px;
+}
+
+.checkbox{
+  width: 20px;
+  height: 20px;
+  margin-right: 8px;
+}
+
+#utils{
+  margin-top: 16px;
+}
+
+.submit {
+  margin-top: 32px;
+}
+
+@media (max-width: 900px) {
+  .painel {
+    width: 100%;    
+  }
+  #left-panel {
+    display: none;
+  }
+}

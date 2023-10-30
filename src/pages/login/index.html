@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+  </head>
+  <body>
+    <div id="header">
+      <a id="linkHome" class="logo">SOCIAVISION</a>
+
+      <span>Não tem uma conta? <a id="linkSignUp">Cadastre-se</a></span>
+    </div>
+
+    <section class="expanded row">
+      <div id="left-panel" class="panel center-view">
+        <div class="svg-width">
+          <img
+            class="img"
+            src="../../assets/svgs/Mobile login-pana 1.svg"
+            alt="figura"
+          />
+        </div>
+      </div>
+
+      <div class="panel center-view">
+        <div class="center-view column">
+          <h1 class="header-form">LOGIN</h1>
+
+          <form class="column">
+            <label class="label-space"  for="usuario">Usuário</label>
+            <input
+              class="input-space"
+              type="text"
+              name="usuario"
+              id="usuario"
+            />
+
+            <label class="label-space"  for="senha">Senha</label>
+            <input type="password" name="senha" id="senha" />
+
+            <div id="utils" class="expanded space-between">
+
+              <div class="center-view">
+                <input class="checkbox" type="checkbox" name="usuario" id="usuario" />
+                <label class="checkbox-label" for="usuario">Lembrar senha</label>
+              </div>
+              
+              <a id="linkResetPass">Esqueci minha senha</a>
+            </div>
+            
+            <input class="submit" type="button" value="ACESSAR">
+          </form>
+        </div>
+      </div>
+    </section>
+    <script type="module" src="script.ts"></script>
+  </body>
+</html>

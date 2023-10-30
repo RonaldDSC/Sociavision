@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cadastro</title>
+  </head>
+  <body class="column expanded">
+    <section id="header" class="row space-between fixed">
+      <a class="logo" href="../../../index.html">SOCIAVISION</a>
+  
+      <div>
+        <span>Já tem uma conta?</span>
+        <button id="btn-login" >Fazer login</button>
+      </div>
+    </section>
+
+    <section id="form" class="expanded row">
+      <div id="form-content" class="panel column">
+        <div class="center-view column">
+          
+          <form class="column">
+            <h1 class="header-form">Criando uma conta</h1>
+
+            <label class="label-space" for="org">Nome da organização</label>
+            <input class="input-space" type="text" name="org" id="org" />
+            
+            
+            <label class="label-space"  for="CNPJ">CNPJ</label>
+            <input class="input-space" type="text" name="CNPJ" id="CNPJ" inputmode="numeric" />
+            
+            <label class="label-space"  for="email">Email</label>
+            <input class="input-space" type="email" name="email" id="email" inputmode="email" />
+
+           
+            <label class="label-space" for="responsavelOrg">Responsável da organização</label>
+            <input class="input-space" type="text" name="responsavelOrg" id="responsavelOrg" placeholder="nome" />
+            
+            
+            <label class="label-space"  for="senha">Senha</label>
+            <input class="input-space" type="password" name="senha" id="senha" placeholder="8 caracteres" />
+            
+            <input class="submit" type="button" value="Criar conta">
+          </form>
+        </div>
+      </div>
+
+      <div id="right-panel" class="panel center-view fixed">
+
+        <div class="column center-view">
+          <p class="title-option title-space-option" >Pessoa jurídica</p>
+          <div class="img-space">
+            <img
+              class="img"
+              src="../../../assets/svgs/undraw_business_decisions_re_84ag 1.svg"
+              alt="figura"
+            />
+          </div>
+        </div>
+
+      </div>
+    </section>
+    <script type="module" src="script.ts"></script>
+  </body>
+</html>
