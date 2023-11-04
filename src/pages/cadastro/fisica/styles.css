@@ -3,11 +3,11 @@
   flex-wrap: nowrap;
 }
 
-.input-space {
+.espaco-input {
   margin-bottom: 16px;
 }
 
-.label-space {
+.espaco-rotulo {
   margin-bottom: 4px;
 }
 
@@ -16,36 +16,36 @@ label {
   font-size: 18px;
 }
 
-#form-content {
+#conteudo-form {
   padding-top: 90px;
 }
 
-.header-form {
+.cabecalho-form {
   font-size: 32px;
   text-align: start;
   margin-bottom: 16px;
 }
 
-#right-panel {
+#painel-direito {
   background-color: var(--indigo-300);
   right: 0;
 }
 
-.submit {
+.enviar-btn {
   margin-top: 32px;
 }
 
-.title-option {
+.titulo-opcao {
   font-size: 32px;
   font-weight: 600;
   color: var(--white);
 }
 
-.title-space-option {
+.espaco-titulo-opcao {
   margin: 32px 0;
 }
 
-.img-space {
+.tamanho-img {
   width: 480px;
 }
 
@@ -54,7 +54,7 @@ label {
   .painel {
     width: 100%;    
   }
-  #right-panel {
+  #painel-direito {
     display: none;
   }
   #form {

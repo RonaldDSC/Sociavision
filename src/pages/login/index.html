@@ -6,50 +6,54 @@
     <title>Login</title>
   </head>
   <body>
-    <div id="header">
+    
+    <div class="cabecalho">
       <a id="linkHome" class="logo">SOCIAVISION</a>
 
       <span>Não tem uma conta? <a id="linkSignUp">Cadastre-se</a></span>
     </div>
 
-    <section class="expanded row">
-      <div id="left-panel" class="panel center-view">
-        <div class="svg-width">
-          <img
-            class="img"
-            src="../../assets/svgs/Mobile login-pana 1.svg"
+    <section class="expandido linha">
+      <div id="painel-esquerdo" class="painel align-center">
+        <div class="tamanho-svg">
+          <img            
+            class="img"            
             alt="figura"
           />
         </div>
       </div>
 
-      <div class="panel center-view">
-        <div class="center-view column">
-          <h1 class="header-form">LOGIN</h1>
+      <div class="painel align-center">
+        <div class="align-center coluna">
+          <h1 class="cabecalho-form">LOGIN</h1>
 
-          <form class="column">
-            <label class="label-space"  for="usuario">Usuário</label>
-            <input
-              class="input-space"
-              type="text"
-              name="usuario"
-              id="usuario"
-            />
+          <form class="coluna">
+            <div id="campo-email" class="coluna">
+              <label class="espaco-rotulo"  for="email">Email</label>
+              <input
+                class="espaco-input"
+                type="email"
+                name="email"
+                id="email"
+              />
+            </div>
 
-            <label class="label-space"  for="senha">Senha</label>
-            <input type="password" name="senha" id="senha" />
+            <div id="campo-senha" class="coluna">
+              <label class="espaco-rotulo"  for="senha">Senha</label>
+              <input type="password" name="senha" id="senha" class="espaco-input"/>
+            </div>            
 
-            <div id="utils" class="expanded space-between">
+            <div id="utilitario" class="expandido space-between">
 
-              <div class="center-view">
-                <input class="checkbox" type="checkbox" name="usuario" id="usuario" />
-                <label class="checkbox-label" for="usuario">Lembrar senha</label>
+              <div class="align-center">
+                <input class="checkbox" type="checkbox" name="lembrarSenha" id="lembrarSenha" />
+                <label class="checkbox-rotulo" for="lembrarSenha">Lembrar senha</label>
               </div>
               
               <a id="linkResetPass">Esqueci minha senha</a>
             </div>
             
-            <input class="submit" type="button" value="ACESSAR">
+            <input class="enviar-btn" type="button" value="ACESSAR">
           </form>
         </div>
       </div>

@@ -3,7 +3,7 @@
   flex-wrap: nowrap;
 }
 
-#header {
+.cabecalho {
   display: flex;
   top: 0;
   width: 100%;
@@ -12,11 +12,11 @@
   justify-content: space-between;
 }
 
-#left-panel {
+#painel-esquerdo {
   background-color: var(--indigo-300);
 }
 
-.checkbox-label {
+.checkbox-rotulo {
   font-size: 18px;
 }
 
@@ -26,19 +26,26 @@
   margin-right: 8px;
 }
 
-#utils{
-  margin-top: 16px;
+#utilitario{
+  margin-top: 4px;
 }
 
-.submit {
+.enviar-btn {
   margin-top: 32px;
+  font-weight: bold;
+  font-size: 18px;
 }
+
+#campo-email,#campo-senha {
+  position: relative;
+}
+
 
 @media (max-width: 900px) {
   .painel {
     width: 100%;    
   }
-  #left-panel {
+  #painel-esquerdo {
     display: none;
   }
 }

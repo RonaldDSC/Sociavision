@@ -1,15 +1,6 @@
-import '@/style.css'
+import '@/globalStyle.css'
 import './styles.css'
+import '@/servicos/navegacao/navegacao'
+import { atualizaHrefs } from './atualizandoHrefs'
 
-const fisica = document.getElementById("pFisica")
-const juridica = document.getElementById("pJuridica")
-const parceiro = document.getElementById("parceiro")
-
-parceiro?.addEventListener("click",() => navigate("parceiro"))
-juridica?.addEventListener("click",() => navigate("juridica"))
-fisica?.addEventListener("click",() => navigate("fisica"))
-
-
-const navigate = (page:string) => {
-  window.location.href = `./${page}/index.html`
-}
+atualizaHrefs()

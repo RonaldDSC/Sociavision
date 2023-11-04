@@ -2,17 +2,17 @@
   background-color: var(--indigo-300);
 }
 
-#options {
+#opcoes {
   overflow: hidden;
 }
 
-.v-divider {
+.divisor-vert {
   border-left-width: 2px;
   border-left-style: solid;
   border-color: var(--white);
 }
 
-.h-divider {
+.divisor-hori {
   border-bottom-width: 1px;
   border-bottom-style: solid;
   border-color: var(--white);
@@ -22,49 +22,49 @@
   border-color: var(--white);
 }
 
-.title-option {
+.titulo-opcao {
   font-size: 24px;
   font-weight: 600;
   color: var(--white);
 }
 
-.subtitle-option {
+.subtitulo-opcao {
   font-size: 14px;
   font-weight: 400;
   color: var(--white);
 }
 
-.title-space-option {
+.espaco-titulo-opcao {
   margin: 8px 0;
 }
 
-.img-space {
-  max-width: 280px;
+.tamanho-img {
+  max-width: 40%;
 }
 
-.img-space-big {
-  max-width: 420px;
+.tamanho-img-grande {
+  max-width: 60%;
 }
 
-.press {
+.pressionavel {
   cursor: pointer;
 }
 
-.press:hover {
+.pressionavel:hover {
   transition-duration: 200ms;
   transition-timing-function: ease-out;
   background-color: var(--indigo-200);
   transform: scale(1.2);
 }
 
-.press:not(:hover) {
+.pressionavel:not(:hover) {
   transition-duration: 200ms;
   transition-timing-function: ease-in;
   transform: scale(1);
 }
 
 
-.header-title {
+.titulo-cabecalho {
   color: var(--black);
   font-size: 24px;
   font-weight: 200;
