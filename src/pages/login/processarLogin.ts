@@ -24,31 +24,32 @@ const lerInputs = () => {
 const validarCampos = (credenciais: IEmailESenha) => {
   const erros = validacao.validarEmailESenha(credenciais)
   if (erros) {
-    Object.keys(erros).forEach((campoError) => {
+    Object.keys(erros).forEach((campo) => {
       
-        switch (campoError) {      
+        switch (campo) {      
           case "email":
-            const ErroInputEmail = document.getElementsByClassName("errorInputTexto")[0]
-            if (ErroInputEmail) {
-              ErroInputEmail.textContent = erros["email"]                            
-            } else {
-              document.getElementById("campo-email")?.append(ErrorInputComponente(erros["email"]))
-            }
+            inserirError("campo-email",erros[campo])            
             break;
             
           case "senha":            
-            const ErroInputSenha = document.getElementsByClassName("errorInputTexto")[1]
-            if (ErroInputSenha) {
-              ErroInputSenha.textContent = erros["senha"]                            
-            } else {
-              document.getElementById("campo-senha")?.append(ErrorInputComponente(erros["senha"]))              
-            }
+            inserirError("campo-senha",erros[campo])
             break;
         }
     })
   }
 
   return erros
+}
+
+const inserirError = (idCampo:string, mensagem:string) => {
+  const campoEmail = document.getElementById(idCampo)
+  const erroInput = campoEmail?.getElementsByClassName("errorInput")[0]
+  
+  if (erroInput) {
+    erroInput.getElementsByClassName("errorInputTexto")[0].textContent = mensagem                           
+  } else {
+    campoEmail?.append(ErrorInputComponente(mensagem))
+  }
 }
 
 export const ProcessarLogin = {

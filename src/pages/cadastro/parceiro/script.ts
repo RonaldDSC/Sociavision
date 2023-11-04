@@ -1,60 +1,30 @@
 import '@/globalStyle.css'
 import './styles.css'
 import '@/servicos/navegacao/navegacao'
-import { pessoaParceira } from '@/modelos/pessoaModelo'
 import AutenRepositorio from '@/repositorios/autenticacao/autenRepositorio'
 import { atualizaHrefs } from './atualizandoHrefs'
+import { ProcessaCadastro } from './ProcessaCadastro'
+import AvisoComponente from '@/componentes/aviso/AvisoComponente'
 
 atualizaHrefs()
 
-const form = document.getElementById("formCadastro") as HTMLFormElement
-const inputs = form.getElementsByTagName("input")
+const btn = document.getElementsByClassName("enviar-btn")[0] as HTMLButtonElement
 
+const cadastrar = async () => {
+  btn.disabled = true
 
-const verificarCampos = () => {
-  let pessoa:Partial<pessoaParceira> = {}
+  const {dados,senha} = ProcessaCadastro.lerInputs()
+  const possuiErros = ProcessaCadastro.validarCampos(dados,senha)
 
+  if (!possuiErros) {
+    dados.timestamp = new Date().toISOString()
 
-  for (const input of inputs) {
-    switch (input.name) {
-      case "nome":
-        input.value = "ronaldo"
-        pessoa.nome = input.value        
-        break;
-        
-      case "CPF":
-        input.value = "142055714"
-        pessoa.cpf = Number(input.value)
-        break;
-      
-      case "email":
-        input.value = "ronaldo@hotmail.com"
-        pessoa.email = input.value        
-        break;
-      
-      case "dataNasc":
-        input.value = "21/01/2002"
-        pessoa.dataNasc = input.value
-        break;
-      
-      case "senha":
-        input.value = "diogovf90"
-        pessoa.senha = input.value        
-        break;
-    }  
-    
+    await new AutenRepositorio().cadastrar({email:dados.email,senha:senha},dados).catch(error => {
+      document.body.append(AvisoComponente("Ocorreu um erro",error.message))
+    })    
   }
-  
-  return pessoa as pessoaParceira
+
+  btn.disabled = false
 }
 
-
-
-
-const cadastro = async () => {
-  const pessoaVerificada = verificarCampos()
-
-  await new AutenRepositorio().cadastrar({email:pessoaVerificada.email,senha:pessoaVerificada.senha},pessoaVerificada)
-}
-
-form.getElementsByClassName("enviar-btn")[0].addEventListener("click",cadastro);
+btn.addEventListener("click",cadastrar);

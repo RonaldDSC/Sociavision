@@ -1,6 +1,5 @@
 import { IEmailESenha } from "@/servicos/api/autenticador/autenFirebase";
 import { ValidationYup } from "@/servicos/validation/yupValidation";
-import '@/servicos/validation/yupTranslation'
 import * as yup from 'yup'
 
 interface TValidacao extends IEmailESenha {}

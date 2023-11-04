@@ -8,8 +8,12 @@ import { atualizaHrefs } from './atualizandoHrefs'
 
 atualizaHrefs()
 
+const btn = document.getElementsByClassName("enviar-btn")[0] as HTMLButtonElement
+
 
 const onPressLogin = async () => {
+  btn.disabled = true
+
   const credenciais = ProcessarLogin.lerInputs()
   const possuiErros = ProcessarLogin.validarCampos(credenciais)
   
@@ -18,7 +22,7 @@ const onPressLogin = async () => {
       document.body.append(AvisoComponente("Ocorreu um erro",error.message))
     })
   }
+  btn.disabled = false
 }
 
-document.getElementsByClassName("enviar-btn")[0].addEventListener("click",onPressLogin);
-
+btn.addEventListener("click",onPressLogin);

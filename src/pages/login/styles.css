@@ -38,6 +38,7 @@
 
 #campo-email,#campo-senha {
   position: relative;
+  margin-bottom: 4px;
 }
 
 

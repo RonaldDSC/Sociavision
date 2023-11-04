@@ -19,26 +19,33 @@
       <div id="conteudo-form" class="painel coluna">
         <div class="align-center coluna">
           
-          <form class="coluna">
+          <form id="formCadastro" class="coluna">
             <h1 class="cabecalho-form">Criando uma conta</h1>
 
-            <label class="espaco-rotulo" for="org">Nome da organização</label>
-            <input class="espaco-input" type="text" name="org" id="org" />
+            <div id="campo-nome" class="coluna">
+              <label class="espaco-rotulo" for="nome">Nome da organização</label>
+              <input class="espaco-input" type="text" name="nome" id="nome" />
+            </div>
             
+            <div id="campo-CNPJ" class="coluna">
+              <label class="espaco-rotulo"  for="CNPJ">CNPJ</label>
+              <input class="espaco-input" type="text" name="CNPJ" id="CNPJ" inputmode="numeric" />
+            </div>
             
-            <label class="espaco-rotulo"  for="CNPJ">CNPJ</label>
-            <input class="espaco-input" type="text" name="CNPJ" id="CNPJ" inputmode="numeric" />
-            
-            <label class="espaco-rotulo"  for="email">Email</label>
-            <input class="espaco-input" type="email" name="email" id="email" inputmode="email" />
+            <div id="campo-email" class="coluna">
+              <label class="espaco-rotulo"  for="email">Email</label>
+              <input class="espaco-input" type="email" name="email" id="email" inputmode="email" />
+            </div>
 
+           <div id="campo-responsavelOrg" class="coluna">
+             <label class="espaco-rotulo" for="responsavelOrg">Responsável da organização</label>
+             <input class="espaco-input" type="text" name="responsavelOrg" id="responsavelOrg" placeholder="nome" />
+           </div>
            
-            <label class="espaco-rotulo" for="responsavelOrg">Responsável da organização</label>
-            <input class="espaco-input" type="text" name="responsavelOrg" id="responsavelOrg" placeholder="nome" />
-            
-            
-            <label class="espaco-rotulo"  for="senha">Senha</label>
-            <input class="espaco-input" type="password" name="senha" id="senha" placeholder="8 caracteres" />
+           <div id="campo-senha" class="coluna">
+             <label class="espaco-rotulo"  for="senha">Senha</label>
+             <input class="espaco-input" type="password" name="senha" id="senha" placeholder="8 caracteres" />
+           </div>            
             
             <input class="enviar-btn" type="button" value="Criar conta">
           </form>

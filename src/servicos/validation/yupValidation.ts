@@ -1,4 +1,5 @@
 import { AnyObject, Maybe, ObjectSchema, ValidationError } from 'yup'
+import '@/servicos/validation/yupTranslation'
 
 type TValidation = 
 <T extends Maybe<AnyObject>>(schema:ObjectSchema<T>,value:T) => Record<string,string> | void

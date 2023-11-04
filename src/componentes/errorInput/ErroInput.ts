@@ -1,4 +1,5 @@
 import './styles.scss'
+import alerta from '@assets/svgs/jam_alert.svg'
 
 export default function ErrorInputComponente(mensagem:string) {
   const container = document.createElement("div")
@@ -7,12 +8,13 @@ export default function ErrorInputComponente(mensagem:string) {
   container.innerHTML = `  
     <div class="errorInputSvg">
       <img                    
-        class="img"
-        src="${window.location.origin + "/assets/svgs/jam_alert.svg"}"
+        class="img"        
         alt="figura"                  
       />
     </div>
     <p class="errorInputTexto text-warning" >${mensagem}</p>
     `
+
+  container.getElementsByTagName("img")[0].src = alerta
   return container
 }

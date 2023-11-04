@@ -4,7 +4,7 @@
 }
 
 .espaco-input {
-  margin-bottom: 16px;
+  margin-bottom: 26px;
 }
 
 .espaco-rotulo {
@@ -46,7 +46,12 @@ label {
 }
 
 .tamanho-img {
-  width: 480px;
+  width: 70%;
+}
+
+#campo-email,#campo-senha,#campo-nome,#campo-dataNasc,#campo-dataNasc,#campo-CPF {
+  position: relative;
+  margin-top: 8px;
 }
 
 

@@ -2,23 +2,25 @@ interface Pessoa {
   id:string
   nome:string
   email:string
-  senha:string
-  data: string
+  timestamp: string
 } 
 
-export interface pessoaFisica extends Pessoa {
-  cpf:number
-  dataNasc: string  
-}
-
-export interface pessoaJuridica extends Pessoa {
-  cnpj:number
-  responsavelOrg: string 
-}
-
-export interface pessoaParceira extends Pessoa {
+export interface PessoaFisica extends Pessoa {
   cpf:number
   dataNasc: string 
+  readonly tipoConta: "F"
 }
 
-export type TPessoa = pessoaFisica | pessoaJuridica | pessoaParceira
+export interface PessoaJuridica extends Pessoa {
+  cnpj:number
+  responsavelOrg: string 
+  readonly tipoConta: "J"
+}
+
+export interface PessoaParceira extends Pessoa {
+  cpf:number
+  dataNasc: string 
+  readonly tipoConta: "P"
+}
+
+export type TPessoa = PessoaFisica | PessoaJuridica | PessoaParceira

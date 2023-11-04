@@ -7,7 +7,7 @@
   </head>
   <body class="coluna expandido">
     <section class="cabecalho linha space-between fixo">
-      <a class="logo" href="../../../index.html">SOCIAVISION</a>
+      <a class="logo" >SOCIAVISION</a>
   
       <div>
         <span>Já tem uma conta?</span>
@@ -19,24 +19,33 @@
       <div id="conteudo-form" class="painel coluna">
         <div class="align-center coluna">
           
-          <form class="coluna">
+          <form id="formCadastro" class="coluna">
             <h1 class="cabecalho-form">Criando uma conta</h1>
 
-            <label class="espaco-rotulo" for="nome">Nome</label>
-            <input class="espaco-input" type="text" name="nome" id="nome" />
+            <div id="campo-nome" class="coluna">
+              <label class="espaco-rotulo" for="nome">Nome</label>
+              <input class="espaco-input" type="text" name="nome" id="nome" />
+            </div>
 
-            <label class="espaco-rotulo"  for="CPF">CPF</label>
-            <input class="espaco-input" type="text" name="CPF" id="CPF" inputmode="numeric" />
+            <div id="campo-CPF" class="coluna">
+              <label class="espaco-rotulo"  for="CPF">CPF</label>
+              <input class="espaco-input" type="text" name="CPF" id="CPF" inputmode="numeric" />
+            </div>
             
-            <label class="espaco-rotulo"  for="email">Email</label>
-            <input class="espaco-input" type="email" name="email" id="email" inputmode="email" />
+            <div id="campo-email" class="coluna">
+              <label class="espaco-rotulo"  for="email">Email</label>
+              <input class="espaco-input" type="email" name="email" id="email" inputmode="email" />
+            </div>
 
-            <label class="espaco-rotulo"  for="dataNasc">Data de nascimento</label>
-            <input class="espaco-input" type="date" name="dataNasc" id="dataNasc" />
-            
-            
-            <label class="espaco-rotulo"  for="senha">Senha</label>
-            <input class="espaco-input" type="password" name="senha" id="senha" placeholder="8 caracteres" />
+            <div id="campo-dataNasc" class="coluna">
+              <label class="espaco-rotulo"  for="dataNasc">Data de nascimento</label>
+              <input class="espaco-input" type="date" name="dataNasc" id="dataNasc" />
+            </div>
+
+            <div id="campo-senha" class="coluna">
+              <label class="espaco-rotulo"  for="senha">Senha</label>
+              <input class="espaco-input" type="password" name="senha" id="senha" placeholder="8 caracteres" />
+            </div>
             
             <input class="enviar-btn" type="button" value="Criar conta">
           </form>
@@ -48,7 +57,6 @@
         <div class="tamanho-img">
           <img
             class="img"
-            src="../../../assets/svgs/undraw_business_analytics_re_tfh3 1.svg"
             alt="figura"
           />
         </div>
