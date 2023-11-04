@@ -15,6 +15,6 @@
   npm run dev
   ```
 
-- O projeto vai abrir dentro navegador no link: [127.0.0.1:5173](http://127.0.0.1:5173/)
+- O projeto vai abrir dentro navegador no link: [localhost:5173](http://localhost:5173/)
 
 ## [Site](https://sociavision-app.web.app/) 🌐 <sup><sub>Ainda não disponível</sub></sup>
