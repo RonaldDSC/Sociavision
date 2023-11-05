@@ -17,22 +17,25 @@ type TRotas = keyof typeof rotas
 export const navegar = (rota:TRotas) => {
   window.location.href = rotas[rota]
 }
-/*
+
 new AutenFirebase().autentificador.onAuthStateChanged((usuarioLogado) => {
   const estaNaRotaAutenticacao = 
       window.location.pathname.includes("/login") || 
-      window.location.pathname.includes("/cadastro") 
+      window.location.pathname.includes("/cadastro")
+  
+  const rotaParaCliente = false
+  const rotaParaParceiro = false
     
   if (usuarioLogado) {
     if (estaNaRotaAutenticacao) {
       window.location.href = rotas["/"]      
     }        
   } else {
-    if (estaNaRotaAutenticacao === false) {
+    if (rotaParaCliente || rotaParaParceiro) {
       window.location.href = rotas["/login"]      
     }    
   }
    
   
-})*/
+})
 

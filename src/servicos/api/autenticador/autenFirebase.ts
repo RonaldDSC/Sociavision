@@ -1,4 +1,4 @@
-import { Auth, Persistence, browserLocalPersistence, browserSessionPersistence, createUserWithEmailAndPassword, getAuth, setPersistence, signInWithEmailAndPassword } from "firebase/auth";
+import { Auth, Persistence, browserLocalPersistence,  createUserWithEmailAndPassword, getAuth, setPersistence, signInWithEmailAndPassword } from "firebase/auth";
 import CustomFirebaseApp from "../firebase/customFirebaseApp";
 
 class AutenFirebase extends CustomFirebaseApp {
