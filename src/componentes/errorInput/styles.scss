@@ -1,18 +1,15 @@
 .errorInput {
   justify-content: start;
   align-items: center;
-  
-  position: absolute;
-  bottom: 0;
 }
 
 .errorInputTexto {
   font-weight: 500;
   margin-left: 2px;
+  font-size: 0.8rem;
 }
 
 
 .errorInputSvg {
-  max-width: 22px;
-  max-height: 22px;
+  max-width: 1.1rem;
 }

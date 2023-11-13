@@ -1,13 +1,12 @@
-import { PessoaFisica } from "@/modelos/pessoaModelo"
+import PessoaFisica from "@/modelos/pessoa/pessoaFisicaModelo"
 import { validacao } from "./validacao"
 import ErrorInputComponente from "@/componentes/errorInput/ErroInput"
 
 const form = document.getElementById("formCadastro") as HTMLFormElement
 const inputs = form.getElementsByTagName("input")
 
-
 const lerInputs = () => {
-  let pessoa:Partial<PessoaFisica> = {}
+  let pessoa = <PessoaFisica>{}
   let senha = ''
 
   for (const input of inputs) {
@@ -35,7 +34,7 @@ const lerInputs = () => {
     
   }
   
-  return {dados: pessoa as PessoaFisica, senha}
+  return {dados: pessoa, senha}
 }
 
 const validarCampos = (pessoa:PessoaFisica,senha:string) => {
@@ -61,9 +60,7 @@ const validarCampos = (pessoa:PessoaFisica,senha:string) => {
           inserirError("campo-dataNasc",erros[campoError])        
           break
           
-        case "cpf":
-          console.log(erros[campoError]);
-          
+        case "cpf":         
           inserirError("campo-CPF",erros[campoError])                 
           break
       }
@@ -74,13 +71,13 @@ const validarCampos = (pessoa:PessoaFisica,senha:string) => {
 }
 
 const inserirError = (idCampo:string, mensagem:string) => {
-  const campoEmail = document.getElementById(idCampo)
-  const erroInput = campoEmail?.getElementsByClassName("errorInput")[0]
+  const campo = document.getElementById(idCampo)
+  const erroInput = campo?.getElementsByClassName("errorInput")[0]
   
   if (erroInput) {
     erroInput.getElementsByClassName("errorInputTexto")[0].textContent = mensagem                           
-  } else {
-    campoEmail?.append(ErrorInputComponente(mensagem))
+  } else if(campo) {
+    ErrorInputComponente(campo,mensagem)
   }
 }
 

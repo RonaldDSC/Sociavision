@@ -4,7 +4,7 @@ import path from "path";
 export default defineConfig({
   root:"./src/pages",
   server:{
-    host:"localhost"
+    host:true
   },
   
   resolve: {

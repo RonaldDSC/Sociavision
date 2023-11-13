@@ -1,4 +1,4 @@
-import { IEmailESenha } from "@/servicos/api/autenticador/autenFirebase";
+import { IEmailESenha } from "@/servicos/api/autenticador/autenticadorFirebase";
 import { ValidationYup } from "@/servicos/validation/yupValidation";
 import * as yup from 'yup'
 

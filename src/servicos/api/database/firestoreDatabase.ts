@@ -1,23 +1,22 @@
-import { CollectionReference, DocumentData, Firestore, Query, QueryFieldFilterConstraint, collection, deleteDoc, doc, getDocs, getFirestore, query, setDoc } from "firebase/firestore";
+import { CollectionReference, DocumentData, Firestore, Query, QueryDocumentSnapshot, addDoc, collection, deleteDoc, doc, getDocs, getFirestore, query, setDoc } from "firebase/firestore";
 import CustomFirebaseApp from "../firebase/customFirebaseApp";
-import { Tabelas } from "@/constantes/TabelasNomes"
+import IFirestoreInterface, { ICreateDatabaseProps, IDeleteDatabaseProps, IGetDatabaseProps, IUpdateDatabaseProps } from "./firestoreInterface";
 
+type colecaoReferencia = CollectionReference<DocumentData, DocumentData>
 
-type TabelaReferencia = 
-  CollectionReference<DocumentData, DocumentData> | 
-  Query<DocumentData, DocumentData> 
+type consultaReferencia = colecaoReferencia | Query<DocumentData, DocumentData> 
 
-class FirestoreDatabase extends CustomFirebaseApp {
-  private db: Firestore
+class FirestoreDatabase extends CustomFirebaseApp implements IFirestoreInterface {
+  db: Firestore;
 
   constructor() {
     super()
-    this.db = getFirestore(this.app)    
+    this.db = getFirestore(this.app)
   }
-
-  get = async (tabela: Tabelas, where?: QueryFieldFilterConstraint) => {
-
-    let tabelaRef:TabelaReferencia = collection(this.db, tabela)
+  
+  get = async (props: IGetDatabaseProps): Promise<QueryDocumentSnapshot<DocumentData, DocumentData>[]> => {
+    const {tabela,subTabela,where} = props
+    let tabelaRef:consultaReferencia = collection(this.db, tabela, subTabela || "")
 
     if (where) {
       tabelaRef = query(tabelaRef,where)
@@ -26,24 +25,30 @@ class FirestoreDatabase extends CustomFirebaseApp {
     const querySnapshot = await getDocs(tabelaRef);
     const result = querySnapshot.docs
 
-
     return result
   }
 
-  create = async (idValor:string,valor: DocumentData, tabela: Tabelas) => {
-    console.log(idValor);
+  create = async (props: ICreateDatabaseProps): Promise<void> => {
+    const {tabela,valor,idValor,subTabela} = props 
     
-    await setDoc(doc(this.db, tabela, idValor), valor);
+    if (subTabela) {
+      const ref = doc(this.db, tabela, `${subTabela}/${idValor || ""}`)      
+      await setDoc(ref, valor);      
+    } else {
+      const ref = collection(this.db, tabela)
+      await addDoc(ref, valor);
+    }
   }
 
-  update = async (valor: DocumentData, tabela: Tabelas) => {
-    await setDoc(doc(this.db, tabela), valor, {merge:true});    
+  update = async (props: IUpdateDatabaseProps): Promise<void> => {
+    const {tabela, valor, subTabela} = props
+    await setDoc(doc(this.db, tabela, subTabela || ""), valor, {merge:true});    
   }
 
-  delete = async (id: string, tabela: Tabelas) => {
+  delete = async (props: IDeleteDatabaseProps): Promise<void> => {
+    const {id,tabela, subTabela} = props
     await deleteDoc(doc(this.db, tabela, id));
-  }
-      
+  } 
 }
 
 export default FirestoreDatabase

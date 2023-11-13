@@ -5,15 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login</title>
   </head>
-  <body>
+  <body class="coluna">
     
-    <div class="cabecalho">
+    <div class="cabecalho linha">
       <a id="linkHome" class="logo">SOCIAVISION</a>
 
       <span>Não tem uma conta? <a id="linkSignUp">Cadastre-se</a></span>
     </div>
 
-    <section class="expandido linha">
+    <section class="linha expandido">
       <div id="painel-esquerdo" class="painel align-center">
         <div class="tamanho-svg">
           <img            
@@ -24,32 +24,27 @@
       </div>
 
       <div class="painel align-center">
-        <div class="align-center coluna">
+        <div class="align-center coluna form-container align-center">
           <h1 class="cabecalho-form">LOGIN</h1>
 
           <form class="coluna">
             <div id="campo-email" class="coluna">
               <label class="espaco-rotulo"  for="email">Email</label>
               <input
-                class="espaco-input"
+                class="espaco-input tamanho"
                 type="email"
                 name="email"
                 id="email"
+                value="adminsociavision@gmail.com"
               />
             </div>
 
             <div id="campo-senha" class="coluna">
               <label class="espaco-rotulo"  for="senha">Senha</label>
-              <input type="password" name="senha" id="senha" class="espaco-input"/>
+              <input type="password" name="senha" id="senha" class="espaco-input" value="adminsociavision@gmail.com"/>
             </div>            
 
-            <div id="utilitario" class="expandido space-between">
-
-              <div class="align-center">
-                <input class="checkbox" type="checkbox" name="lembrarSenha" id="lembrarSenha" />
-                <label class="checkbox-rotulo" for="lembrarSenha">Lembrar senha</label>
-              </div>
-              
+            <div id="utilitario" class="expandido space-between">  
               <a id="linkResetPass">Esqueci minha senha</a>
             </div>
             

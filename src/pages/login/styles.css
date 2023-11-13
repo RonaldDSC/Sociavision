@@ -3,27 +3,8 @@
   flex-wrap: nowrap;
 }
 
-.cabecalho {
-  display: flex;
-  top: 0;
-  width: 100%;
-  position: absolute;
-  padding: 32px;
-  justify-content: space-between;
-}
-
 #painel-esquerdo {
   background-color: var(--indigo-300);
-}
-
-.checkbox-rotulo {
-  font-size: 18px;
-}
-
-.checkbox{
-  width: 20px;
-  height: 20px;
-  margin-right: 8px;
 }
 
 #utilitario{

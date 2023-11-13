@@ -1,5 +1,5 @@
 import ErrorInputComponente from "@/componentes/errorInput/ErroInput";
-import { IEmailESenha } from "@/servicos/api/autenticador/autenFirebase";
+import { IEmailESenha } from "@/servicos/api/autenticador/autenticadorFirebase";
 import { validacao } from "./validacao";
 
 const lerInputs = () => {
@@ -42,13 +42,13 @@ const validarCampos = (credenciais: IEmailESenha) => {
 }
 
 const inserirError = (idCampo:string, mensagem:string) => {
-  const campoEmail = document.getElementById(idCampo)
-  const erroInput = campoEmail?.getElementsByClassName("errorInput")[0]
+  const campo = document.getElementById(idCampo)
+  const erroInput = campo?.getElementsByClassName("errorInput")[0]
   
   if (erroInput) {
     erroInput.getElementsByClassName("errorInputTexto")[0].textContent = mensagem                           
-  } else {
-    campoEmail?.append(ErrorInputComponente(mensagem))
+  } else if(campo) {
+    ErrorInputComponente(campo,mensagem)
   }
 }
 

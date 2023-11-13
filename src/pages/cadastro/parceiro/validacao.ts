@@ -1,4 +1,4 @@
-import { PessoaParceira } from "@/modelos/pessoaModelo"
+import PessoaParceira from "@/modelos/pessoa/pessoaParceiraModelo"
 import { ValidationYup } from "@/servicos/validation/yupValidation"
 import * as yup from 'yup'
 

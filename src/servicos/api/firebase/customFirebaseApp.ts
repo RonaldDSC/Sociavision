@@ -3,8 +3,8 @@ import firebaseConfig from "./firebaseConfig";
 import { Analytics, getAnalytics } from "firebase/analytics";
 
 export default class CustomFirebaseApp {
-  app: FirebaseApp;
-  analytics: Analytics
+  protected app: FirebaseApp;
+  protected analytics: Analytics
 
   constructor() {
     this.app = initializeApp(firebaseConfig)

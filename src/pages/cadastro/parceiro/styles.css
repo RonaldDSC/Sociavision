@@ -1,29 +1,17 @@
-.container{
-  display: flex;
-  flex-wrap: nowrap;
+input {
+  max-height: 45px;
 }
 
 .espaco-input {
-  margin-bottom: 26px;
+  margin-bottom: 8px;
 }
 
 .espaco-rotulo {
-  margin-bottom: 4px;
-}
-
-label {
-  text-transform: capitalize;
-  font-size: 18px;
-}
-
-#conteudo-form {
-  padding-top: 90px;
+  margin-bottom: 2px;
 }
 
 .cabecalho-form {
-  font-size: 24px;
-  text-align: start;
-  margin-bottom: 16px;
+  font-size: 1.4rem;
 }
 
 #painel-direito {
@@ -32,17 +20,18 @@ label {
 }
 
 .enviar-btn {
-  margin-top: 32px;
+  margin-top: 22px;
+  max-height: 60px;
 }
 
 .titulo-opcao {
-  font-size: 38px;
+  font-size: 1.8rem;
   font-weight: 600;
   color: var(--white);
 }
 
 .espaco-titulo-opcao {
-  margin: 12px 0;
+  margin: 32px 0;
 }
 
 .tamanho-img {
@@ -51,18 +40,14 @@ label {
 
 #campo-email,#campo-senha,#campo-nome,#campo-dataNasc,#campo-dataNasc,#campo-CPF {
   position: relative;
-  margin-top: 8px;
+  margin-top: 4px;
 }
 
-@media (max-width: 900px) {
-  .painel {
-    width: 100%;    
-  }
 
+@media (max-width: 900px) {
   #painel-direito {
     display: none;
   }
-
   #form {
     justify-content: center;
   }

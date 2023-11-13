@@ -1,0 +1,156 @@
+body{
+  padding: 16px;
+}
+
+#pagamento {
+  width: 70%;
+  height: 100%;
+}
+
+h1 {
+  font-size: 1.8rem;
+  margin-left: 16px;
+}
+
+.form-container {
+  max-width: 500px;
+  padding: 8px 16px;
+}
+
+
+#opcoesPagamento{
+  max-width: 500px;
+  align-items: flex-end;
+  margin: 12px 0;
+  justify-content: space-between;
+}
+
+.opcao {
+  max-width: 160px;
+  padding: 8px 0;
+  position: relative;
+  align-items: center;
+  justify-content: flex-end;
+  margin: 4px 16px;
+  border-radius: 10px;
+  background-color: color-mix(in srgb, var(--indigo-100) 15%, transparent);
+}
+
+.opcao input[type="radio"]:checked {
+  background-color: var(--indigo-100);
+  border-color: var(--indigo-200);  
+}
+
+.opcao input {
+  width: 12px;
+  height: 12px;
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+}
+
+.opcao:hover, .opcao label {
+  cursor: pointer;
+}
+
+.opcao label {
+  justify-content: flex-end;
+}
+
+.opcao label span {
+  color: var(--indigo-100);
+  margin-top: 12px;
+  font-size: small;  
+  font-weight: bold;
+}
+
+input {
+  max-height: 50px;
+}
+
+.pequeno-input {
+  max-width: 40%;
+}
+
+.espaco-input {
+  margin-bottom: 8px;
+}
+
+.espaco-rotulo {
+  margin-bottom: 4px;
+}
+
+#dados {
+  padding-top: 18px;
+}
+
+#dados div {
+  transition: 200ms;
+}
+
+#detalhe {
+  width: 30%;
+  height: 100%;
+  padding-left: 16px;
+  border-left: 1px solid color-mix(in srgb, var(--indigo-300) 15%, transparent);
+}
+
+#detalhe h1 {
+  margin-left: 0;
+}
+
+
+.listaCompra {
+  height: 300px;
+  overflow: auto;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.divisor {
+  height: 1px;
+  background-color: var(--indigo-300);
+}
+
+#finalizarCompra {
+  width: 100%;
+  border-radius: 5px;
+  background-color: var(--indigo-100);
+  border-color: var(--indigo-100);
+  color: var(--white);  
+  transition: 200ms;
+  margin-top: 2rem;
+}
+
+#finalizarCompra:hover { 
+  transform: translateX(5px);
+  background-color: var(--indigo-300);  
+  border-color: var(--indigo-300);
+}
+
+#finalizarCompra:not(:hover) {  
+  border-color: var(--indigo-100);
+  background-color: var(--indigo-100);  
+}
+
+.produto, .total {
+  width: 100%;
+  justify-content: space-between;
+  margin: 8px 0;
+  border-bottom: 1px solid color-mix(in srgb, var(--indigo-300) 30%, transparent);
+}
+
+.total {
+  border: none;
+}
+
+@media (max-width: 900px) {
+  #painel-direito {
+    display: none;
+  }
+  #form {
+    justify-content: center;
+  }
+}
+

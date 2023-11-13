@@ -6,25 +6,25 @@
     <title>Cadastro</title>
   </head>
   <body class="coluna expandido">
-    <section class="cabecalho linha space-between fixo">
-      <a class="logo" href="../../../index.html">SOCIAVISION</a>
+    <section class="cabecalho linha space-between">
+      <a class="logo" >SOCIAVISION</a>
   
-      <div>
+      <div class="linha login-cabelhaco align-center">
         <span>Já tem uma conta?</span>
         <button class="btn-login" >Fazer login</button>
       </div>
     </section>
 
-    <section id="form" class="expandido linha">
-      <div id="conteudo-form" class="painel coluna">
-        <div class="align-center coluna">
+    <section class="expandido linha">
+      <div class="painel coluna align-center">
+        <div class="align-center coluna form-container">
+          <h1 class="cabecalho-form">Criando uma conta</h1>
           
           <form id="formCadastro" class="coluna">
-            <h1 class="cabecalho-form">Criando uma conta</h1>
 
-            <div id="campo-nome" class="coluna">
-              <label class="espaco-rotulo" for="nome">Nome da organização</label>
-              <input class="espaco-input" type="text" name="nome" id="nome" />
+            <div id="campo-nomeOrg" class="coluna">
+              <label class="espaco-rotulo" for="nomeOrg">Nome da organização</label>
+              <input class="espaco-input" type="text" name="nomeOrg" id="nomeOrg" placeholder="Organização"/>
             </div>
             
             <div id="campo-CNPJ" class="coluna">
@@ -37,9 +37,9 @@
               <input class="espaco-input" type="email" name="email" id="email" inputmode="email" />
             </div>
 
-           <div id="campo-responsavelOrg" class="coluna">
-             <label class="espaco-rotulo" for="responsavelOrg">Responsável da organização</label>
-             <input class="espaco-input" type="text" name="responsavelOrg" id="responsavelOrg" placeholder="nome" />
+           <div id="campo-nome" class="coluna">
+             <label class="espaco-rotulo" for="nome">Responsável da organização</label>
+             <input class="espaco-input" type="text" name="nome" id="nome" placeholder="Nome" />
            </div>
            
            <div id="campo-senha" class="coluna">

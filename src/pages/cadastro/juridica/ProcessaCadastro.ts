@@ -1,4 +1,4 @@
-import { PessoaJuridica } from "@/modelos/pessoaModelo"
+import PessoaJuridica from "@/modelos/pessoa/pessoaJuridicaModelo"
 import { validacao } from "./validacao"
 import ErrorInputComponente from "@/componentes/errorInput/ErroInput"
 
@@ -7,7 +7,7 @@ const inputs = form.getElementsByTagName("input")
 
 
 const lerInputs = () => {
-  let pessoa:Partial<PessoaJuridica> = {}
+  let pessoa = <PessoaJuridica> {}
   let senha = ''
 
   for (const input of inputs) {
@@ -24,8 +24,8 @@ const lerInputs = () => {
         pessoa.email = input.value        
         break;
       
-      case "responsavelOrg":
-        pessoa.responsavelOrg = input.value
+      case "nomeOrg":
+        pessoa.nomeOrg = input.value
         break;
       
       case "senha":
@@ -35,7 +35,7 @@ const lerInputs = () => {
     
   }
   
-  return {dados: pessoa as PessoaJuridica, senha}
+  return {dados: pessoa, senha}
 }
 
 const validarCampos = (pessoa:PessoaJuridica,senha:string) => {
@@ -57,13 +57,11 @@ const validarCampos = (pessoa:PessoaJuridica,senha:string) => {
           inserirError("campo-nome",erros[campoError])        
           break
           
-        case "responsavelOrg":
-          inserirError("campo-responsavelOrg",erros[campoError])        
+        case "nomeOrg":
+          inserirError("campo-nomeOrg",erros[campoError])        
           break
           
-        case "cnpj":
-          console.log(erros[campoError]);
-          
+        case "cnpj":       
           inserirError("campo-CNPJ",erros[campoError])                 
           break
       }
@@ -74,13 +72,13 @@ const validarCampos = (pessoa:PessoaJuridica,senha:string) => {
 }
 
 const inserirError = (idCampo:string, mensagem:string) => {
-  const campoEmail = document.getElementById(idCampo)
-  const erroInput = campoEmail?.getElementsByClassName("errorInput")[0]
+  const campo = document.getElementById(idCampo)
+  const erroInput = campo?.getElementsByClassName("errorInput")[0]
   
   if (erroInput) {
     erroInput.getElementsByClassName("errorInputTexto")[0].textContent = mensagem                           
-  } else {
-    campoEmail?.append(ErrorInputComponente(mensagem))
+  } else if(campo) {
+    ErrorInputComponente(campo,mensagem)
   }
 }
 

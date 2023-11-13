@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+  <title>Pagamento</title>
+</head>
+<body>
+  <div id="pagamento" class="coluna">    
+    <h1>Formas de pagamentos</h1>
+
+    <form id="opcoesPagamento" class="linha">
+
+      <div id="opcaoCartao" class="opcao expandido coluna">
+        <label for="cartao" class="coluna align-center expandido">
+          <div class="tamanho-svg">
+            <img            
+              class="img"            
+              alt="figura"
+            />  
+          </div>
+          <span>Cartão</span>
+        </label>
+
+        <input class="form-check-input" type="radio" name="opcoesPagamento" id="cartao" checked>
+      </div>
+
+      <div id="opcaoBoleto" class="opcao expandido coluna">
+        <label for="boleto" class="coluna align-center expandido" >
+          <div class="tamanho-svg">
+            <img            
+              class="img"            
+              alt="figura"
+            />  
+          </div>
+          <span>Boleto</span>
+        </label>
+  
+        <input class="form-check-input" type="radio" name="opcoesPagamento" id="boleto">
+      </div>
+
+      <div id="opcaoPix" class="opcao expandido coluna">
+        <label for="pix" class="coluna align-center expandido" >
+          <div class="tamanho-svg">
+            <img            
+              class="img"            
+              alt="figura"
+            />  
+          </div>
+          
+          <span>PIX</span>
+        </label>
+  
+        <input class="form-check-input" type="radio" name="opcoesPagamento" id="pix">
+      </div>
+
+
+    </form>
+    
+    <div id="dados">
+
+      <div id="formCartao" class="linha form-container">        
+        <form class="coluna">
+          <div id="campo-cartao" class="coluna">
+            <label class="espaco-rotulo"  for="cartao">Número do cartão</label>
+            <input class="espaco-input" type="number" name="cartao" id="cartao" inputmode="numeric" />
+          </div>
+
+          <div id="campo-titular" class="coluna">
+            <label class="espaco-rotulo" for="titular">Nome do titular</label>
+            <input class="espaco-input" type="text" name="titular" id="titular" />
+          </div>
+
+          <div class="linha">
+
+            <div id="campo-cartao" class="coluna">
+              <label class="espaco-rotulo"  for="cartao">Data de expiração</label>
+              <input class="espaco-input pequeno-input" type="number" name="cartao" id="cartao" inputmode="numeric" placeholder="00/00" />
+            </div>
+
+            <div id="campo-cvv" class="coluna">
+              <label class="espaco-rotulo"  for="cvv">CVV</label>
+              <input class="espaco-input pequeno-input" type="number" name="cvv" id="cvv" inputmode="numeric" placeholder="000" />
+            </div>            
+  
+          </div>
+
+        </form>
+      </div>      
+      
+      <div id="formPix" class="coluna form-container">        
+        <form class="coluna">
+          <div id="campo-chavePix" class="coluna">
+            <label class="espaco-rotulo"  for="chavePix">Chave PIX</label>
+            <input 
+              class="espaco-input" 
+              type="number" 
+              name="chavePix" 
+              id="chavePix" 
+              inputmode="numeric" 
+            />
+          </div>          
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div id="detalhe" class="coluna">
+    <h1>Detalhe da compra</h1>
+    <ul class="listaCompra"></ul>
+
+    <div class="divisor">
+
+    <div class="total linha"></div>
+    
+    <button id="finalizarCompra">FINALIZAR COMPRAR</button>
+
+  </div>
+
+   
+
+  <script type="module" src="script.ts"></script>
+</body>
+</html>

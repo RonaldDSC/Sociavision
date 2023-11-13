@@ -1,10 +1,8 @@
-import { PessoaFisica } from "@/modelos/pessoaModelo"
+import PessoaFisica from "@/modelos/pessoa/pessoaFisicaModelo"
 import { ValidationYup } from "@/servicos/validation/yupValidation"
 import * as yup from 'yup'
 
-
-
-interface TValidacao extends Omit<PessoaFisica,"id" | "tipoConta" | "timestamp"> {
+interface TValidacao extends Omit<PessoaFisica,"id" | "tipoConta" | "timestamp" | "plano"> {
   senha:string
 }
 
@@ -12,11 +10,11 @@ const validarDados = (dados:PessoaFisica, senha:string) => {
   const validacao:yup.ObjectSchema<TValidacao> = yup.object().shape({
     nome:yup.string().required(),
     email:yup.string().required().email(),
-    cpf:yup.number().required().min(8).max(8),
+    cpf:yup.number().required().test('len',"Deve ser no máximo 11", val=> String(val).length === 11),
     dataNasc: yup.string().required(),
     senha:yup.string().required().min(8)
-  })
-  
+  })  
+
   return ValidationYup(validacao,{...dados,senha})
 }
 

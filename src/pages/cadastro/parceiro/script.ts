@@ -1,7 +1,7 @@
 import '@/globalStyle.css'
 import './styles.css'
 import '@/servicos/navegacao/navegacao'
-import AutenRepositorio from '@/repositorios/autenticacao/autenRepositorio'
+import AutenticacaoRepositorio from '@/repositorios/autenticacao/autenticacaoRepositorio'
 import { atualizaHrefs } from './atualizandoHrefs'
 import { ProcessaCadastro } from './ProcessaCadastro'
 import AvisoComponente from '@/componentes/aviso/AvisoComponente'
@@ -19,8 +19,8 @@ const cadastrar = async () => {
   if (!possuiErros) {
     dados.timestamp = new Date().toISOString()
 
-    await new AutenRepositorio().cadastrar({email:dados.email,senha:senha},dados).catch(error => {
-      document.body.append(AvisoComponente("Ocorreu um erro",error.message))
+    await new AutenticacaoRepositorio().cadastrar({email:dados.email,senha:senha},dados).catch(error => {
+      AvisoComponente(document.body,"Ocorreu um erro",error.message)
     })    
   }
 
