@@ -3,50 +3,53 @@ import AutenticacaoRepositorio from "../autenticacao/autenticacaoRepositorio";
 import IComprasRepositorio from "./comprasInterface";
 import CompraModelo from "@/modelos/compraModelo";
 import { TPagamentos } from "@/modelos/pagamento/pagamentoModelo";
+import { ENomesPlanos, TPlanos } from "@/modelos/plano/planoModelo";
 
 export default class ComprasRepositorio extends IComprasRepositorio {
 
-  async realizarCompra<Produto>(dadosPagamento: TPagamentos, produto: Produto): Promise<boolean> {
+  async comprarPlano(dadosPagamento: TPagamentos, novoPlano: TPlanos): Promise<boolean> {
     const {usuarioLogado} = new AutenticacaoRepositorio()
 
-    const usuario = await usuarioLogado()  
-    
+    const usuario = await usuarioLogado()    
 
-    if (usuario) {
-      const db = new FirestoreDatabase()
+    if (usuario) {      
+      const { create } = new FirestoreDatabase()
 
-      let novaCompra:CompraModelo<Produto> = {
-        timestamp: new Date().toISOString(),
-        metodoPagamento:dadosPagamento.metodo,
-        preco:2121212,
-        moeda: "BRL",
-        produto    
+      let { historico,plano }:ICompra = {
+        plano:novoPlano.nome,
+        historico:[
+          {
+            timestamp: new Date().toISOString(),
+            moeda: "BRL",
+            preco:novoPlano.preco,
+            dadosPagamento:dadosPagamento.toJson(),
+            produto:novoPlano.toJson()  
+          }          
+        ]
       }
+      await Promise.all([
+        create({
+          tabela:"planos",
+          valor:{plano,dadosPagamento:dadosPagamento.toJson()},
+          subTabela:`${usuario.id}`
+        }),      
 
-      db.create({
-        tabela:"compras",
-        valor:novaCompra,
-        subTabela:`${usuario.id}/compras`
-      })
-
-      novaCompra = {
-        timestamp: new Date().toISOString(),
-        metodoPagamento:dadosPagamento.metodo,
-        preco:1111111111111111,
-        moeda: "BRL",
-        produto    
-      }
-
-      db.update({
-        tabela:"usuarios",        
-        valor:novaCompra,
-        subTabela:"compras/" + usuario.id
-      })            
+        create({
+          tabela:"planos",
+          valor: historico[0],
+          subTabela:`${usuario.id}/historico`
+        }),
+      ])
+      
+      return true         
     }
 
     return false
-  }
+  } 
 
-  
+}
 
+interface ICompra {
+  plano: ENomesPlanos
+  historico: CompraModelo<Omit<TPlanos, "toJson">>[]
 }

@@ -1,6 +1,6 @@
 export enum EnumTabelas {
   "usuarios",
-  "compras",
+  "planos",
 }
 
 export type Tabelas = keyof typeof EnumTabelas

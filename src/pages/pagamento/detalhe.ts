@@ -1,6 +1,7 @@
 import { LocalizacaoServico } from "@/servicos/localizacao/localizacao";
 
-const adicionarItem = (container:Element,nome:string,moeda:string,preco:number) => {
+const adicionarItem = (nome:string,moeda:string,preco:number) => {
+  const container = document.getElementsByClassName("listaCompra")[0]
   container.innerHTML += `
   <li class="produto linha">
     <span id="nome">${nome}</span>
@@ -18,7 +19,7 @@ const calcularTotal = (precos:number[],moeda:string) => {
   `
 }
 
-export const Detalhe = {
+export const Detalhes = {
   adicionarItem,
   calcularTotal
 }

@@ -29,13 +29,22 @@ class FirestoreDatabase extends CustomFirebaseApp implements IFirestoreInterface
   }
 
   create = async (props: ICreateDatabaseProps): Promise<void> => {
-    const {tabela,valor,idValor,subTabela} = props 
+    const {tabela,valor,subTabela} = props 
     
     if (subTabela) {
-      const ref = doc(this.db, tabela, `${subTabela}/${idValor || ""}`)      
-      await setDoc(ref, valor);      
+      const contadorBarras = (subTabela.match(/\//g) || []).length
+
+      if(contadorBarras % 2 === 0) {
+        const ref = doc(this.db, tabela, subTabela)    
+        await setDoc(ref, valor);
+
+      } else {
+        const ref = collection(this.db, tabela, subTabela)
+        await addDoc(ref, valor);
+        
+      }
     } else {
-      const ref = collection(this.db, tabela)
+      const ref = collection(this.db, tabela)    
       await addDoc(ref, valor);
     }
   }

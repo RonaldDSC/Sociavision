@@ -1,4 +1,5 @@
-import { rotas } from "@/servicos/navegacao/navegacao"
+import { UrlServico } from "@/servicos/navegacao/url"
+import { RotasServico } from "@/servicos/navegacao/rotas"
 import mobileSvg from "@assets/svgs/Mobile login-pana 1.svg"
 
 export const atualizaHrefs = () => {
@@ -6,9 +7,9 @@ export const atualizaHrefs = () => {
   const linkResetPass = document.getElementById("linkResetPass") as HTMLLinkElement
   const linkSignUp = document.getElementById("linkSignUp") as HTMLLinkElement
 
-  linkHome.href = rotas['/']
-  linkResetPass.href = rotas['/login/resetarSenha']
-  linkSignUp.href =  rotas['/cadastro']
+  linkHome.href = RotasServico.rotas['/']
+  linkResetPass.href = UrlServico.copiarParametroAtual(RotasServico.rotas['/login/resetarSenha'])
+  linkSignUp.href = UrlServico.copiarParametroAtual(RotasServico.rotas["/cadastro"])
 
 
   const figura = document.getElementById("painel-esquerdo")?.getElementsByTagName("img")[0]

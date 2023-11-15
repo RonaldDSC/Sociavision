@@ -2,7 +2,24 @@ import  PessoaFisica  from "./pessoaFisicaModelo"
 import  PessoaParceira  from "./pessoaParceiraModelo"
 import  PessoaJuridica  from "./pessoaJuridicaModelo"
 
-export default interface Pessoa {
+export default abstract class Pessoa implements IPessoa {
+  id: string
+  nome: string
+  email: string
+  timestamp: string
+  abstract tipoConta: keyof typeof ETipoPessoa
+
+  constructor(dados:IPessoa) {
+    this.email = dados.email
+    this.nome = dados.nome
+    this.id = dados.id
+    this.timestamp = dados.timestamp
+  }
+
+  abstract toJson(): Omit<TPessoas, "toJson">
+}
+
+export interface IPessoa {
   id:string
   nome:string
   email:string
