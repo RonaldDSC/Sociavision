@@ -1,20 +1,99 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-br">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="#" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Home</title>
-  </head>
-  <body class="coluna">
-    <!-- HOME -->
-    <p>Após o realizar o login, se perder o acesso a Area de Cadastro e Login</p>
+    <head>
+        <meta charset="UTF-8" />
+        <link rel="icon" type="image/svg+xml" href="#" />
+        <link rel="stylesheet" type="text/css" href="main.css" <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="bootstrap-grid.min.css" />
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Raleway:wght@400;700&display=swap" rel="stylesheet" />
+
+        <title>Sociavision</title>
+    </head>
+    <body class="coluna">
+        <!-- HOME -->
+        <!-- <p>Após o realizar o login, se perder o acesso a Area de Cadastro e Login</p>
     <p>Apertar em sair para deslogar e recuperar o acesso</p>
 
     <button id="COMPRAR">COMPRAR</button>
     <button id="sair">sair</button>
 
-    <a href="login/index.html">LOGIN</a>
-    <script type="module" src="main.js"></script>
-  </body>
+    <a href="login/index.html">LOGIN</a>-->
+        <!-- HEADER -->
+        <div class="container">
+            <header class="navBar">
+                <a href="#home">
+                    <img src="../assets/svgs/logo.svg" alt="Logo Sociavision" class="logo" />
+                </a>
+                <div class="nav-container">
+                    <nav>
+                        <a href="#home">Home</a>
+                        <a href="#sobre">Sobre-nos</a>
+                        <a href="#planos">Planos</a>
+                        <a href="#contato">Contato</a>
+                    </nav>
+                </div>
+
+                <div class="box-btn">
+                    <a href="#" class="btn-login">Login</a>
+                    <a href="#" class="btn-cadastro">Cadastre-se</a>
+                </div>
+            </header>
+        </div>
+
+        <!-- BANNER -->
+        <section class="banner">
+            <div class="text-banner">
+                <h1>Quer impulsionar suas redes sociais de forma simples e pratica, contrate nossos serviços.</h1>
+                <a class="btn-banner" href="#">Veja nossos planos</a>
+
+                <div class="icons-banner">
+                    <a href="#">
+                        <img src="../assets/svgs/instagram-home.svg" img-responsive img-thumbnail alt="Instagram" />
+                    </a>
+                    <a href="#">
+                        <img src="../assets/svgs/whatsapp-home.svg" img-responsive img-thumbnail alt="Whatsapp" />
+                    </a>
+                    <a href="#">
+                        <img src="../assets/svgs/facebook-home.svg" img-responsive img-thumbnail alt="Facebook" />
+                    </a>
+                    <a href="#">
+                        <img src="../assets/svgs/twitter-home.svg" img-responsive img-thumbnail alt="Twitter" />
+                    </a>
+                </div>
+            </div>
+            <div>
+                <img class="svg-banner" src="../assets/svgs/svg-banner.svg" img-responsive img-thumbnail alt="imagem" />
+            </div>
+        </section>
+
+        <!-- SOBRE -->
+        <div class="container">
+            <section class="sobre">
+                <div class="box-sobre">
+                    <div class="box-img1">
+                        <img src="../assets/img/img-sobre1.png" alt="" />
+                        <img src="../assets/img/img-sobre2.png" alt="" />
+                    </div>
+                    <div class="box-img2">
+                        <img src="../assets/img/img-sobre3.png" alt="" />
+                    </div>
+                </div>
+                <div class="text-sobre">
+                    <h4>Sobre nossa agencia</h4>
+                    <p>
+                        Somos mais do que um serviço de gerenciamento de redes sociais; somos os arquitetos digitais que constroem pontes entre marcas e audiências
+                    </p>
+                    <p>
+                        Em um mundo onde a presença online é vital, estamos aqui para transformar sua visão em uma narrativa cativante, moldando a percepção da sua marca e impulsionando o engajamento.
+                    </p>
+                    <button class="btn-sobre">
+                        <a href="">Contate-nos</a>
+                    </button>
+                </div>
+
+            </section>
+        </div>
+
+        <script type="module" src="main.js"></script>
+    </body>
 </html>
