@@ -10,8 +10,6 @@ import { RotasServico } from '@/servicos/navegacao/rotas'
 RotasServico.rotaProtegida()
 atualizaHrefs()
 
-RotasServico.redirecionarProxPagina()
-
 const btn = document.getElementsByClassName("enviar-btn")[0] as HTMLButtonElement
 
 
