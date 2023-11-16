@@ -59,9 +59,7 @@ const finalizarCompra = async () => {
              
       }
 
-    } catch (error) {
-      console.log(error);
-      
+    } catch (error) {      
       AvisoComponente(
         document.body,
         "Ocorreu um erro",

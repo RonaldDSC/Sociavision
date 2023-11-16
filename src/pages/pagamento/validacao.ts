@@ -6,7 +6,6 @@ import * as yup from 'yup'
 interface TValidacaoCartao extends IPagamentoCartaoCredito {}
 
 const validarCartao = (dados:IPagamentoCartaoCredito) => {
-  console.log(dados);
   
   const validacao:yup.ObjectSchema<TValidacaoCartao> = yup.object().shape({
     numero:yup.number().required()

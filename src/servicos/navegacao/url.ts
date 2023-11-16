@@ -14,12 +14,19 @@ const pegarParametroAtual = () => {
 }
 
 const inserirParametros = (url:string,params:Record<string,string | number>) => {
-  let urlComParams = url+"?"
-  for (const [chave,valor] of Object.entries(params)) {      
-    if (chave && valor) {
-      urlComParams +=`&${chave}=${valor}`        
+  let urlComParams = url
+  
+  const filtro = Object.keys(params).filter(key => key !== "" || undefined)
+  
+  if(filtro.length != 0) {
+    urlComParams += "?"
+    for (const [chave,valor] of Object.entries(params)) {      
+      if (chave && valor) {
+        urlComParams +=`&${chave}=${valor}`        
+      }
     }
   }
+
   return urlComParams.replace("&","")
 }
 

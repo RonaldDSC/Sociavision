@@ -56,8 +56,7 @@ const lerInputCartao = () => {
           break;
         
         case "dataExp":
-          console.log(input.value);
-          
+        
           dados.dataExp = input.value        
           break;
         
@@ -143,9 +142,7 @@ const inserirError = (idCampo:string, mensagem:string) => {
   
   if (erroInput) {
     erroInput.getElementsByClassName("errorInputTexto")[0].textContent = mensagem                           
-  } else if(campo) {
-    console.log(mensagem);
-    
+  } else if(campo) {    
     ErrorInputComponente(campo,mensagem)
   }
 }

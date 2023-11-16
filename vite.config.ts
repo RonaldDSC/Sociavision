@@ -6,6 +6,22 @@ export default defineConfig({
   server:{
     host:true
   },
+  build:{
+    outDir:'../../dist',
+    rollupOptions:{
+      input: {
+        main: './src/pages/index.html',
+        login: './src/pages/login/index.html',
+        pagamento: './src/pages/pagamento/index.html',
+        
+        cadastro: './src/pages/cadastro/index.html',
+        cadastroPessoaFisica: './src/pages/cadastro/fisica/index.html',      
+        cadastroPessoaParceira: './src/pages/cadastro/parceiro/index.html',      
+        cadastroPessoaJuridica: './src/pages/cadastro/juridica/index.html',      
+      }
+    }
+  },
+
   
   resolve: {
     alias: {
