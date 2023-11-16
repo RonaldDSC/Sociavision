@@ -3,12 +3,15 @@ import PlanoBasico from "./planoBasicoModelo"
 import PlanoIntermediario from "./planoIntermediarioModelo"
 import PlanoPremium from "./planoPremiumModelo"
 
-export default class Plano implements IPlano {
+export default abstract class Plano implements IPlano {
   dataExp:string
+  abstract preco:number
 
   constructor (dataExp?:string) {
     this.dataExp = dataExp || addDays(new Date() ,30).toISOString()
   }
+
+  abstract toJson(): Omit<TPlanos, "toJson">
 }
 
 export interface IPlano {
@@ -17,7 +20,11 @@ export interface IPlano {
 
 export type TPlanos = PlanoBasico | PlanoIntermediario | PlanoPremium
 
-export enum ENomesPlanos { basico = "Básico" , intermediario = "Intermediário" , premium = "Premium" }
+export enum ENomesPlanos { 
+  basico = "Plano Básico" , 
+  intermediario = "Plano Intermediário" , 
+  premium = "Plano Premium" 
+}
 
 export interface IInstagram {
   readonly stories: number

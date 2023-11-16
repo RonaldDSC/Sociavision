@@ -35,15 +35,14 @@ const exibirFormConformeInput = (input:HTMLInputElement) => {
 
 }
 
-const verificarRadioSelecionado = (
-  container:HTMLCollectionOf<HTMLInputElement>, 
-  funcao:(inputSelecionado:HTMLInputElement) => void
-) => {
-  for (const radio of container) {
-    if (radio.checked) {
-      funcao(radio)    
+const verificarRadioSelecionado = (container?:HTMLCollectionOf<HTMLInputElement>) => {
+  if (container) {
+    for (const radio of container) {
+      if (radio.checked) {
+        return radio  
+      }    
     }    
-  } 
+  }
 }
 
 export const Pagamento = {

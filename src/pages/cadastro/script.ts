@@ -1,6 +1,7 @@
 import '@/globalStyle.css'
 import './styles.css'
-import '@/servicos/navegacao/navegacao'
 import { atualizaHrefs } from './atualizandoHrefs'
+import { RotasServico } from '@/servicos/navegacao/rotas'
 
+RotasServico.rotaProtegida()
 atualizaHrefs()

@@ -7,7 +7,7 @@
 
   <title>Pagamento</title>
 </head>
-<body>
+<body class="expandido">
   <div id="pagamento" class="coluna">    
     <h1>Formas de pagamentos</h1>
 
@@ -63,24 +63,24 @@
 
       <div id="formCartao" class="linha form-container">        
         <form class="coluna">
-          <div id="campo-cartao" class="coluna">
-            <label class="espaco-rotulo"  for="cartao">Número do cartão</label>
-            <input class="espaco-input" type="number" name="cartao" id="cartao" inputmode="numeric" />
+          <div id="campo-numero" class="coluna espaco-input">
+            <label class="espaco-rotulo"  for="numero">Número do cartão</label>
+            <input class="espaco-input" type="number" name="numero" id="numero" inputmode="numeric" />
           </div>
 
-          <div id="campo-titular" class="coluna">
+          <div id="campo-titular" class="coluna espaco-input">
             <label class="espaco-rotulo" for="titular">Nome do titular</label>
             <input class="espaco-input" type="text" name="titular" id="titular" />
           </div>
 
           <div class="linha">
 
-            <div id="campo-cartao" class="coluna">
-              <label class="espaco-rotulo"  for="cartao">Data de expiração</label>
-              <input class="espaco-input pequeno-input" type="number" name="cartao" id="cartao" inputmode="numeric" placeholder="00/00" />
+            <div id="campo-dataExp" class="coluna">
+              <label class="espaco-rotulo"  for="dataExp">Data de expiração</label>
+              <input class="espaco-input pequeno-input" type="text" name="dataExp" id="dataExp" placeholder="00/00" />
             </div>
 
-            <div id="campo-cvv" class="coluna">
+            <div id="campo-cvv" class="coluna ">
               <label class="espaco-rotulo"  for="cvv">CVV</label>
               <input class="espaco-input pequeno-input" type="number" name="cvv" id="cvv" inputmode="numeric" placeholder="000" />
             </div>            
@@ -116,10 +116,7 @@
     <div class="total linha"></div>
     
     <button id="finalizarCompra">FINALIZAR COMPRAR</button>
-
-  </div>
-
-   
+  </div> 
 
   <script type="module" src="script.ts"></script>
 </body>

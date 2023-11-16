@@ -1,5 +1,5 @@
 import FirestoreDatabase from "@/servicos/api/database/firestoreDatabase";
-import { Timestamp, where } from "firebase/firestore";
+import { where } from "firebase/firestore";
 import { IAutenticacaoRepositorio } from "./autenticacaoInterface";
 import AutenticadorFirebase, { IEmailESenha } from "@/servicos/api/autenticador/autenticadorFirebase";
 import { TPessoas } from "@/modelos/pessoa/pessoaModelo";
@@ -39,18 +39,19 @@ class AutenticacaoRepositorio implements IAutenticacaoRepositorio<IEmailESenha,T
     
     const {cadastroComEmail} = new AutenticadorFirebase()    
     const {user} = await cadastroComEmail(credenciais)
-
     usuario.id = user.uid
+    
+    const novoUsuario = usuario.toJson()
     
     const {create} = new FirestoreDatabase()
 
     await create({
       tabela:"usuarios",
       valor:{
-        ...usuario,
-        data: Timestamp.fromDate(new Date())
+        ...novoUsuario,
+        data: new Date().toISOString()
       },
-      idValor:usuario.id
+      subTabela:novoUsuario.id
     })
 
     return usuario

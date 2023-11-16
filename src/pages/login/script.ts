@@ -1,4 +1,3 @@
-import '@/servicos/navegacao/navegacao'
 import '@/globalStyle.css'
 import './styles.css'
 import AvisoComponente from '@/componentes/aviso/AvisoComponente'
@@ -6,8 +5,12 @@ import AutenticacaoRepositorio from '@/repositorios/autenticacao/autenticacaoRep
 import { ProcessarLogin } from './processarLogin'
 import { atualizaHrefs } from './atualizandoHrefs'
 import LoadingComponente from '@/componentes/loading/loadingComponente'
+import { RotasServico } from '@/servicos/navegacao/rotas'
 
+RotasServico.rotaProtegida()
 atualizaHrefs()
+
+RotasServico.redirecionarProxPagina()
 
 const btn = document.getElementsByClassName("enviar-btn")[0] as HTMLButtonElement
 

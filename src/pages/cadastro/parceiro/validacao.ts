@@ -1,14 +1,14 @@
-import PessoaParceira from "@/modelos/pessoa/pessoaParceiraModelo"
+import {IPessoaParceira} from "@/modelos/pessoa/pessoaParceiraModelo"
 import { ValidationYup } from "@/servicos/validation/yupValidation"
 import * as yup from 'yup'
 
 
 
-interface TValidacao extends Omit<PessoaParceira,"id" | "tipoConta" | "timestamp"> {
+interface TValidacao extends Omit<IPessoaParceira,"id" | "timestamp"> {
   senha:string
 }
 
-const validarDados = (dados:PessoaParceira, senha:string) => {
+const validarDados = (dados:IPessoaParceira, senha:string) => {
   const validacao:yup.ObjectSchema<TValidacao> = yup.object().shape({
     nome:yup.string().required(),
     email:yup.string().required().email(),

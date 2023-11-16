@@ -1,11 +1,13 @@
 import '@/globalStyle.css'
 import './styles.css'
-import '@/servicos/navegacao/navegacao'
 import AutenticacaoRepositorio from '@/repositorios/autenticacao/autenticacaoRepositorio'
 import { atualizaHrefs } from './atualizandoHrefs'
 import { ProcessaCadastro } from './ProcessaCadastro'
 import AvisoComponente from '@/componentes/aviso/AvisoComponente'
+import PessoaParceira from '@/modelos/pessoa/pessoaParceiraModelo'
+import { RotasServico } from '@/servicos/navegacao/rotas'
 
+RotasServico.rotaProtegida()
 atualizaHrefs()
 
 const btn = document.getElementsByClassName("enviar-btn")[0] as HTMLButtonElement
@@ -19,7 +21,10 @@ const cadastrar = async () => {
   if (!possuiErros) {
     dados.timestamp = new Date().toISOString()
 
-    await new AutenticacaoRepositorio().cadastrar({email:dados.email,senha:senha},dados).catch(error => {
+    const {cadastrar} = new AutenticacaoRepositorio()
+    
+    await cadastrar({email:dados.email,senha:senha},new PessoaParceira(dados))    
+    .catch(error => {
       AvisoComponente(document.body,"Ocorreu um erro",error.message)
     })    
   }

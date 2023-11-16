@@ -19,18 +19,24 @@ export default function AvisoComponente(container:Element, titulo:string, mensag
     </div>
 
     <div class="coluna">
-      <p class="titulo">${titulo}</p>
-      <p class="mensagem">${mensagem}</p>
-    </div>
 
-    <button id="fechar" type="button">
-      <div id="fechar-svg">
-        <img        
-          class="img"
-          alt="figura"
-        />
+      <div class="linha space-between">
+        <span class="titulo">${titulo}</span>
+        <button id="fechar" type="button">
+          <div id="fechar-svg">
+            <img        
+              class="img"
+              alt="figura"
+            />
+          </div>
+        </button>
       </div>
-    </button>
+
+      <span class="mensagem">${mensagem}</span>
+    <div/>
+
+
+    
     `
   const figuras = aviso.getElementsByTagName("img")
   figuras[0].src = AlertaFigura

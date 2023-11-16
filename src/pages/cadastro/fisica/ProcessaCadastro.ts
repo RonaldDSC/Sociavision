@@ -1,4 +1,4 @@
-import PessoaFisica from "@/modelos/pessoa/pessoaFisicaModelo"
+import {IPessoaFisica} from "@/modelos/pessoa/pessoaFisicaModelo"
 import { validacao } from "./validacao"
 import ErrorInputComponente from "@/componentes/errorInput/ErroInput"
 
@@ -6,7 +6,7 @@ const form = document.getElementById("formCadastro") as HTMLFormElement
 const inputs = form.getElementsByTagName("input")
 
 const lerInputs = () => {
-  let pessoa = <PessoaFisica>{}
+  let pessoa = <IPessoaFisica>{}
   let senha = ''
 
   for (const input of inputs) {
@@ -37,7 +37,7 @@ const lerInputs = () => {
   return {dados: pessoa, senha}
 }
 
-const validarCampos = (pessoa:PessoaFisica,senha:string) => {
+const validarCampos = (pessoa:IPessoaFisica,senha:string) => {
   const erros = validacao.validarDados(pessoa,senha)
 
   if (erros) {

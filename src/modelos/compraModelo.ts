@@ -1,12 +1,11 @@
-import { ETipoPagamento } from "./pagamento/pagamentoModelo"
+import { TPagamentos } from "./pagamento/pagamentoModelo"
 
 export default interface CompraModelo<Produto> {
-  produto:Produto
-  metodoPagamento:keyof typeof ETipoPagamento
+  dadosPagamento: Omit<TPagamentos, "toJson">
   preco:number
   readonly moeda: "BRL"
+  produto:Produto
   timestamp:string
 }
-
 
 
