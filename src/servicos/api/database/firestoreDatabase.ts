@@ -55,7 +55,7 @@ class FirestoreDatabase extends CustomFirebaseApp implements IFirestoreInterface
   }
 
   delete = async (props: IDeleteDatabaseProps): Promise<void> => {
-    const {id,tabela, subTabela} = props
+    const {id,tabela} = props
     await deleteDoc(doc(this.db, tabela, id));
   } 
 }
