@@ -26,6 +26,7 @@
   font-size: 24px;
   font-weight: 600;
   color: var(--white);
+  text-align: center;
 }
 
 .subtitulo-opcao {
@@ -70,7 +71,12 @@
   font-weight: 200;
   padding: 4px 8px;
   border-radius: 10px;
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
+  
+}
+
+@media (max-width: 900px) {
+  .titulo-opcao {
+    font-size: 16px;
+  }
+
 }

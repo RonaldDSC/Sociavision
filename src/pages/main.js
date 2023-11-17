@@ -1,5 +1,7 @@
 import '@/globalStyle.css'
 import './main.css'
+import 'bootstrap/dist/css/bootstrap-grid.min.css'; // importando Bootstrap-grid
+import 'bootstrap/dist/css/bootstrap.min.css'; // importando Bootstrap-css
 import AutenticacaoRepositorio from '@/repositorios/autenticacao/autenticacaoRepositorio'
 import { NavegacaoServico } from '@/servicos/navegacao/nav'
 import { UrlServico } from '@/servicos/navegacao/url'

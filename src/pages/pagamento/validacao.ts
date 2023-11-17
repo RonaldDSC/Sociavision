@@ -27,7 +27,7 @@ interface TValidacaoPix extends IPagamentoPix {}
 
 const validarPix = (dados:IPagamentoPix) => {
   const validacao:yup.ObjectSchema<TValidacaoPix> = yup.object().shape({
-    chave:yup.string().required().min(5)   
+    chave:yup.string().required("Deve-se gerar uma chave") 
   })  
 
   return ValidationYup(validacao,dados)

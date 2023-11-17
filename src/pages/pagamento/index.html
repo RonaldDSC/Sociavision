@@ -90,19 +90,20 @@
         </form>
       </div>      
       
-      <div id="formPix" class="coluna form-container">        
-        <form class="coluna">
-          <div id="campo-chavePix" class="coluna">
-            <label class="espaco-rotulo"  for="chavePix">Chave PIX</label>
-            <input 
-              class="espaco-input" 
-              type="number" 
-              name="chavePix" 
-              id="chavePix" 
-              inputmode="numeric" 
-            />
-          </div>          
-        </form>
+      <div id="formPix" class="coluna form-container align-center">
+        <div class="qr-code">
+          <img            
+            class="img"            
+            alt="figura"
+          />  
+        </div>
+
+        <div id="campo-chavePix" class="coluna expandido" >
+          <div id="inputCopyContainer" class="linha expandido"></div>     
+        </div>
+
+        <button id="gerarPix" class="expandido">Gerar chave</button>
+
       </div>
     </div>
   </div>

@@ -8,6 +8,9 @@ import { IPagamentoCartaoCredito } from "@/modelos/pagamento/pagamentoCartaoCred
 import { IPagamentoPix } from "@/modelos/pagamento/pagamentoPixModelo"
 import ErrorInputComponente from "@/componentes/errorInput/ErroInput"
 import { Validacao } from "./validacao"
+import { TPagamentos } from "@/modelos/pagamento/pagamentoModelo"
+import { TPlanos } from "@/modelos/plano/planoModelo"
+import ComprasRepositorio from "@/repositorios/compras/comprasRepositorio"
 
 const lerItens = () => {
   const {item} = UrlServico.pegarParametroAtual()
@@ -147,11 +150,41 @@ const inserirError = (idCampo:string, mensagem:string) => {
   }
 }
 
+const registrarCompra = async (dados:TPagamentos,plano:TPlanos) => {  
+  try {
+    const {comprarPlano} = new ComprasRepositorio()
+    return await comprarPlano(dados,plano)
+  } catch (error) {
+    AvisoComponente(
+      document.body,
+      "Ocorreu um erro",
+      "Um erro inesperado aconteceu, tente novamente mais tarde"
+    ) 
+  }
+}
+
+const gerarChavePix = () => new Promise<string>((resolve) => {
+  setTimeout(() => {
+    const input = document.getElementById("inputCopyContainer")?.getElementsByTagName("input")[0]
+    const img = document.getElementsByClassName("qr-code")[0] as HTMLImageElement
+    if(input && img) {
+      const chave = "00020126430014BR.GOV.BCB.PIX0121diogovf90@hotmail.com5204000053039865802BR5924Diogo Vitorino de Franca6008Paulista62070503***63048B4C"
+      img.style.filter = "blur(0px)"
+
+      input.value = chave
+      resolve(chave)    
+    }    
+  }, 300)
+})
+
 export const ProcessarComprar = {
   lerItens,
+  registrarCompra,
+
   lerInputCartao,
   validarCartao,
   
   lerInputPix,
-  validarPix
+  validarPix,
+  gerarChavePix
 }
