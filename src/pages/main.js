@@ -8,8 +8,9 @@ import { UrlServico } from '@/servicos/navegacao/url'
 import { RotasServico } from '@/servicos/navegacao/rotas'
 import LoadingComponente from '@/componentes/loading/loadingComponente'
 
-// Links
+RotasServico.rotaProtegida()
 
+// Links
 const login = document.getElementsByClassName("btn-login");
 const cadastro = document.getElementsByClassName("btn-cadastro");
 const sair = document.getElementById("temp-sair");
@@ -53,7 +54,8 @@ async function navegarPagamento(nomeItem) {
     const {usuarioLogado} = new AutenticacaoRepositorio()
     const usuario = await usuarioLogado()
     const param = {item:nomeItem}
-    
+
+    console.log(usuario);
     if (usuario !== null) {
       NavegacaoServico.navegar("/pagamento",param)
       

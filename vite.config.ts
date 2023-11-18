@@ -16,6 +16,8 @@ export default defineConfig({
         main: './src/pages/index.html',
         login: './src/pages/login/index.html',
         pagamento: './src/pages/pagamento/index.html',
+        dashboard: './src/pages/dashboard/index.html',
+        parceiro: './src/pages/parceiro/index.html',
         
         cadastro: './src/pages/cadastro/index.html',
         cadastroPessoaFisica: './src/pages/cadastro/fisica/index.html',      

@@ -6,6 +6,7 @@ import { ProcessaCadastro } from './ProcessaCadastro'
 import AvisoComponente from '@/componentes/aviso/AvisoComponente'
 import PessoaParceira from '@/modelos/pessoa/pessoaParceiraModelo'
 import { RotasServico } from '@/servicos/navegacao/rotas'
+import LoadingComponente from '@/componentes/loading/loadingComponente'
 
 RotasServico.rotaProtegida()
 atualizaHrefs()
@@ -13,6 +14,7 @@ atualizaHrefs()
 const btn = document.getElementsByClassName("enviar-btn")[0] as HTMLButtonElement
 
 const cadastrar = async () => {
+  const carregando = LoadingComponente(document.body)
   btn.disabled = true
 
   const {dados,senha} = ProcessaCadastro.lerInputs()
@@ -30,6 +32,7 @@ const cadastrar = async () => {
   }
 
   btn.disabled = false
+  carregando.esconder()
 }
 
 btn.addEventListener("click",cadastrar);

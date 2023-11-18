@@ -2,7 +2,10 @@ import FirestoreDatabase from "@/servicos/api/database/firestoreDatabase";
 import { where } from "firebase/firestore";
 import { IAutenticacaoRepositorio } from "./autenticacaoInterface";
 import AutenticadorFirebase, { IEmailESenha } from "@/servicos/api/autenticador/autenticadorFirebase";
-import { TPessoas } from "@/modelos/pessoa/pessoaModelo";
+import { ETipoPessoa, TPessoas } from "@/modelos/pessoa/pessoaModelo";
+import PessoaFisica, { IPessoaFisica } from "@/modelos/pessoa/pessoaFisicaModelo";
+import PessoaJuridica, { IPessoaJuridica } from "@/modelos/pessoa/pessoaJuridicaModelo";
+import PessoaParceira, { IPessoaParceira } from "@/modelos/pessoa/pessoaParceiraModelo";
 
 class AutenticacaoRepositorio implements IAutenticacaoRepositorio<IEmailESenha,TPessoas> {
   async usuarioLogado(): Promise<TPessoas  | null> {
@@ -14,8 +17,18 @@ class AutenticacaoRepositorio implements IAutenticacaoRepositorio<IEmailESenha,T
         tabela:"usuarios",
         where:where("id","==",autentificador.currentUser.uid)
       })
-      const data = resConsulta[0].data() 
-      return data as TPessoas
+      const data = resConsulta[0].data()      
+
+      switch (data.tipoConta) {
+        case ETipoPessoa.fisica:
+          return new PessoaFisica(data as IPessoaFisica)
+
+        case ETipoPessoa.juridica:
+          return new PessoaJuridica(data as IPessoaJuridica)
+
+        case ETipoPessoa.parceira:
+          return new PessoaParceira(data as IPessoaParceira)
+      }
     }
     
     return null

@@ -28,4 +28,4 @@ export interface IPessoa {
 
 export type TPessoas = PessoaFisica | PessoaJuridica | PessoaParceira
 
-export enum ETipoPessoa { fisica = "Física" , juridica = "Jurídica" , parceira = "Parceira" }
+export enum ETipoPessoa { fisica = "fisica" , juridica = "juridica" , parceira = "parceira" }

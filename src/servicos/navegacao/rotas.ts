@@ -1,5 +1,10 @@
+import AutenticacaoRepositorio from "@/repositorios/autenticacao/autenticacaoRepositorio"
 import AutenticadorFirebase from "../api/autenticador/autenticadorFirebase"
 import { UrlServico } from "./url"
+import PessoaFisica from "@/modelos/pessoa/pessoaFisicaModelo"
+import PessoaJuridica from "@/modelos/pessoa/pessoaJuridicaModelo"
+import PessoaParceira from "@/modelos/pessoa/pessoaParceiraModelo"
+import { TPessoas } from "@/modelos/pessoa/pessoaModelo"
 
 const rotas = {
   "/":new URL("/",window.location.origin).href,
@@ -13,9 +18,15 @@ const rotas = {
   "/cadastro/juridica":new URL("/cadastro/juridica/",window.location.origin).href,
 
   "/pagamento":new URL("/pagamento/",window.location.origin).href,
+  
+  "/dashboard":new URL("/dashboard/",window.location.origin).href,
+  "/parceiro":new URL("/parceiro/",window.location.origin).href,
 }
 
-const possuiSubdominio = (subdominio:string) => window.location.pathname.includes(subdominio)
+const possuiSubdominio = (subdominio:TRotas) => {
+  const cut = window.location.pathname.indexOf("/",1)  
+  return window.location.pathname.substring(0,cut).includes(subdominio)
+}
 
 const redirecionarProxPagina = (fallbackUrl?:string) => {
   const {next} = UrlServico.pegarParametroAtual()
@@ -27,24 +38,41 @@ const redirecionarProxPagina = (fallbackUrl?:string) => {
 }
 
 const rotaProtegida = () => {
-  new AutenticadorFirebase().autentificador.onAuthStateChanged((usuarioLogado) => {
-    const estaNaRotaAutenticacao = possuiSubdominio("/login") || possuiSubdominio("/cadastro")
-    const estaNaRotaPagamento = possuiSubdominio("/pagamento")
+  return new AutenticadorFirebase().autentificador.onAuthStateChanged(async (user) => {
+    const rotaAutenticacao = possuiSubdominio("/login") || possuiSubdominio("/cadastro")
     
-    const rotaParaCliente = false
-    const rotaParaParceiro = false
+    const rotaExclusivaCliente = possuiSubdominio("/dashboard")
+    const rotaExclusivaParceiro = possuiSubdominio("/parceiro")
+
+    
+    if (user) {
+      const {usuarioLogado} = new AutenticacaoRepositorio()
+      const usuario = await usuarioLogado()
+
+      if (
+        rotaAutenticacao ||
+        (usuario instanceof PessoaFisica && rotaExclusivaParceiro) ||
+        (usuario instanceof PessoaJuridica && rotaExclusivaParceiro) ||
+        (usuario instanceof PessoaParceira && rotaExclusivaCliente)
+      ) {
+        redirecionandoUsuarios(usuario)
+     }
   
-    if (usuarioLogado) {
-      if (estaNaRotaAutenticacao) {
-        redirecionarProxPagina(rotas["/"])     
-      }        
-    } else {
-      if (rotaParaCliente || rotaParaParceiro || estaNaRotaPagamento) {
-        window.location.href = rotas["/login"]      
-      }    
+    } else if (rotaExclusivaCliente || rotaExclusivaParceiro) {       
+        window.location.href = rotas["/login"]        
     }   
     
   })  
+}
+
+const redirecionandoUsuarios = (usuario:TPessoas | null) => {
+  if (usuario instanceof PessoaFisica || usuario instanceof PessoaJuridica) {
+    redirecionarProxPagina(rotas["/dashboard"])        
+  } else if (usuario instanceof PessoaParceira) {
+    redirecionarProxPagina(rotas["/parceiro"])       
+  } else {
+    redirecionarProxPagina(rotas["/"])
+  }
 }
 
 export type TRotas = keyof typeof rotas
