@@ -7,22 +7,47 @@ import { NavegacaoServico } from '@/servicos/navegacao/nav'
 import { UrlServico } from '@/servicos/navegacao/url'
 import { RotasServico } from '@/servicos/navegacao/rotas'
 import LoadingComponente from '@/componentes/loading/loadingComponente'
+import UsuarioDropdownComponente from '@/componentes/usuarioDropdown/UsuarioDropdownComponente';
+import { atualizaHrefs } from './atualizandoHrefs';
 
-RotasServico.rotaProtegida()
+atualizaHrefs()
+
+RotasServico.rotaProtegida(async () => {
+  await estaLogado()
+})
+
+const estaLogado = async () => {
+  const loading = LoadingComponente(document.body)
+  try {
+    const {usuarioLogado,sair} = new AutenticacaoRepositorio()
+    const usuario = await usuarioLogado()
+    const navbar = document.getElementsByClassName("navBar")
+    const box = navbar[0].getElementsByClassName("box-btn")
+  
+    if (usuario && box[0] && navbar[0]) {
+      box[0].innerHTML = ""
+      
+      const clicouEmSair = async () => {        
+        await sair()        
+        window.location.reload() 
+      }
+
+      UsuarioDropdownComponente({
+        container:box[0],
+        nomeUsuario:usuario.nome,
+        emailUsuario:usuario.email,
+        aoClicarSair:async () => await clicouEmSair()
+      })    
+    }
+    
+  } catch (error) {} 
+  finally {
+    loading.esconder()
+  }
+}
 
 // Links
-const login = document.getElementsByClassName("btn-login");
-const cadastro = document.getElementsByClassName("btn-cadastro");
-const sair = document.getElementById("temp-sair");
 
-login[0].href = RotasServico.rotas["/login"]
-cadastro[0].href = RotasServico.rotas["/cadastro"]
-
-sair.addEventListener("click",async () => {
-  const carregando = LoadingComponente(document.body)
-  await new AutenticacaoRepositorio().sair()
-  carregando.esconder()
-})
 
 // Cards
 
@@ -55,7 +80,6 @@ async function navegarPagamento(nomeItem) {
     const usuario = await usuarioLogado()
     const param = {item:nomeItem}
 
-    console.log(usuario);
     if (usuario !== null) {
       NavegacaoServico.navegar("/pagamento",param)
       

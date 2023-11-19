@@ -54,7 +54,7 @@
 .pressionavel:hover {
   transition-duration: 200ms;
   transition-timing-function: ease-out;
-  background-color: var(--indigo-200);
+  filter: contrast(95%);  
   transform: scale(1.2);
 }
 

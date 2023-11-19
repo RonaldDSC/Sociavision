@@ -5,7 +5,7 @@ import { Pagamento } from "./pagamento";
 import { RotasServico } from "@/servicos/navegacao/rotas";
 import { ProcessarComprar } from "./processaCompra";
 import LoadingComponente from "@/componentes/loading/loadingComponente";
-import PagEfetuadoComponente from "@/componentes/pagEfetuado/pagEfetuadoComponente";
+import PagEfetuadoComponente from "@/componentes/pagEfetuado/PagEfetuadoComponente";
 import { NavegacaoServico } from "@/servicos/navegacao/nav";
 import { atualizaHrefs } from "./atualizandoHrefs";
 

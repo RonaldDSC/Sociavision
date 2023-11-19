@@ -71,6 +71,11 @@
   font-size: 2.5rem;
 }
 
+.divisor {
+  height: 1px;
+  background-color: var(--indigo-300);
+}
+
 .painel {
   width: 50%;
   height: 100%;
@@ -90,6 +95,12 @@
 .space-between {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+}
+
+.align-start {
+  display: flex;
+  justify-content: flex-start;
   align-items: center;
 }
 
@@ -119,7 +130,7 @@
   position: relative;
 }
 
-.textoNaoSelecionado {
+.naoSelecionavel {
   -webkit-user-select: none; /* Safari */        
   -moz-user-select: none; /* Firefox */
   -ms-user-select: none; /* IE10+/Edge */
@@ -136,6 +147,10 @@
 
 .test2 {
   background-color: indigo;
+}
+
+.none {
+  display: none;
 }
 
 @media (max-width: 900px) {

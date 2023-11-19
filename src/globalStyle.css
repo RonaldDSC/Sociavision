@@ -2,20 +2,20 @@
 @import "customGlobalStyle.css";
 
 :root {
-  --indigo-100: #0095B7;
-  --indigo-200: #0B6E85;
+  --indigo-100: #1BBB99;
+  --indigo-200: #0095B7;
   --indigo-300: #164753;
   --red-100: #F25252;
-  --white: #E5E9E9;
-  --black: #3C3C3C;
-  --white-10: #DDDBDB;
+  --white: #fff;
+  --black: #212121;
+  --white-10: #E5E9E9;
   --gray: #B1B1B1;
 
   font-family: 'Poppins', 'Lucida Sans Regular', sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
-  color: #213547;
+  color: #212121  ;
   background-color: #ffffff;
 
   font-synthesis: none;

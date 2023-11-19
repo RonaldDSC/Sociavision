@@ -37,14 +37,14 @@ const redirecionarProxPagina = (fallbackUrl?:string) => {
     window.location.replace(fallbackUrl) 
 }
 
-const rotaProtegida = () => {
+const rotaProtegida = (aoMudarAutenticador?:()=>void) => {
   return new AutenticadorFirebase().autentificador.onAuthStateChanged(async (user) => {
     const rotaAutenticacao = possuiSubdominio("/login") || possuiSubdominio("/cadastro")
     
     const rotaExclusivaCliente = possuiSubdominio("/dashboard")
     const rotaExclusivaParceiro = possuiSubdominio("/parceiro")
 
-    
+    aoMudarAutenticador ? aoMudarAutenticador() : null
     if (user) {
       const {usuarioLogado} = new AutenticacaoRepositorio()
       const usuario = await usuarioLogado()

@@ -1,0 +1,151 @@
+.usuario-dropdown {
+  position: relative;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px;
+}
+
+.banner-usuario {
+  background-color: inherit;
+  border-radius: inherit;
+  padding: 4px 8px;
+}
+
+.usuario-dropdown .banner-usuario .imagem-usuario{
+ width: 40px;
+ height: 40px;
+}
+
+.banner-usuario:hover {
+  cursor: pointer;
+  filter: brightness(90%);
+  transition: 100ms;
+}
+
+.banner-usuario:not(:hover) {
+  filter: brightness(100%);
+  transition: 100ms;
+}
+
+.usuario-dropdown .imagem-usuario{
+  width: 60px;
+  height: 60px;  
+  flex-shrink: 0;
+  background: linear-gradient(146deg, #0095B7 5.98%, rgba(27, 187, 153, 0.50) 92.53%);
+  border-color: var(--indigo-100);
+  border-radius: 50%;
+  padding: 8px;
+  margin-right: 8px;
+}
+
+.usuario-dropdown .divisor {
+  margin: 8px 0;
+}
+
+.info-credenciais .credencial-nome {
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.info-credenciais .credencial-email {
+  font-size: 0.7rem;
+}
+
+.credencial-nome {
+  display: -webkit-inline;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.credencial-email {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.detalhe-sair {
+  color: var(--red-100);
+}
+
+#detalhe-usuario {
+  display: none;
+  opacity: 0;
+  width: 300px;
+  position: absolute;
+  top: 50px;
+  border: 1px solid rgba(0, 0, 0, 0.50);
+  box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
+  border-top: 3px solid var(--indigo-200);
+  padding: 12px 8px;
+  transition-duration: 50ms;
+  background-color: var(--white);
+  transform: translateX(-30%);
+  left: 0;
+  right: 300px;
+  border-radius: inherit;
+}
+
+#detalhe-usuario:focus {
+  outline: none;
+}
+
+.detalhe-acoes{
+  padding: 0;
+  margin: 0;
+
+}
+
+.detalhe-acao:hover  {
+  cursor: pointer;
+  filter: brightness(70%);
+  margin:0 8px;
+  transition: 50ms;
+}
+
+.detalhe-acao:active  {
+  transform: scale(0.99);  
+  transition: 50ms;
+}
+
+.detalhe-acao:not(:hover ) {
+  margin-left: 0px;
+  transition: 50ms;
+}
+
+.detalhe-acao img {
+  width: 30px;
+  height: 30px;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+}
+
+.detalhe-acao {
+  font-weight: 500;
+  position: relative;
+}
+
+.detalhe-acao span{
+  width: 100%;
+  margin-left: 4px;
+}
+
+.detalhe-acao span::after{
+  content:  '▲';
+  color: inherit;
+  display: inline-block;
+  transform: rotate(90deg);
+  position: absolute;
+  right: 0px;
+}
+
+@media (max-width: 800px) {
+  #detalhe-usuario  {
+    left: 0;
+  }
+}
