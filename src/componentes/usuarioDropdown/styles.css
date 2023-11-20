@@ -49,8 +49,9 @@
   font-weight: 500;
 }
 
-.info-credenciais .credencial-email {
+.info-credenciais .credencial-plano {
   font-size: 0.7rem;
+  font-weight: 500;
 }
 
 .credencial-nome {
@@ -58,9 +59,10 @@
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
   overflow: hidden;
+  text-transform: capitalize;
 }
 
-.credencial-email {
+.credencial-plano {
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;

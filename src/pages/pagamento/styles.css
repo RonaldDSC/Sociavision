@@ -1,4 +1,4 @@
-body{
+#content{
   padding: 16px;
 }
 
@@ -33,7 +33,7 @@ h1 {
   justify-content: flex-end;
   margin: 4px 8px;
   border-radius: 10px;
-  background-color: color-mix(in srgb, var(--indigo-100) 15%, transparent);
+  background-color: color-mix(in srgb, var(--indigo-200) 15%, transparent);
 }
 
 .form-check-input {
@@ -45,7 +45,7 @@ h1 {
 }
 
 .form-check-input:checked {
-  background-color: var(--indigo-100);
+  background-color: var(--indigo-200);
   border-color: var(--indigo-200);  
 }
 
@@ -67,7 +67,7 @@ h1 {
 }
 
 .opcao label span {
-  color: var(--indigo-100);
+  color: var(--indigo-200);
   margin-top: 12px;
   font-weight: bold;
 }
@@ -119,8 +119,8 @@ input {
 #finalizarCompra {
   width: 100%;
   border-radius: 5px;
-  background-color: var(--indigo-100);
-  border-color: var(--indigo-100);
+  background-color: var(--indigo-200);
+  border-color: var(--indigo-200);
   color: var(--white);  
   transition: 200ms;
   margin-top: 2rem;
@@ -133,8 +133,8 @@ input {
 }
 
 #finalizarCompra:not(:hover) {  
-  border-color: var(--indigo-100);
-  background-color: var(--indigo-100);  
+  border-color: var(--indigo-200);
+  background-color: var(--indigo-200);  
 }
 
 .produto, .total {

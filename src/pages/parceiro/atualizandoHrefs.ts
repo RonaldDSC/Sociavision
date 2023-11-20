@@ -1,18 +1,11 @@
-import check from "@assets/svgs/octicon_check-16.svg"
-import chevron from "@assets/svgs/fluent_chevron-right-32-filled.svg"
-
 export const atualizaHrefs = () => {
-  const opcaoCartao = document.getElementsByClassName("btn-prosseguir")
-  
-  
+  const lista = document.getElementById("tarefa-andamento")?.getElementsByClassName("lista-tarefa")[0] as HTMLUListElement | undefined
 
+  lista?.addEventListener('wheel', (event) => {
+    event.preventDefault();
 
-  if (opcaoCartao[0]) {
-    opcaoCartao[0].getElementsByTagName("img")[0].src = check 
-    
-    opcaoCartao[1].getElementsByTagName("img")[0].src = chevron 
-  }
-
-  
-
+    lista.scrollBy({
+      left: event.deltaY < 0 ? -160 : 160,
+    });
+  });
 }

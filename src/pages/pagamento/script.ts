@@ -8,8 +8,11 @@ import LoadingComponente from "@/componentes/loading/loadingComponente";
 import PagEfetuadoComponente from "@/componentes/pagEfetuado/PagEfetuadoComponente";
 import { NavegacaoServico } from "@/servicos/navegacao/nav";
 import { atualizaHrefs } from "./atualizandoHrefs";
+import UsuarioNavBarComponente from "@/componentes/usuarioNavbar/UsuarioNavBarComponente";
 
-RotasServico.rotaProtegida();
+RotasServico.rotaProtegida(()=>{
+  UsuarioNavBarComponente()
+});
 atualizaHrefs();
 
 const btnFinalizar = document.getElementById("finalizarCompra") as

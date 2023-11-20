@@ -21,9 +21,9 @@ export interface IPlano {
 export type TPlanos = PlanoBasico | PlanoIntermediario | PlanoPremium
 
 export enum ENomesPlanos { 
-  basico = "Plano Básico" , 
-  intermediario = "Plano Intermediário" , 
-  premium = "Plano Premium" 
+  "basico" = "Plano Básico", 
+  "intermediario" = "Plano Intermediário", 
+  "premium" = "Plano Premium"
 }
 
 export interface IInstagram {

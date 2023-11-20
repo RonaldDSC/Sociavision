@@ -1,0 +1,72 @@
+.tarefa {
+  max-width: 450px;
+  min-width: 400px;
+  max-height: 200px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  position: relative;
+  padding: 8px 12px;
+  font-size: 10%;
+}
+
+.conteudo{
+  max-width: 65%;
+}
+
+.tarefa h1 {
+  font-size: 1.4rem;
+  margin-right: 8px;
+  font-weight: 600;
+}
+
+.tarefa h2, .cartao-exp  {
+  font-size: 1rem;
+}
+
+.tarefa h2 {
+  margin-top: 8px;
+}
+
+.cartao-preco{
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin-right: 4px;
+}
+
+.cartao-detalhe {
+  display: -webkit-box;
+  height: 100%;
+  font-size: 0.7rem;
+  -webkit-line-clamp: 6;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.btn-cartao {
+  width: 70px;
+  height: 70px;
+  transform: rotate(90deg);
+  background-color: var(--black);
+  position: absolute;
+  right: 17%;
+  top: 50%;
+  transform: translateY(-50%);
+  border-radius: 50%;
+  border-color: var(--black);  
+}
+
+.btn-cartao:hover {
+  cursor: pointer;
+  border-color: var(--black);  
+  box-shadow:0px 0px 0px 8px var(--black);
+  transition: 200ms;  
+}
+
+.btn-cartao:active {
+  transition-duration: 50ms;
+}
+
+.btn-cartao:not(:hover) {
+  box-shadow: none;
+  transition: 200ms;  
+}

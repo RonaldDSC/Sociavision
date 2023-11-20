@@ -1,0 +1,17 @@
+@import '../tarefaStyles.css';
+
+.tarefa-andamento h1::after{
+  content: ' •';
+}
+
+.tarefa-andamento .cartao-exp {
+  font-size: 0.8rem;
+}
+
+.tarefa-andamento h1{
+  text-wrap: nowrap;
+}
+
+.tarefa-andamento .btn-cartao:active {
+  box-shadow: 0px 0px 0px 4px var(--black);
+}

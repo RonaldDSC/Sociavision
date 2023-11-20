@@ -5,13 +5,13 @@ import iconeSair from '@assets/svgs/material-symbols_logout.svg'
 interface IProps {
   container:Element
   nomeUsuario:string,
-  emailUsuario:string,
+  planoUsuario:string,
   aoClicarSair: () => void
 }
 
 
 export default function UsuarioDropdownComponente (
-  {aoClicarSair,container,emailUsuario,nomeUsuario}:IProps
+  {aoClicarSair,container,planoUsuario,nomeUsuario}:IProps
 ) {
   const root = document.createElement("div")
   root.className = "usuario-dropdown"
@@ -32,7 +32,7 @@ export default function UsuarioDropdownComponente (
 
         <div class="coluna info-credenciais">
           <span class="credencial-nome">${nomeUsuario}</span>
-          <span class="credencial-email">${emailUsuario}</span>
+          <span class="credencial-plano">${planoUsuario}</span>
         </div>
       </div>
 

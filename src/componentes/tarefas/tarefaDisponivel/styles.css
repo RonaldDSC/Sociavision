@@ -1,0 +1,39 @@
+@import "../tarefaStyles.css";
+
+.cartao-basico {
+  background: conic-gradient(from -29deg at 78.51% 50.2%, var(--indigo-100) 0deg, #FFF 360deg);
+}
+
+.cartao-basico h1{
+  color: var(--indigo-100);
+}
+
+.cartao-basico .btn-cartao:active {
+  box-shadow: 0px 0px 0px 4px var(--indigo-100);
+}
+
+
+.cartao-intermediario {
+  background: conic-gradient(from -29deg at 78.51% 50.2%, var(--indigo-200) 0deg, #FFF 360deg);
+}
+
+.cartao-intermediario h1{
+  color: var(--indigo-200);
+}
+
+.cartao-intermediario .btn-cartao:active {
+  box-shadow: 0px 0px 0px 4px var(--indigo-200);
+}
+
+
+.cartao-avancado {
+  background: conic-gradient(from -29deg at 78.51% 50.2%, var(--indigo-300) 0deg, #FFF 360deg);
+}
+
+.cartao-avancado h1{
+  color: var(--indigo-300);
+}
+
+.cartao-avancado .btn-cartao:active {
+  box-shadow: 0px 0px 0px 4px var(--indigo-300);
+}

@@ -7,118 +7,120 @@
 
   <title>Pagamento</title>
 </head>
-<body class="expandido">
-  <div id="pagamento" class="coluna">    
-    <h1>Formas de pagamentos</h1>
-
-    <form id="opcoesPagamento" class="linha">
-
-      <div id="opcaoCartao" class="opcao expandido coluna">
-        <label for="cartao" class="coluna align-center expandido">
-          <div class="tamanho-svg">
-            <img            
-              class="img"            
-              alt="figura"
-            />  
-          </div>
-          <span>Cartão</span>
-        </label>
-
-        <input class="form-check-input" type="radio" name="opcoesPagamento" id="cartao" checked>
-      </div>
-
-      <div id="opcaoBoleto" class="opcao expandido coluna">
-        <label for="boleto" class="coluna align-center expandido" >
-          <div class="tamanho-svg">
-            <img            
-              class="img"            
-              alt="figura"
-            />  
-          </div>
-          <span>Boleto</span>
-        </label>
+<body>
+  <div id="content" class="expandido linha">
+    <div id="pagamento" class="coluna">    
+      <h1>Formas de pagamentos</h1>
   
-        <input class="form-check-input" type="radio" name="opcoesPagamento" id="boleto">
-      </div>
-
-      <div id="opcaoPix" class="opcao expandido coluna">
-        <label for="pix" class="coluna align-center expandido" >
-          <div class="tamanho-svg">
-            <img            
-              class="img"            
-              alt="figura"
-            />  
-          </div>
-          
-          <span>PIX</span>
-        </label>
+      <form id="opcoesPagamento" class="linha">
   
-        <input class="form-check-input" type="radio" name="opcoesPagamento" id="pix">
-      </div>
-
-
-    </form>
-    
-    <div id="dados">
-
-      <div id="formCartao" class="linha form-container">        
-        <form class="coluna">
-          <div id="campo-numero" class="coluna espaco-input">
-            <label class="espaco-rotulo"  for="numero">Número do cartão</label>
-            <input class="espaco-input" type="number" name="numero" id="numero" inputmode="numeric" />
-          </div>
-
-          <div id="campo-titular" class="coluna espaco-input">
-            <label class="espaco-rotulo" for="titular">Nome do titular</label>
-            <input class="espaco-input" type="text" name="titular" id="titular" />
-          </div>
-
-          <div class="linha">
-
-            <div id="campo-dataExp" class="coluna">
-              <label class="espaco-rotulo"  for="dataExp">Data de expiração</label>
-              <input class="espaco-input pequeno-input" type="text" name="dataExp" id="dataExp" placeholder="00/00" />
+        <div id="opcaoCartao" class="opcao expandido coluna">
+          <label for="cartao" class="coluna align-center expandido">
+            <div class="tamanho-svg">
+              <img            
+                class="img"            
+                alt="figura"
+              />  
             </div>
-
-            <div id="campo-cvv" class="coluna ">
-              <label class="espaco-rotulo"  for="cvv">CVV</label>
-              <input class="espaco-input pequeno-input" type="number" name="cvv" id="cvv" inputmode="numeric" placeholder="000" />
-            </div>            
+            <span>Cartão</span>
+          </label>
   
-          </div>
-
-        </form>
-      </div>      
+          <input class="form-check-input" type="radio" name="opcoesPagamento" id="cartao" checked>
+        </div>
+  
+        <div id="opcaoBoleto" class="opcao expandido coluna">
+          <label for="boleto" class="coluna align-center expandido" >
+            <div class="tamanho-svg">
+              <img            
+                class="img"            
+                alt="figura"
+              />  
+            </div>
+            <span>Boleto</span>
+          </label>
+    
+          <input class="form-check-input" type="radio" name="opcoesPagamento" id="boleto">
+        </div>
+  
+        <div id="opcaoPix" class="opcao expandido coluna">
+          <label for="pix" class="coluna align-center expandido" >
+            <div class="tamanho-svg">
+              <img            
+                class="img"            
+                alt="figura"
+              />  
+            </div>
+            
+            <span>PIX</span>
+          </label>
+    
+          <input class="form-check-input" type="radio" name="opcoesPagamento" id="pix">
+        </div>
+  
+  
+      </form>
       
-      <div id="formPix" class="coluna form-container align-center">
-        <div class="qr-code">
-          <img            
-            class="img"            
-            alt="figura"
-          />  
+      <div id="dados">
+  
+        <div id="formCartao" class="linha form-container">        
+          <form class="coluna">
+            <div id="campo-numero" class="coluna espaco-input">
+              <label class="espaco-rotulo"  for="numero">Número do cartão</label>
+              <input class="espaco-input" type="number" name="numero" id="numero" inputmode="numeric" />
+            </div>
+  
+            <div id="campo-titular" class="coluna espaco-input">
+              <label class="espaco-rotulo" for="titular">Nome do titular</label>
+              <input class="espaco-input" type="text" name="titular" id="titular" />
+            </div>
+  
+            <div class="linha">
+  
+              <div id="campo-dataExp" class="coluna">
+                <label class="espaco-rotulo"  for="dataExp">Data de expiração</label>
+                <input class="espaco-input pequeno-input" type="text" name="dataExp" id="dataExp" placeholder="00/00" />
+              </div>
+  
+              <div id="campo-cvv" class="coluna ">
+                <label class="espaco-rotulo"  for="cvv">CVV</label>
+                <input class="espaco-input pequeno-input" type="number" name="cvv" id="cvv" inputmode="numeric" placeholder="000" />
+              </div>            
+    
+            </div>
+  
+          </form>
+        </div>      
+        
+        <div id="formPix" class="coluna form-container align-center">
+          <div class="qr-code">
+            <img            
+              class="img"            
+              alt="figura"
+            />  
+          </div>
+  
+          <div id="campo-chavePix" class="coluna expandido" >
+            <div id="inputCopyContainer" class="linha expandido"></div>     
+          </div>
+  
+          <button id="gerarPix" class="expandido">Gerar chave</button>
+  
         </div>
-
-        <div id="campo-chavePix" class="coluna expandido" >
-          <div id="inputCopyContainer" class="linha expandido"></div>     
-        </div>
-
-        <button id="gerarPix" class="expandido">Gerar chave</button>
-
       </div>
     </div>
+  
+    <div id="detalhe" class="coluna">
+      <h1>Detalhe da compra</h1>
+      <ul class="listaCompra"></ul>
+  
+      <div class="divisor">
+  
+      <div class="total linha"></div>
+      
+      <button id="finalizarCompra">FINALIZAR COMPRAR</button>
+    </div> 
+
   </div>
-
-  <div id="detalhe" class="coluna">
-    <h1>Detalhe da compra</h1>
-    <ul class="listaCompra"></ul>
-
-    <div class="divisor">
-
-    <div class="total linha"></div>
-    
-    <button id="finalizarCompra">FINALIZAR COMPRAR</button>
-  </div> 
-
-  <script type="module" src="script.ts"></script>
+ <script type="module" src="script.ts"></script>
 </body>
 </html>

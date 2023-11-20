@@ -46,6 +46,31 @@ export default class ComprasRepositorio extends IComprasRepositorio {
 
     return false
   } 
+  
+  async pegarDadosCompra(): Promise<ICompra | null> {
+    const {usuarioLogado} = new AutenticacaoRepositorio()
+
+    const usuario = await usuarioLogado()    
+
+    if (usuario) {      
+      const { get } = new FirestoreDatabase()
+
+      const result = await get({
+        tabela:"planos",
+        subTabela:`${usuario.id}`
+      })
+      
+      if (result[0]) {
+        return {
+          plano:result[0].data().plano,
+          historico:result[0].data().historico
+        } as ICompra
+      }
+      
+    }
+
+    return null
+  } 
 
 }
 

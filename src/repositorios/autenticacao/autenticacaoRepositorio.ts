@@ -17,7 +17,7 @@ class AutenticacaoRepositorio implements IAutenticacaoRepositorio<IEmailESenha,T
         tabela:"usuarios",
         where:where("id","==",autentificador.currentUser.uid)
       })
-      const data = resConsulta[0].data()      
+      const data = resConsulta[0]      
 
       switch (data.tipoConta) {
         case ETipoPessoa.fisica:

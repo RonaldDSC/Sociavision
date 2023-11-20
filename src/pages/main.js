@@ -9,6 +9,7 @@ import { RotasServico } from '@/servicos/navegacao/rotas'
 import LoadingComponente from '@/componentes/loading/loadingComponente'
 import UsuarioDropdownComponente from '@/componentes/usuarioDropdown/UsuarioDropdownComponente';
 import { atualizaHrefs } from './atualizandoHrefs';
+import ComprasRepositorio from '@/repositorios/compras/comprasRepositorio';
 
 atualizaHrefs()
 
@@ -25,22 +26,29 @@ const estaLogado = async () => {
     const box = navbar[0].getElementsByClassName("box-btn")
   
     if (usuario && box[0] && navbar[0]) {
-      box[0].innerHTML = ""
-      
-      const clicouEmSair = async () => {        
-        await sair()        
-        window.location.reload() 
+      const {pegarDadosCompra} = new ComprasRepositorio()
+      const dados = await pegarDadosCompra()
+      if (dados !== null) {
+        box[0].innerHTML = ""
+        
+        const clicouEmSair = async () => {        
+          await sair()        
+          window.location.reload() 
+        }
+  
+  
+        UsuarioDropdownComponente({
+          container:box[0],
+          nomeUsuario:usuario.nome,
+          planoUsuario:dados.plano,
+          aoClicarSair:async () => await clicouEmSair()
+        })        
       }
-
-      UsuarioDropdownComponente({
-        container:box[0],
-        nomeUsuario:usuario.nome,
-        emailUsuario:usuario.email,
-        aoClicarSair:async () => await clicouEmSair()
-      })    
     }
     
-  } catch (error) {} 
+  } catch (error) {
+    console.log(error);
+  } 
   finally {
     loading.esconder()
   }
