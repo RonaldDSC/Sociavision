@@ -94,3 +94,26 @@ async function navegarPagamento(nomeItem) {
   }
 
 }
+
+//Abrindo e Fechado Menu Mobile
+var toggleMenu = document.querySelectorAll(".toggle-menu");
+var menuMobile = document.querySelector(".nav-container-mob");
+var btnMenuMobImg = document.querySelector(".btn-menu-mob ion-icon");
+
+for (var m = 0; m < toggleMenu.length; m++) {
+    toggleMenu[m].addEventListener("click", function () {
+        var overlay = document.querySelector(".overlay");
+
+        overlay.classList.toggle("open");
+        menuMobile.classList.toggle("menu-is-close");
+        menuMobile.classList.toggle("menu-is-open");
+
+        var icon = btnMenuMobImg.getAttribute("name");
+
+        if (icon === "menu-outline") {
+            btnMenuMobImg.setAttribute("name", "close-outline");
+        } else {
+            btnMenuMobImg.setAttribute("name", "menu-outline");
+        }
+    });
+}

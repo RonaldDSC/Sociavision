@@ -18,20 +18,87 @@
     --fonte-texto: "Poppins", sans-serif;
 }
 
-
 @media screen and (min-width: 320px) {
+    .overlay {
+        width: 100%;
+        height: 100vh;
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        top: 0;
+        left: 0;
+        background-color: rgba(33, 33, 33, 0.6);
+        backdrop-filter: blur(2px);
+    }
+
     /* HEADER */
     .navBar {
         background-color: var(--cor0);
         width: 100%;
-        height: 10vh;
+        height: 70px;
         display: flex;
+        z-index: 999;
+        position: fixed;
+        padding: 0 12%;
         justify-content: space-between;
         align-items: center;
-        box-shadow: 0px 4px 25px 0px rgba(0, 0, 0, 0.1);
+        box-shadow: 0px 4px 25px 0px rgba(0, 0, 0, 0.2);
+        flex-direction: row;
+    }
+
+    .nav-container {
+        display: none;
+    }
+
+    .logo {
+        width: 150px;
+    }
+
+    .nav-container-mob {
+        width: 240px;
+        height: 100vh;
+        display: block;
+        background-color: var(--cor0);
+        padding: 100px 30px 30px;
+        position: fixed;
+        top: 0;
+        z-index: 1100;
+        transition: all 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+    }
+
+    .btn-menu-mob {
+        width: 40px;
+        height: 40px;
+        background: var(--cor2);
+        border-radius: 8px;
+        border: none;
+        position: fixed;
+        right: 20px;
+        top: 13px;
+        z-index: 1200;
+        cursor: pointer;
+    }
+
+    .btn-menu-mob ion-icon {
+        height: 40px;
+        width: 40px;
+        vertical-align: middle;
+    }
+
+    .btn-menu-mob:focus {
+        outline: none;
+    }
+
+    .menu-is-open {
+        right: 0;
+    }
+
+    .menu-is-close {
+        right: -240px;
     }
 
     .nav-container a,
+    .nav-container-mob a,
     .btn-login,
     .btn-cadastro {
         color: var(--cor2);
@@ -44,6 +111,23 @@
         text-decoration: none;
     }
 
+    .nav-container-mob a {
+        width: 100%;
+        height: 60px;
+        line-height: 60px;
+        margin-left: 0;
+        display: block;
+    }
+
+    .nav-container-mob a:hover {
+        color: var(--cor4);
+    }
+
+    .nav-container-mob a:active {
+        transform: scale(0.95);
+        transition: 0.3s;
+    }
+
     .nav-container a:first-child {
         margin-left: 0;
     }
@@ -54,8 +138,32 @@
     }
 }
 
+.nav-container nav a {
+    position: relative;
+}
+
+.nav-container nav a::after {
+    content: "";
+    width: 100%;
+    height: 3px;
+    background-color: var(--cor4);
+    display: block;
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    transition: all 0.3s ease-out;
+    transform: scale(0, 1);
+    transform-origin: center;
+}
+
+.navBar nav a:hover:after {
+    transform: scale(1, 1);
+}
+
 .btn-login {
-    font-weight: 400;
+    font-weight: 700;
+    display: none;
+    cursor: pointer;
 }
 
 .btn-login:hover {
@@ -63,21 +171,103 @@
     transition: 0.3s;
 }
 
+.btn-login:active {
+    transform: scale(0.95);
+    transition: 0.3s;
+}
+
+.btn-login:focus {
+    outline: none;
+}
+
 .btn-cadastro {
     color: var(--cor0);
     background: var(--cor2);
     padding: 10px 15px;
     border-radius: 8px;
+    display: none;
+    cursor: pointer;
 }
 
 .btn-cadastro:hover {
     background-color: var(--cor4);
+        color: var(--cor0);
     transition: 0.3s;
 }
 
+.btn-cadastro:active {
+    transform: scale(0.95);
+    transition: 0.3s;
+}
+
+.btn-cadastro:focus {
+    outline: none;
+}
+
+.box-btn-mobile {
+    display: block;
+    margin-top: 30px;
+}
+
+.box-btn-mobile:focus {
+    outline: none;
+}
+
+.box-btn-mobile .btn-login {
+    height: 40px;
+    border: 2px solid var(--cor2);
+    border-radius: 8px;
+    text-align: center;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.box-btn-mobile .btn-login:hover {
+    border: 2px solid var(--cor4);
+    transition: 0.3s;
+}
+
+.box-btn-mobile .btn-login:active {
+    transform: scale(0.95);
+    transition: 0.3s;
+}
+
+.box-btn-mobile .btn-login:focus {
+    outline: none;
+}
+
+.box-btn-mobile .btn-cadastro {
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--cor0);
+}
+
+.box-btn-mobile .btn-cadastro:hover {
+    color: var(--cor0);
+}
+
+.box-btn-mobile .btn-cadastro:active {
+    transform: scale(0.95);
+    transition: 0.3s;
+}
+
+.box-btn-mobile .btn-cadastro:focus {
+    outline: none;
+}
+
+#temp-sair {
+    display: none;
+}
+
+/* BANNER */
 .banner {
     width: 100%;
-    height: 90vh;
+    height: 100vh;
     background-image: url(../assets/img/bg-home.png);
     background-position: center;
     background-size: cover;
@@ -85,23 +275,32 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 0 100px;
     margin-bottom: 150px;
+    padding: 12% 12%;
+    flex-direction: column-reverse;
 }
 
 .text-banner {
     width: 33rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
 }
 
 .svg-banner {
+    margin-top: 50px;
     width: 100%;
 }
 
-.text-banner {
+.text-banner h1 {
     color: #212121;
     font-family: var(--fonte-titulo);
-    font-size: clamp(0.6em, 1em + 3vw, 1.3em);
+    font-size: clamp(4px, 0.5em + 3vw, 1.5em);
     font-weight: 700;
+    padding: 0 20%;
+    text-align: center;
 }
 
 .text-banner h1 {
@@ -109,16 +308,37 @@
 }
 
 .btn-banner {
+    height: 40px;
     background: var(--gradient);
-    padding: 10px 20px;
     border-radius: 5px;
     font-family: var(--fonte-titulo);
+    border: none;
+    padding: 0;
+}
+
+.btn-banner a {
     color: var(--cor0);
     font-size: 0.8rem;
     font-style: normal;
     font-weight: 700;
     line-height: normal;
     text-decoration: none;
+    padding: 13px 30px;
+}
+
+.btn-banner:hover {
+    color: var(--cor0);
+    box-shadow: 0px 0px 10px rgba(27, 187, 153, 0.5);
+    transition: 0.5s;
+}
+
+.btn-banner:active {
+    transform: scale(0.95);
+    transition: 0.3s;
+}
+
+.btn-banner:focus {
+    outline: none;
 }
 
 .icons-banner a {
@@ -140,13 +360,22 @@
 
 /* SOBRE */
 .sobre {
-    display: grid;
-    grid-template-columns: 1fr 2.5fr;
     margin-bottom: 150px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    text-align: justify;
+}
+
+.box-sobre {
+    width: 100%;
+    margin-right: 0;
+    display: flex;
+    flex-direction: column;
 }
 
 .box-sobre img {
-    width: 100%;
+    width: 47%;
 }
 
 .box-img1 {
@@ -155,8 +384,16 @@
     margin-bottom: 20px;
 }
 
+.box-img2 img {
+    width: 100%;
+}
+
 .text-sobre {
-    padding-left: 125px;
+    padding-left: 0;
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .text-sobre h4 {
@@ -168,6 +405,7 @@
     -moz-background-clip: text;
     -webkit-text-fill-color: transparent;
     -moz-text-fill-color: transparent;
+    font-weight: 700;
     margin-bottom: 20px;
 }
 
@@ -179,21 +417,24 @@
 }
 
 .btn-sobre {
-    width: 160px;
-    height: 30px;
+    width: 190px;
+    height: 40px;
     background: var(--cor0);
     border: 2px solid var(--cor2);
     border-radius: 5px;
     font-family: var(--fonte-titulo);
     font-size: 0.8rem;
-    font-weight: 700;
     line-height: normal;
     margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .btn-sobre:hover {
     background-color: var(--cor2);
-    transition: 0.3s;
+    border: none;
+    transition: 0.5s;
 }
 
 .btn-sobre:active {
@@ -205,6 +446,7 @@
     padding: 7px 35px;
     color: var(--cor2);
     text-decoration: none;
+    font-weight: 700;
 }
 
 .btn-sobre a:hover {
@@ -214,12 +456,14 @@
 /* SERVIÇOS */
 .servicos {
     width: 100%;
-    height: 500px;
+    height: 70rem;
     background: linear-gradient(102deg, #c9c9c9 0%, rgba(255, 255, 255, 0.05) 80%);
     display: flex;
     justify-content: center;
     align-items: center;
     margin-bottom: 150px;
+    flex-direction: column;
+    padding: 5%;
 }
 
 .title-servico {
@@ -230,6 +474,7 @@
 .title-servico h4 {
     font-family: var(--fonte-titulo);
     font-size: clamp(1em, 1em + 3vw, 1.8em);
+    font-weight: 700;
     background: linear-gradient(90deg, #0095b7 0%, #1bbb99 75%);
     background-clip: text;
     -webkit-background-clip: text;
@@ -248,6 +493,10 @@
 
 .box-serv {
     display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    padding: 0 25%;
 }
 
 .serv {
@@ -255,7 +504,8 @@
     align-items: center;
     flex-direction: column;
     text-align: center;
-    margin-left: 70px;
+    margin-left: 0;
+    margin-bottom: 20px;
 }
 
 .serv:first-child {
@@ -293,22 +543,24 @@
 /* PLANOS */
 .planos {
     margin-bottom: 150px;
+    width: 100%;
 }
 .cards-planos {
     display: flex;
-    align-items: center;
     justify-content: space-around;
+    flex-wrap: wrap;
 }
 .title-plan {
     font-family: var(--fonte-titulo);
     font-size: clamp(1em, 1em + 3vw, 1.8em);
-    background-image: var(--gradient);
+    font-weight: 700;
+    background: linear-gradient(90deg, #0095b7 0%, #1bbb99 80%);
     background-clip: text;
     -webkit-background-clip: text;
     -moz-background-clip: text;
     -webkit-text-fill-color: transparent;
     -moz-text-fill-color: transparent;
-    margin-bottom: 100px;
+    margin-bottom: 50px;
     display: flex;
     justify-content: center;
 }
@@ -326,6 +578,8 @@
     border-radius: 8px 20px 8px 20px;
     text-align: center;
     padding: 5%;
+    margin-bottom: 50px;
+    z-index: 500;
 }
 
 .teste-gratis {
@@ -337,7 +591,7 @@
     justify-content: center;
     align-items: center;
     position: relative;
-    right: -178px;
+    right: -179px;
     top: -17px;
 }
 
@@ -359,7 +613,7 @@
     background: linear-gradient(180deg, #0095b7 0%, #1bbb99 100%);
     border: none;
     position: relative;
-    top: -50px;
+    top: 0;
 }
 
 .title-card h6 {
@@ -410,7 +664,7 @@
     font-family: var(--fonte-texto);
     font-size: 14px;
     font-weight: 600;
-    margin-top: 100px;
+    margin-top: 70px;
 }
 
 .card-Premium .assinar p {
@@ -418,7 +672,7 @@
     font-family: var(--fonte-texto);
     font-size: 14px;
     font-weight: 600;
-    margin-top: 54px;
+    margin-top: 26px;
 }
 
 .card-Intermediário .assinar p {
@@ -426,7 +680,7 @@
     font-family: var(--fonte-texto);
     font-size: 14px;
     font-weight: 600;
-    margin-top: 90px;
+    margin-top: 70px;
 }
 
 .valor-card {
@@ -450,14 +704,19 @@
     width: 100%;
     height: 40px;
     background-color: var(--cor3);
+    color: var(--cor0);
     margin-top: 30px;
     border-radius: 5px 15px 5px 15px;
     border: none;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .btn-card:hover {
     background-color: #245e6d;
+    color: var(--cor0);
     transition: 0.3s;
 }
 
@@ -476,14 +735,11 @@
 
 .card-Premium .btn-card {
     background: var(--cor0);
+    color: var(--cor4);
 }
 
 .card-Premium .btn-card:hover {
-    background: #dddddd;
-}
-
-.card-Premium .btn-card a {
-    color: var(--cor4);
+    background: #e9e9e9;
 }
 
 /* CONVENIO */
@@ -497,6 +753,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 10%;
+}
+
+.title-convenio {
+    text-align: center;
 }
 
 .title-convenio p {
@@ -517,7 +778,7 @@
 
 .check-convenio {
     display: flex;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
 }
 
 .check-convenio p {
@@ -525,7 +786,7 @@
     font-family: var(--fonte-texto);
     font-size: 15px;
     font-weight: 600;
-    margin-left: 10px;
+    margin: 0 0 0 10px;
 }
 
 .btn-convenio {
@@ -536,6 +797,10 @@
     border-radius: 8px;
     border: none;
     cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 40px auto 0 auto;
 }
 
 .btn-convenio:hover {
@@ -566,11 +831,12 @@ footer {
     width: 100%;
     height: 400px;
     background: linear-gradient(275deg, #164753 0%, #0095b7 99.75%, #0095b7 99.76%);
+    padding: 30px 0;
 }
 
 .box-empresa {
     display: flex;
-    padding: 40px;
+    flex-wrap: wrap;
 }
 
 .title-empresa p {
@@ -608,6 +874,10 @@ footer {
     transition: 0.3s;
 }
 
+.contato {
+    margin-left: 20px;
+}
+
 .contato h6 {
     color: var(--cor0);
     font-family: var(--fonte-texto);
@@ -616,9 +886,16 @@ footer {
     margin-bottom: 15px;
 }
 
-.email, .tel{
+.email,
+.tel {
     display: flex;
     margin-bottom: 10px;
+}
+
+.email p,
+.tel p {
+    display: flex;
+    margin-bottom: 0;
 }
 
 .box-contato p {
@@ -629,11 +906,172 @@ footer {
     margin-left: 10px;
 }
 
+.box-footer {
+    display: flex;
+    flex-direction: row;
+}
+
 @media screen and (min-width: 576px) {
+    /* BANNER */
+    .text-banner h1 {
+        padding: 10%;
+    }
+
+    .svg-banner {
+        margin-top: 50px;
+    }
+
+    /* SERVIÇO */
+    .box-img1 img {
+        width: 100%;
+    }
+
+    /* CONVENIO */
+    .btn-convenio {
+        width: 340px;
+    }
 }
 @media screen and (min-width: 768px) {
+    /* BANNER */
+    .text-banner h1 {
+        padding: 5%;
+    }
+
+    .svg-banner {
+        margin-top: 50px;
+    }
+
+    /* FOOTER */
+    .box-footer {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .contato {
+        margin-left: 0;
+    }
 }
 @media screen and (min-width: 992px) {
+    .overlay {
+        display: none;
+    }
+
+    /* BANNER */
+    .banner {
+        flex-direction: row;
+        padding: 8% 12%;
+    }
+
+    .svg-banner {
+        margin-top: 0;
+    }
+
+    .text-banner {
+        justify-content: start;
+        align-items: start;
+        margin-top: 30px;
+    }
+
+    .text-banner h1 {
+        font-weight: 700;
+        padding: 0;
+        text-align: start;
+    }
+
+    /* SOBRE*/
+    .sobre {
+        margin-bottom: 150px;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: nowrap;
+        text-align: start;
+    }
+
+    .text-sobre {
+        padding-left: 10%;
+        margin-top: 0;
+        align-items: start;
+    }
+
+    .text-sobre h4 {
+    }
+
+    .box-sobre {
+        margin-left: 50px;
+    }
+
+    .box-img2 img {
+        width: 400px;
+    }
+
+    /*NAVBAR*/
+    .nav-container {
+        display: block;
+    }
+
+    .btn-login {
+        display: inline;
+    }
+
+    .btn-cadastro {
+        display: inline;
+    }
+
+    #temp-sair {
+        display: inline;
+    }
+
+    .nav-container-mob,
+    .btn-menu-mob {
+        display: none;
+    }
+
+    /* SERVIÇO */
+    .servicos {
+        padding: 5%;
+    }
+
+    .box-serv {
+        flex-wrap: nowrap;
+        padding: 0 10%;
+    }
+
+    .serv {
+        margin-left: 70px;
+        margin-bottom: 0;
+    }
+
+    /* PLANOS */
+    .title-plan {
+        margin-bottom: 100px;
+    }
+
+    .card-basico,
+    .card-Premium,
+    .card-Intermediário {
+        margin-bottom: 0;
+    }
+
+    .card-Premium {
+        background: linear-gradient(180deg, #0095b7 0%, #1bbb99 100%);
+        border: none;
+        position: relative;
+        top: -50px;
+    }
+
+    /* CONVENIO */
+    .btn-convenio {
+        margin: 40px 0 0;
+    }
+
+    .title-convenio {
+        text-align: start;
+    }
+
+    /* FOOTER */
+    .box-empresa {
+        flex-wrap: nowrap;
+    }
 }
 
 /* SCROLLBAR */
@@ -646,4 +1084,9 @@ footer {
     height: 100px;
     width: 12px;
     background-color: var(--cor2);
+}
+
+/* === CLASSES DE COMPORTAMENTO === */
+.open {
+    display: block;
 }

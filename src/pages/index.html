@@ -10,39 +10,58 @@
         <title>Sociavision</title>
     </head>
     <body class="coluna">
-        <!-- HEADER -->
-        <div class="container">
-            <header class="navBar" id="home">
-                <a href="#home">
-                    <img alt="Logo Sociavision" class="logo" />
-                </a>
-                <div class="nav-container">
-                    <nav>
-                        <a href="#home">Home</a>
-                        <a href="#sobre">Sobre-nos</a>
-                        <a href="#planos">Planos</a>
-                        <a href="#contato">Contato</a>
-                    </nav>
-                </div>
+        <div class="overlay toggle-menu"></div>
 
-                <div class="box-btn">
-                    <a class="btn-login">Login</a>
-                    <a class="btn-cadastro">Cadastre-se</a>
-                </div>
-            </header>
+        <!-- HEADER -->
+
+        <header class="navBar" id="home">
+            <a href="#home">
+                <img class="logo" alt="Logo Sociavision" class="logo" />
+            </a>
+            <div class="nav-container">
+                <nav>
+                    <a href="#home">Home</a>
+                    <a href="#sobre">Sobre-nos</a>
+                    <a href="#planos">Planos</a>
+                    <a href="#contato">Contato</a>
+                </nav>
+            </div>
+
+            <div class="box-btn">
+                <a class="btn-login">Login</a>
+                <a class="btn-cadastro">Cadastre-se</a>
+            </div>
+        </header>
+
+        <!-- NAV MOBILE -->
+        <button class="btn-menu-mob toggle-menu">
+            <ion-icon name="menu-outline"></ion-icon>
+        </button>
+
+        <div class="nav-container-mob menu-is-close">
+            <nav>
+                <a href="#home">Home</a>
+                <a href="#sobre">Sobre-nos</a>
+                <a href="#planos">Planos</a>
+                <a href="#contato">Contato</a>
+            </nav>
+            <div class="box-btn-mobile">
+                <a class="btn-login">Login</a>
+                <a class="btn-cadastro">Cadastre-se</a>
+            </div>
         </div>
 
         <!-- BANNER -->
         <section class="banner">
             <div class="text-banner">
                 <h1>Quer impulsionar suas redes sociais de forma simples e pratica, contrate nossos serviços.</h1>
-                <a class="btn-banner" href="#">Veja nossos planos</a>
-
+                <button class="btn-banner">
+                    <a  href="#planos">Veja nossos planos</a>
+                </button>
+                
                 <div class="icons-banner">
                     <a href="#">
-                        <img 
-                    
-                        img-responsive img-thumbnail alt="Instagram" />
+                        <img img-responsive img-thumbnail alt="Instagram" />
                     </a>
                     <a href="#">
                         <img img-responsive img-thumbnail alt="Whatsapp" />
@@ -77,7 +96,7 @@
                     <p>Somos mais do que um serviço de gerenciamento de redes sociais; somos os arquitetos digitais que constroem pontes entre marcas e audiências</p>
                     <p>Em um mundo onde a presença online é vital, estamos aqui para transformar sua visão em uma narrativa cativante, moldando a percepção da sua marca e impulsionando o engajamento.</p>
                     <button class="btn-sobre">
-                        <a href="">Contate-nos</a>
+                        <a href="#contato">Contate-nos</a>
                     </button>
                 </div>
             </section>
@@ -94,7 +113,7 @@
                     <div class="serv">
                         <div class="serv-border">
                             <div class="box-icon">
-                                <img  alt="Suporte" />
+                                <img alt="Suporte" />
                             </div>
                         </div>
                         <div class="text-serv">
@@ -106,7 +125,7 @@
                     <div class="serv">
                         <div class="serv-border">
                             <div class="box-icon">
-                                <img  alt="Estrela" />
+                                <img alt="Estrela" />
                             </div>
                         </div>
                         <div class="text-serv">
@@ -118,7 +137,7 @@
                     <div class="serv">
                         <div class="serv-border">
                             <div class="box-icon">
-                                <img  alt="Globo" />
+                                <img alt="Globo" />
                             </div>
                         </div>
                         <div class="text-serv">
@@ -149,11 +168,11 @@
                             <div class="beneficios">
                                 <div class="box-beneficios">
                                     <div class="box-check">
-                                        <img  alt="Beneficios" />
+                                        <img alt="Beneficios" />
                                         <p>Instagram: 3 Stories e 1 Feed semanais</p>
                                     </div>
                                     <div class="box-check">
-                                        <img  alt="Beneficios" />
+                                        <img alt="Beneficios" />
                                         <p>Whatsapp: 1 mensagem por semana</p>
                                     </div>
                                 </div>
@@ -184,19 +203,19 @@
                             <div class="beneficios">
                                 <div class="box-beneficios">
                                     <div class="box-check">
-                                        <img  alt="Beneficios-estrela" />
+                                        <img alt="Beneficios-estrela" />
                                         <p>Instagram: 8 Stories e 2 Reels semanais</p>
                                     </div>
                                     <div class="box-check">
-                                        <img  alt="Beneficios-estrela" />
+                                        <img alt="Beneficios-estrela" />
                                         <p>Facebook: 2 postagens por semana</p>
                                     </div>
                                     <div class="box-check">
-                                        <img  alt="Beneficios-estrela" />
+                                        <img alt="Beneficios-estrela" />
                                         <p>Whatsapp: 3 mensagens semanais</p>
                                     </div>
                                     <div class="box-check">
-                                        <img  alt="Beneficios-estrela" />
+                                        <img alt="Beneficios-estrela" />
                                         <p>Desenvolvimento da identidade visual</p>
                                     </div>
                                 </div>
@@ -227,15 +246,15 @@
                             <div class="beneficios">
                                 <div class="box-beneficios">
                                     <div class="box-check">
-                                        <img  alt="Beneficios" />
+                                        <img alt="Beneficios" />
                                         <p>Instagram: 5 Stories e 2 Reels semanais</p>
                                     </div>
                                     <div class="box-check">
-                                        <img  alt="Beneficios" />
+                                        <img alt="Beneficios" />
                                         <p>Whatsapp: 2 mensagens semanais</p>
                                     </div>
                                     <div class="box-check">
-                                        <img  alt="Beneficios" />
+                                        <img alt="Beneficios" />
                                         <p>Facebook: 1 postagem por semana</p>
                                     </div>
                                 </div>
@@ -300,7 +319,7 @@
                         <p>Vamos construir juntos a história digital que define o sucesso da sua empresa</p>
                     </div>
 
-                    <div>
+                    <div class="box-footer">
                         <div class="links-footer">
                             <h6>Links</h6>
                             <a href="#sobre">Sobre-nos</a>
