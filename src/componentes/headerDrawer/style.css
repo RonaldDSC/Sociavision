@@ -1,0 +1,49 @@
+.header-drawer {
+  padding: 8px 15px ;
+}
+
+.root-drawer {
+  box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
+  border-bottom: 3px solid var(--indigo-100);
+  background: linear-gradient(107deg, #0095B7 8.78%, #164753 8.8%, #164753 91%, #1BBB99 91%);
+  padding-top: 30px;
+}
+
+.header-drawer .imagem-usuario{
+  width: 60px;
+  height: 60px;  
+  flex-shrink: 0;
+  background: linear-gradient(146deg, #0095B7 5.98%, rgba(27, 187, 153, 0.50) 92.53%);
+  border-color: var(--indigo-100);
+  border-radius: 50%;
+  padding: 8px;
+  margin-right: 8px;
+}
+
+.header-drawer .info-credenciais .credencial-nome {
+  font-size: 1.2rem;
+  color: var(--white);
+  font-weight: 500;
+}
+
+.header-drawer .info-credenciais .credencial-plano {
+  font-size: 0.8rem;
+  color: var(--white);
+  font-weight: 500;
+}
+
+.header-drawer .credencial-nome {
+  display: -webkit-inline;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-transform: capitalize;
+}
+
+.header-drawer .credencial-plano {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+

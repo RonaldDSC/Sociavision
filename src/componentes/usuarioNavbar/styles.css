@@ -49,11 +49,35 @@ body {
       height: 100vh;
       display: block;
       background-color: var(--white);
-      padding: 100px 30px 30px;
       position: fixed;
       top: 0;
       z-index: 1100;
       transition: all 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+  }
+
+  .nav-container-options {
+    padding:  0 30px;
+  }
+
+  .banner-usuario {
+    display: none;
+  }
+
+  .nav-btn-sair {
+    width: 100%;
+    color: var(--red-100);
+    border: none;
+    text-align: start;
+  } 
+
+  .nav-btn-sair:hover {
+    color: var(--red-100);
+    transform: scale(0.98);
+    transition: 50ms;
+  }
+  .nav-btn-sair:not(:hover) {
+    transform: scale(1);
+    transition: 50ms;
   }
 
   .btn-menu-mob {
@@ -196,7 +220,6 @@ body {
 
 .box-btn-mobile {
   display: block;
-  margin-top: 30px;
 }
 
 .box-btn-mobile:focus {
@@ -266,15 +289,15 @@ body {
 
   .btn-cadastro {
       display: inline;
-  }
-
-  #temp-sair {
-      display: inline;
-  }
+  }  
 
   .nav-container-mob,
   .btn-menu-mob {
       display: none;
+  }
+
+  .banner-usuario {
+    display: flex;
   }
 }
 

@@ -74,7 +74,7 @@ export default class ComprasRepositorio extends IComprasRepositorio {
 
 }
 
-interface ICompra {
+export interface ICompra {
   plano: ENomesPlanos
   historico: CompraModelo<Omit<TPlanos, "toJson">>[]
 }
