@@ -20,14 +20,7 @@ import contatoEmail from '@assets/svgs/email-footer.svg'
 
 import contatoTelefone from '@assets/svgs/tel-footer.svg'
 
-import { RotasServico } from "@/servicos/navegacao/rotas";
-
 export const atualizaHrefs = () => {
-  const login = document.getElementsByClassName("btn-login")[0] as HTMLAnchorElement
-  const cadastro = document.getElementsByClassName("btn-cadastro")[0] as HTMLAnchorElement
-
-  login.href = RotasServico.rotas["/login"]
-  cadastro.href = RotasServico.rotas["/cadastro"]
 
   const logo = document.getElementsByClassName("logo") as HTMLCollectionOf<HTMLImageElement>
 

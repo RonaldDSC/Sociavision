@@ -4,8 +4,7 @@ import './style.scss'
 
 export default function LoadingComponente(container:Element) {
   const backdrop = document.createElement("div")
-  backdrop.className="align-center expandido"
-  backdrop.id="backdrop"
+  backdrop.className="align-center expandido loadingComp"
 
   const containerAnim = document.createElement("div")
   containerAnim.className = "align-center"
@@ -23,8 +22,8 @@ export default function LoadingComponente(container:Element) {
   const esconder = () => {
     backdrop.style.opacity = "0"    
     setTimeout(() => {
-      container.removeChild(backdrop)
-    },200)
+      container.removeChild(document.getElementsByClassName("loadingComp")[0])      
+    },5000)
   }
 
   container.appendChild(backdrop)

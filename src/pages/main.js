@@ -6,87 +6,39 @@ import AutenticacaoRepositorio from '@/repositorios/autenticacao/autenticacaoRep
 import { NavegacaoServico } from '@/servicos/navegacao/nav'
 import { UrlServico } from '@/servicos/navegacao/url'
 import { RotasServico } from '@/servicos/navegacao/rotas'
-import LoadingComponente from '@/componentes/loading/loadingComponente'
-import UsuarioDropdownComponente from '@/componentes/usuarioDropdown/UsuarioDropdownComponente';
 import { atualizaHrefs } from './atualizandoHrefs';
-import ComprasRepositorio from '@/repositorios/compras/comprasRepositorio';
+import UsuarioNavBarComponente from '@/componentes/usuarioNavbar/UsuarioNavBarComponente';
 
 atualizaHrefs()
 
 RotasServico.rotaProtegida(async () => {
-  await estaLogado()
+  await UsuarioNavBarComponente()
+
+  const cardPremium = document.getElementsByClassName("btn-card-premium")[0]
+  const cardIntermediário = document.getElementsByClassName("btn-card-intermediário")[0]
+  const cardBasico = document.getElementsByClassName("btn-card-basico")[0]
+
+
+  if(cardBasico) {
+    cardBasico.addEventListener("click",() => navegarPagamento("pb"))  
+  }
+
+  if(cardIntermediário) {
+    cardIntermediário.addEventListener("click",() => navegarPagamento("pi"))  
+  }
+
+  if(cardPremium) {
+    cardPremium.addEventListener("click",() => navegarPagamento("pp"))  
+  }
 })
 
-const estaLogado = async () => {
-  const loading = LoadingComponente(document.body)
-  try {
-    const {usuarioLogado,sair} = new AutenticacaoRepositorio()
-    const usuario = await usuarioLogado()
-    const navbar = document.getElementsByClassName("navBar")
-    const box = navbar[0].getElementsByClassName("box-btn")
+const navegarPagamento = async (nomeItem) => {
   
-    if (usuario && box[0] && navbar[0]) {
-      const {pegarDadosCompra} = new ComprasRepositorio()
-      const dados = await pegarDadosCompra()
-      if (dados !== null) {
-        box[0].innerHTML = ""
-        
-        const clicouEmSair = async () => {        
-          await sair()        
-          window.location.reload() 
-        }
-  
-  
-        UsuarioDropdownComponente({
-          container:box[0],
-          nomeUsuario:usuario.nome,
-          planoUsuario:dados.plano,
-          aoClicarSair:async () => await clicouEmSair()
-        })        
-      }
-    }
-    
-  } catch (error) {
-    console.log(error);
-  } 
-  finally {
-    loading.esconder()
-  }
-}
-
-// Links
-
-
-// Cards
-
-const cardPremium = document.getElementsByClassName("card-Premium");
-const cardIntermediário = document.getElementsByClassName("card-Intermediário");
-const cardBasico = document.getElementsByClassName("card-basico");
-
-const btnCardBasico = cardBasico[0].getElementsByClassName("btn-card")
-const btnCardIntermediario = cardIntermediário[0].getElementsByClassName("btn-card")
-const btnCardPremium = cardPremium[0].getElementsByClassName("btn-card")
-
-if(btnCardBasico[0]) {
-  btnCardBasico[0].addEventListener("click",() => navegarPagamento("pb"))  
-}
-
-if(btnCardIntermediario[0]) {
-  btnCardIntermediario[0].addEventListener("click",() => navegarPagamento("pi"))  
-}
-
-if(btnCardPremium[0]) {
-  btnCardPremium[0].addEventListener("click",() => navegarPagamento("pp"))  
-}
-
-
-async function navegarPagamento(nomeItem) {
-  const loading = LoadingComponente(document.body)
-
   try {
     const {usuarioLogado} = new AutenticacaoRepositorio()
     const usuario = await usuarioLogado()
     const param = {item:nomeItem}
+    console.log(usuario);
 
     if (usuario !== null) {
       NavegacaoServico.navegar("/pagamento",param)
@@ -96,32 +48,10 @@ async function navegarPagamento(nomeItem) {
         next: UrlServico.inserirParametros(RotasServico.rotas["/pagamento"],param)
       })
     }    
-  } catch (error) {}
-  finally {
-    loading.esconder()
+  } catch (error) {
+    console.log(error);
+    
   }
-
 }
 
-//Abrindo e Fechado Menu Mobile
-var toggleMenu = document.querySelectorAll(".toggle-menu");
-var menuMobile = document.querySelector(".nav-container-mob");
-var btnMenuMobImg = document.querySelector(".btn-menu-mob ion-icon");
 
-for (var m = 0; m < toggleMenu.length; m++) {
-    toggleMenu[m].addEventListener("click", function () {
-        var overlay = document.querySelector(".overlay");
-
-        overlay.classList.toggle("open");
-        menuMobile.classList.toggle("menu-is-close");
-        menuMobile.classList.toggle("menu-is-open");
-
-        var icon = btnMenuMobImg.getAttribute("name");
-
-        if (icon === "menu-outline") {
-            btnMenuMobImg.setAttribute("name", "close-outline");
-        } else {
-            btnMenuMobImg.setAttribute("name", "menu-outline");
-        }
-    });
-}

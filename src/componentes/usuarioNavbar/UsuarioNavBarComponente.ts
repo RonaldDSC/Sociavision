@@ -31,21 +31,34 @@ export default async function UsuarioNavBarComponente() {
     <button class="btn-menu-mob toggle-menu">
       <img name="menu-outline" />
     </button>
+
+    <div class="box-btn">
+        <a href="${RotasServico.rotas["/login"]}" class="btn-login">Login</a>
+        <a href="${RotasServico.rotas["/cadastro"]}" class="btn-cadastro">Cadastre-se</a>
+    </div>
   `
   const drawer = `
+  <ion-button class="btn-menu-mob toggle-menu" aria-label="Favorito">
+      <ion-icon name="menu-outline" aria-hidden="true"></ion-icon>
+  </ion-button>
+  
   <div class="overlay toggle-menu"></div>  
   <div class="nav-container-mob menu-is-close expandido test1">
-      <div class="box-btn-mobile">            
-      </div>                   
+      <div class="box-btn-mobile">
+        <div class="box-sign">
+          <a href="${RotasServico.rotas["/login"]}" class="btn-login">Login</a>
+          <a href="${RotasServico.rotas["/cadastro"]}" class="btn-cadastro">Cadastre-se</a>
+        </div>          
+                
+      </div>    
+      
       <nav class="nav-container-options">
           <a class="nav-home-item" href="${RotasServico.rotas["/"]}#home">Home</a>
           <a href="${RotasServico.rotas["/"]}#sobre">Sobre-nos</a>
           <a href="${RotasServico.rotas["/"]}#planos">Planos</a>
           <a href="${RotasServico.rotas["/"]}#contato">Contato</a>
       </nav>
-
-                 
-      <button class="nav-btn-sair" > <img src="${iconeSair}" alt="sair"> Sair</button>     
+                
   </div>      
   `
 
@@ -53,8 +66,7 @@ export default async function UsuarioNavBarComponente() {
   const headerDrawer = document.body.getElementsByClassName("box-btn-mobile")[0] 
   
   header.innerHTML = content
-  
-  
+
   document.body.appendChild(header)
   drawerController();
 
@@ -89,15 +101,29 @@ const inserindoComponentes = async (header:Element,headerDrawer:Element) => {
         planoUsuario:dados?.plano || "",
       })  
       
-      substituindoNavHome(usuario.tipoConta)
+      atualizandoNav(usuario.tipoConta)
 
-      const btnSair = document.body.getElementsByClassName("nav-btn-sair")[0]
-      btnSair?.addEventListener("click",sair)
+      adicionandoSair(document.getElementsByClassName("nav-container-mob")[0],clicouEmSair)
     }
     
   } catch (error) {
+    console.log(error);
+    
     AvisoComponente(document.body,"Ocorreu um erro","Algo de inesperado aconteceu ao recuperar o usuário")
   } 
+}
+
+const adicionandoSair = (drawerOptions: Element, aoClicar:() => void) => {
+
+  const content = `
+    <button class="nav-btn-sair" > <img src="${iconeSair}" alt="sair"> Sair</button>     
+  `
+
+  drawerOptions.innerHTML += content
+
+  const btn = drawerOptions.getElementsByClassName("nav-btn-sair")[0] as HTMLButtonElement
+
+  btn.addEventListener("click",aoClicar)
 }
 
 
@@ -127,8 +153,22 @@ const drawerController = () => {
 }
 
 
-const substituindoNavHome = (tipoConta:keyof typeof ETipoPessoa) => {
+const atualizandoNav = (tipoConta:keyof typeof ETipoPessoa) => {
   const homeNav = document.body.getElementsByClassName("nav-home-item") as HTMLCollectionOf<HTMLAnchorElement>
+
+  const signIn = document.querySelector(".box-sign")
+  const signInHeader = document.querySelector(".box-btn")
+
+  if (signIn) {
+    signIn.classList.toggle("none")    
+  }
+
+  console.log(signIn);
+  
+  
+  if (signInHeader) {
+    signInHeader.classList.toggle("none")    
+  }
 
   for (const a of homeNav) {
     a.textContent = "Dashboard"
