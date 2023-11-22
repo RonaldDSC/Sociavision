@@ -11,6 +11,7 @@ import iconeSair from '@assets/svgs/material-symbols_logout.svg'
 import { ETipoPessoa } from "@/modelos/pessoa/pessoaModelo"
 
 export default async function UsuarioNavBarComponente() {
+  importandoIonIcon()
 
   const header = document.createElement("header")
   header.className = "navBar"
@@ -192,4 +193,18 @@ const atualizandoNav = (tipoConta:keyof typeof ETipoPessoa) => {
         break;
     }
   }
+}
+
+const importandoIonIcon = () => {
+  var iconEsm = document.createElement('script');
+  var icon = document.createElement('script');
+
+  iconEsm.setAttribute('type','module');
+  iconEsm.setAttribute('src','https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js');
+  
+  icon.setAttribute('nomodule','');
+  icon.setAttribute('src','https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js');
+
+  document.head.appendChild(iconEsm);
+  document.head.appendChild(icon);
 }
