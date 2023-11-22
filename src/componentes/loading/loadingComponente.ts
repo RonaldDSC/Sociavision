@@ -23,7 +23,7 @@ export default function LoadingComponente(container:Element) {
     backdrop.style.opacity = "0"    
     setTimeout(() => {
       container.removeChild(document.getElementsByClassName("loadingComp")[0])      
-    },5000)
+    },200)
   }
 
   container.appendChild(backdrop)

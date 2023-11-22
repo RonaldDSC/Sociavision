@@ -6,9 +6,74 @@
   <title>Dashboard</title>
 </head>
 <body>
-  <section>
+  <div class="linha expandido content align-center ">
+    <section class="coluna dados-usuario">
+
+      <div class="coluna">
+        <div class="campo-header linha align-start">
+          <div class="tamanho-svg">
+            <img class="img" alt="dados usuario">
+          </div>
+          <h1>Dados do usuário</h1>
+        </div>
+  
+        <div class="campo align-start">
+          <span id="nome"><strong>Nome: </strong>Admin</span>
+        </div>
+        
+        <div class="campo align-start">
+          <span id="dataNasc"><strong>Data de nascimento: </strong>21/01/2002</span>
+        </div>
+      </div>
+
+      
+      <div class="plano-ativo coluna ">
+
+        <div class="campo-header linha align-start">
+          <div class="tamanho-svg">
+            <img class="img" alt="dados usuario">
+          </div>
+          <h1>Plano Ativo</h1>
+        </div>
+
+        <div class="campo campo-grande coluna">        
+          <div>
+            <span id="planoNome"><strong>Plano Adquirido: </strong>Plano Premium</span>
+          </div>
+
+          <div>
+            <span id="planoAquisicao"><strong>Data de Aquisição: </strong>20/11/2023</span>
+          </div>
+
+        </div>   
+      </div>
+    </section>
+  
+    <section class="dados-tarefa coluna form">
+      <div class="campo-header linha align-start">
+        <div class="tamanho-svg">
+          <img class="img" alt="icone de chat">
+        </div>
+        <h1>Dados da tarefa</h1>
+      </div>
+
+      <div id="campo-whatsapp" class="coluna">
+        <label for="numero">• WhatsApp para contato</label>
+        <div class="linha">
+          <input id="numero-pais" name="numero-pais" type="number" inputmode="numeric" maxlength="3" placeholder="+000">
+          <input id="numero" name="numero" type="number" inputmode="tel" placeholder="Seu numero">
+        </div>
+      </div>
+
+      <div id="campo-resumo" class="coluna">
+        <label for="resumo">• Resumo da tarefa</label>
+        <textarea placeholder="Um resumo do que é as postagens, por exemplo, uma sequência de videos de dança, também pode informar o intervalo entre as postagens como também para qual públicos-alvo entre outros" name="resumo" id="resumo" cols="7" rows="7"></textarea>
+      </div>
+
+      <button class="btn-enviar">Enviar</button>  
+    </section>
     
-  </section>
+  </div>
   <script type="module" src="script.ts"></script>
 </body>
 </html>

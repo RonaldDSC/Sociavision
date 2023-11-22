@@ -1,0 +1,5 @@
+.anim {
+  width: 100%;
+  opacity: 0;
+  transition: 200ms;
+}

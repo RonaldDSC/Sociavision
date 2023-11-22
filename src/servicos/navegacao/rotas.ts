@@ -21,6 +21,8 @@ const rotas = {
   
   "/dashboard":new URL("/dashboard/",window.location.origin).href,
   "/parceiro":new URL("/parceiro/",window.location.origin).href,
+
+  "/convenio":new URL("/convenio/",window.location.origin).href,
 }
 
 const possuiSubdominio = (subdominio:TRotas) => {
@@ -37,7 +39,7 @@ const redirecionarProxPagina = (fallbackUrl?:string) => {
     window.location.replace(fallbackUrl) 
 }
 
-const rotaProtegida = (aoMudarAutenticador?:()=>void) => {
+const rotaProtegida = async (aoMudarAutenticador?:()=>void) => {
   return new AutenticadorFirebase().autentificador.onAuthStateChanged(async (user) => {
     const rotaAutenticacao = possuiSubdominio("/login") || possuiSubdominio("/cadastro")
     

@@ -6,6 +6,7 @@ export default abstract class Pessoa implements IPessoa {
   id: string
   nome: string
   email: string
+  whatsapp?:number
   timestamp: string
   abstract tipoConta: keyof typeof ETipoPessoa
 

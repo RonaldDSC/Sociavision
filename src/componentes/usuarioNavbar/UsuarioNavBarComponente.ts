@@ -184,7 +184,7 @@ const atualizandoNav = (tipoConta:keyof typeof ETipoPessoa) => {
         break;
       
       case ETipoPessoa.parceira:
-        a.href = RotasServico.rotas["/dashboard"]        
+        a.href = RotasServico.rotas["/parceiro"]      
         break;
     
       default:

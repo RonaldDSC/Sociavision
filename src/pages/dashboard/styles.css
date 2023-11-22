@@ -1,0 +1,118 @@
+.content {
+  padding: 8px;
+  padding-top: 12px;
+  align-items: center;
+}
+
+.dados-usuario{
+  width: 40%;
+  justify-content: flex-start;
+}
+
+.dados-tarefa {
+  flex: 1;
+  max-width: 500px;
+  margin-left: 32px;
+  transition: 200ms;
+}
+
+.campo {
+  max-width: 500px;
+  height: 40px;
+  background-color: var(--white);
+  border: 1px solid var(--indigo-200);
+  border-radius: 10px;
+  padding: 4px;
+  margin: 8px 0;
+}
+
+.plano-ativo {
+  margin-top: 16px;
+}
+
+.campo span {
+  font-size: 1rem;
+}
+
+.campo-grande {
+  max-width: 500px;
+  height: 180px;
+}
+
+.campo-grande span {
+  margin: 4px 0 ;
+}
+
+.campo-header h1, .form label {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-left: 4px;
+  color: var(--indigo-300);
+}
+
+.form label {
+  margin-bottom: 4px;
+}
+
+.tamanho-svg {
+  width: 30px;  
+}
+
+#campo-whatsapp {
+  margin-top: 12px;
+  margin-bottom: 16px;
+}
+
+#numero-pais {
+  width: 60px;
+  margin-right: 4px;
+}
+
+#campo-resumo textarea{
+  max-width: 500px;
+}
+
+.btn-enviar {
+  margin-left: 32px;
+  margin-right: 32px;
+  margin-top: 12px;
+  background-color: var(--indigo-300);
+  color: var(--white);
+  transition: 200ms;
+}
+
+.btn-enviar:hover {
+  margin-left: 0px;
+  margin-right: 0px;
+  
+  color: var(--indigo-100);
+  transition: 200ms;
+}
+
+
+
+@media (max-width: 600px) {
+  .dados-usuario {
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+  .content {
+    flex-direction: column;
+    max-width: 350px;
+    margin: 0 auto;
+    align-items: normal;
+    justify-content: normal;
+  }
+
+  .campo-grande {
+    height: 60px;
+  }
+
+  .dados-tarefa {
+    margin-left: 0px;
+    margin-top: 24px;
+  }
+
+
+}
