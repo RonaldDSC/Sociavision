@@ -5,6 +5,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="icon" type="image/svg+xml" href="#" />
         <link rel="stylesheet" type="text/css" href="main.css" />
+        <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule src="https://unpkg .com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Raleway:wght@400;700&display=swap" rel="stylesheet" />
 
         <title>Sociavision</title>
@@ -13,8 +15,8 @@
         <div class="overlay toggle-menu"></div>
 
         <!-- HEADER -->
-
-        <header class="navBar" id="home">
+        <div id="home"></div>
+        <header class="navBar">
             <a href="#home">
                 <img class="logo" alt="Logo Sociavision" class="logo" />
             </a>
@@ -34,9 +36,11 @@
         </header>
 
         <!-- NAV MOBILE -->
-        <button class="btn-menu-mob toggle-menu">
-            <ion-icon name="menu-outline"></ion-icon>
-        </button>
+        <button></button>
+
+        <ion-button class="btn-menu-mob toggle-menu" aria-label="Favorito">
+            <ion-icon name="menu-outline" aria-hidden="true"></ion-icon>
+        </ion-button>
 
         <div class="nav-container-mob menu-is-close">
             <nav>
@@ -56,9 +60,9 @@
             <div class="text-banner">
                 <h1>Quer impulsionar suas redes sociais de forma simples e pratica, contrate nossos serviços.</h1>
                 <button class="btn-banner">
-                    <a  href="#planos">Veja nossos planos</a>
+                    <a href="#planos">Veja nossos planos</a>
                 </button>
-                
+
                 <div class="icons-banner">
                     <a href="#">
                         <img img-responsive img-thumbnail alt="Instagram" />
@@ -83,12 +87,8 @@
         <div class="container">
             <section class="sobre" id="sobre">
                 <div class="box-sobre">
-                    <div class="box-img1">
-                        <img alt="Sobre1" />
-                        <img alt="Sobre2" />
-                    </div>
-                    <div class="box-img2">
-                        <img alt="Sobre3" />
+                    <div class="box-video">
+                        <video id="meuVideo" controls autoplay loop></video>
                     </div>
                 </div>
                 <div class="text-sobre">

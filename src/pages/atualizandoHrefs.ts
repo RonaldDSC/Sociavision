@@ -5,9 +5,7 @@ import twitterSvg from "@assets/svgs/twitter-home.svg"
 import faceSvg from "@assets/svgs/facebook-home.svg"
 import bannerSvg from "@assets/svgs/svg-banner.svg"
 
-import sobre1Img from "@assets/img/img-sobre1.png"
-import sobre2Img from "@assets/img/img-sobre2.png"
-import sobre3Img from "@assets/img/img-sobre3.png"
+import videoSrc from "@assets/video/video.mp4"; 
 
 import globoSvg from "@assets/svgs/icon-globo.svg"
 import suporteSvg from "@assets/svgs/icon-support.svg"
@@ -21,7 +19,6 @@ import convenioCheck from '@assets/svgs/check-white.svg'
 import contatoEmail from '@assets/svgs/email-footer.svg'
 
 import contatoTelefone from '@assets/svgs/tel-footer.svg'
-
 
 import { RotasServico } from "@/servicos/navegacao/rotas";
 
@@ -68,24 +65,9 @@ export const atualizaHrefs = () => {
     }            
   }
   
-  const sobre = document.getElementsByClassName("sobre")[0].getElementsByTagName("img")
-
-  if (sobre.length !== 0) {
-    for (const img of sobre) {
-      switch (img.alt) {
-        case "Sobre1":
-          img.src = sobre1Img
-          break;
-          
-        case "Sobre2":
-          img.src = sobre2Img
-          break;
-
-        case "Sobre3":
-            img.src = sobre3Img
-            break;
-      }
-    }            
+  const video = document.getElementById("meuVideo") as HTMLVideoElement;
+  if (video) {
+    video.src = videoSrc;
   }
   
   const serv = document.getElementsByClassName("box-serv")[0].getElementsByTagName("img")
