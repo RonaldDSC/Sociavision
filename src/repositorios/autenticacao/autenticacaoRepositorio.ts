@@ -47,7 +47,7 @@ class AutenticacaoRepositorio implements IAutenticacaoRepositorio<IEmailESenha,T
       where:where("id","==",user.uid)
     })
 
-    return resConsulta[0].data() as TPessoas
+    return resConsulta[0] as TPessoas
   }
 
   async cadastrar(credenciais: IEmailESenha, usuario:TPessoas): Promise<TPessoas> {
