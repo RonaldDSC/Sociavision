@@ -10,9 +10,8 @@ import { NavegacaoServico } from "@/servicos/navegacao/nav";
 import { atualizaHrefs } from "./atualizandoHrefs";
 import UsuarioNavBarComponente from "@/componentes/usuarioNavbar/UsuarioNavBarComponente";
 
-RotasServico.rotaProtegida(()=>{
-  UsuarioNavBarComponente()
-});
+RotasServico.rotaProtegida()
+UsuarioNavBarComponente()
 atualizaHrefs();
 
 const btnFinalizar = document.getElementById("finalizarCompra") as

@@ -37,5 +37,5 @@ const copiarParametroAtual = (url:string) => {
 export const UrlServico = {
   inserirParametros,
   pegarParametroAtual,
-  copiarParametroAtual
+  copiarParametroAtual,
 }

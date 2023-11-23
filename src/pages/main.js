@@ -11,26 +11,26 @@ import UsuarioNavBarComponente from '@/componentes/usuarioNavbar/UsuarioNavBarCo
 
 atualizaHrefs()
 
-RotasServico.rotaProtegida(async () => {
-  await UsuarioNavBarComponente()
+RotasServico.rotaProtegida()
 
-  const cardPremium = document.getElementsByClassName("btn-card-premium")[0]
-  const cardIntermediário = document.getElementsByClassName("btn-card-intermediário")[0]
-  const cardBasico = document.getElementsByClassName("btn-card-basico")[0]
+UsuarioNavBarComponente()
+
+const cardPremium = document.getElementsByClassName("btn-card-premium")[0]
+const cardIntermediário = document.getElementsByClassName("btn-card-intermediário")[0]
+const cardBasico = document.getElementsByClassName("btn-card-basico")[0]
 
 
-  if(cardBasico) {
-    cardBasico.addEventListener("click",() => navegarPagamento("pb"))  
-  }
+if(cardBasico) {
+  cardBasico.addEventListener("click",() => navegarPagamento("pb"))  
+}
 
-  if(cardIntermediário) {
-    cardIntermediário.addEventListener("click",() => navegarPagamento("pi"))  
-  }
+if(cardIntermediário) {
+  cardIntermediário.addEventListener("click",() => navegarPagamento("pi"))  
+}
 
-  if(cardPremium) {
-    cardPremium.addEventListener("click",() => navegarPagamento("pp"))  
-  }
-})
+if(cardPremium) {
+  cardPremium.addEventListener("click",() => navegarPagamento("pp"))  
+}
 
 const navegarPagamento = async (nomeItem) => {
   
@@ -38,7 +38,6 @@ const navegarPagamento = async (nomeItem) => {
     const {usuarioLogado} = new AutenticacaoRepositorio()
     const usuario = await usuarioLogado()
     const param = {item:nomeItem}
-    console.log(usuario);
 
     if (usuario !== null) {
       NavegacaoServico.navegar("/pagamento",param)

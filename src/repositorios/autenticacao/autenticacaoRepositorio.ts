@@ -12,6 +12,8 @@ class AutenticacaoRepositorio implements IAutenticacaoRepositorio<IEmailESenha,T
     const {autentificador} = new AutenticadorFirebase()
     const {get} = new FirestoreDatabase()
 
+    await autentificador.authStateReady()
+
     if(autentificador.currentUser){
       const resConsulta = await get({
         tabela:"usuarios",
@@ -45,7 +47,7 @@ class AutenticacaoRepositorio implements IAutenticacaoRepositorio<IEmailESenha,T
       where:where("id","==",user.uid)
     })
 
-    return resConsulta[0].data() as TPessoas
+    return resConsulta[0] as TPessoas
   }
 
   async cadastrar(credenciais: IEmailESenha, usuario:TPessoas): Promise<TPessoas> {

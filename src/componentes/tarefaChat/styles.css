@@ -16,6 +16,8 @@
 .andamento h2 {
   color: var(--indigo-300);
   font-size: 1.3rem;
+  margin: 0 8px;
+  text-align: center;
 }
 
 .andamento button:hover {

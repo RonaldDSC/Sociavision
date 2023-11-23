@@ -54,7 +54,7 @@ export default function TarefaChatComponente({
   const esconder = () => {
     root.style.opacity = "0"    
     setTimeout(() => {
-      container.removeChild(document.getElementsByClassName("andamento")[0])      
+      document.getElementsByClassName("andamento")[0].remove()
     },200)
   }
 
