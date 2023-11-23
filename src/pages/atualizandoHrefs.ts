@@ -61,6 +61,8 @@ export const atualizaHrefs = () => {
   const video = document.getElementById("meuVideo") as HTMLVideoElement;
   if (video) {
     video.src = videoSrc;
+    video.autoplay = true; 
+    video.muted = true;
   }
   
   const serv = document.getElementsByClassName("box-serv")[0].getElementsByTagName("img")
@@ -134,3 +136,6 @@ export const atualizaHrefs = () => {
     
 
 }
+
+
+

@@ -1,12 +1,55 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body class="coluna expandido">
-    
-    <script type="module" src="script.js"></script>
-</body>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Convênio</title>
+    </head>
+    <body class="coluna expandido">
+        <section class="convenio">
+            <div class="box">
+                <div class="box-info-empresa">
+                    <div>
+                        <h5>Informações da Empresa</h5>
+                    </div>
+                    <div>
+                        <label for="nomeEmpresa">Nome da Empresa</label>
+                        <input type="text" name="nome" id="NomeEmpresa" placeholder="E-nature" readonly />
+                    </div>
+                    <div>
+                        <label for="nomeResponsável ">Responsável da Empresa</label>
+                        <input type="text" name="Responsável" id="nomeResponsável " placeholder="Jailson da Silva" readonly />
+                    </div>
+                    <div>
+                        <label for="cnpj">CNPJ</label>
+                        <input type="text" name="CNPJ" id="cnpj" placeholder="17393492000125" readonly />
+                    </div>
+                </div>
+
+                <div class="box-cont-empresa">
+                    <div>
+                        <h5>Informações de Contato</h5>
+                    </div>
+                    <div>
+                        <label for="Telefone">Telefone</label>
+                        <input type="text" name="tel" id="Telefone" placeholder="(81) 97187-3336" readonly />
+                    </div>
+                    <div>
+                        <label for="emailEmpresa">Email</label>
+                        <input type="Email" name="Email" id="emailEmpresa" placeholder="enature@gemail.com.br" readonly />
+                    </div>
+                </div>
+            </div>
+
+            <div class="box2">
+                <h5>Diga o que precisa e entraremos em contato! </h5>
+                <label for="msg"></label>
+                <textarea id="msg" placeholder="Digite aqui...">
+                </textarea>
+                <button class="btn">Enviar</button>
+            </div>
+        </section>
+
+        <script type="module" src="script.js"></script>
+    </body>
 </html>
