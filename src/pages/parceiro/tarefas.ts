@@ -15,7 +15,7 @@ const adicionarTarefasAndamento = (tarefa:TarefaModelo) => {
     container:li,
     ...tarefa,
     aoClicarProsseguir: () => {
-      NavegacaoServico.navegar("/parceiro",{id:tarefa.id})
+      NavegacaoServico.navegar("/parceiro/tarefa",{id:tarefa.id})
     }
   })
   
@@ -34,7 +34,7 @@ const adicionarTarefasDisponiveis = (tarefa:TarefaModelo) => {
     container:li,
     ...tarefa,
     aoClicarProsseguir: () => {
-      NavegacaoServico.navegar("/parceiro",{id:tarefa.id})
+      NavegacaoServico.navegar("/parceiro/tarefa",{id:tarefa.id})
     }
   })
   

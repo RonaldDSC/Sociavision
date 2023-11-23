@@ -26,7 +26,7 @@
   margin: 8px 0;
 }
 
-.plano-ativo {
+.resumo-tarefa {
   margin-top: 16px;
 }
 
@@ -106,9 +106,6 @@
     justify-content: normal;
   }
 
-  .campo-grande {
-    height: 60px;
-  }
 
   .dados-tarefa {
     margin-left: 0px;

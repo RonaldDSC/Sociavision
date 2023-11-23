@@ -5,6 +5,8 @@ import PessoaFisica from "@/modelos/pessoa/pessoaFisicaModelo"
 import PessoaJuridica from "@/modelos/pessoa/pessoaJuridicaModelo"
 import PessoaParceira from "@/modelos/pessoa/pessoaParceiraModelo"
 import { TPessoas } from "@/modelos/pessoa/pessoaModelo"
+import ComprasRepositorio from "@/repositorios/compras/comprasRepositorio"
+import { NavegacaoServico } from "./nav"
 
 const rotas = {
   "/":new URL("/",window.location.origin).href,
@@ -21,6 +23,7 @@ const rotas = {
   
   "/dashboard":new URL("/dashboard/",window.location.origin).href,
   "/parceiro":new URL("/parceiro/",window.location.origin).href,
+  "/parceiro/tarefa":new URL("/parceiro/tarefa/",window.location.origin).href,
 
   "/convenio":new URL("/convenio/",window.location.origin).href,
 }
@@ -39,17 +42,26 @@ const redirecionarProxPagina = (fallbackUrl?:string) => {
     window.location.replace(fallbackUrl) 
 }
 
-const rotaProtegida = async (aoMudarAutenticador?:()=>void) => {
+const rotaProtegida = async () => {
   return new AutenticadorFirebase().autentificador.onAuthStateChanged(async (user) => {
+    
     const rotaAutenticacao = possuiSubdominio("/login") || possuiSubdominio("/cadastro")
     
     const rotaExclusivaCliente = possuiSubdominio("/dashboard")
     const rotaExclusivaParceiro = possuiSubdominio("/parceiro")
 
-    aoMudarAutenticador ? aoMudarAutenticador() : null
     if (user) {
       const {usuarioLogado} = new AutenticacaoRepositorio()
       const usuario = await usuarioLogado()
+
+      if(rotaExclusivaCliente) {
+        const {pegarDadosCompra} = new ComprasRepositorio()
+        const dados = await pegarDadosCompra()
+
+        if(dados?.plano === undefined) {
+          NavegacaoServico.navegar("/")
+        }
+      }
 
       if (
         rotaAutenticacao ||
@@ -64,7 +76,7 @@ const rotaProtegida = async (aoMudarAutenticador?:()=>void) => {
         window.location.href = rotas["/login"]        
     }   
     
-  })  
+  })
 }
 
 const redirecionandoUsuarios = (usuario:TPessoas | null) => {

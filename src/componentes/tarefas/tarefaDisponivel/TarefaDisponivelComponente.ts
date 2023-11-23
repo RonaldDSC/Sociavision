@@ -33,12 +33,13 @@ export default function TarefaDisponivelComponente({
   root.className += " tarefa expandido"
 
   dataExp = DataServico.quantoAteData(new Date().toISOString(),dataExp)
+  dataExp = dataExp.includes("segundo") ? "Entregar de imediato" : `Entregar em ${dataExp}`
 
   const content = `
   <div class="conteudo">
     <h1 class="cartao-plano">${titulo}</h1>
     <p class="cartao-preco">${preco}</p>
-    <p class="cartao-exp">Entregar em ${dataExp}</p>
+    <p class="cartao-exp">${dataExp}</p>
     <h2>Resumo da tarefa</h2>
     <p class="cartao-detalhe">
       ${detalhe}

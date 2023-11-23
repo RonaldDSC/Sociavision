@@ -12,6 +12,8 @@ class AutenticacaoRepositorio implements IAutenticacaoRepositorio<IEmailESenha,T
     const {autentificador} = new AutenticadorFirebase()
     const {get} = new FirestoreDatabase()
 
+    await autentificador.authStateReady()
+
     if(autentificador.currentUser){
       const resConsulta = await get({
         tabela:"usuarios",

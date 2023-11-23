@@ -107,9 +107,7 @@ const inserindoComponentes = async (header:Element,headerDrawer:Element) => {
       adicionandoSair(document.getElementsByClassName("nav-container-mob")[0],clicouEmSair)
     }
     
-  } catch (error) {
-    console.log(error);
-    
+  } catch (error) {   
     AvisoComponente(document.body,"Ocorreu um erro","Algo de inesperado aconteceu ao recuperar o usuário")
   } 
 }
@@ -162,10 +160,7 @@ const atualizandoNav = (tipoConta:keyof typeof ETipoPessoa) => {
 
   if (signIn) {
     signIn.classList.toggle("none")    
-  }
-
-  console.log(signIn);
-  
+  }  
   
   if (signInHeader) {
     signInHeader.classList.toggle("none")    
@@ -173,9 +168,6 @@ const atualizandoNav = (tipoConta:keyof typeof ETipoPessoa) => {
 
   for (const a of homeNav) {
     a.textContent = "Dashboard"
-
-    console.log(tipoConta === ETipoPessoa.fisica);
-    
     
     switch (tipoConta) {
       case ETipoPessoa.fisica:
