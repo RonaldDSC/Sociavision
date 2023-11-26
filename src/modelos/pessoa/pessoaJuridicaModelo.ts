@@ -20,7 +20,9 @@ export default class PessoaJuridica extends Pessoa implements IPessoaJuridica  {
       id:this.id,
       nome:this.nome,
       timestamp:this.timestamp,
-      tipoConta:this.tipoConta
+      tipoConta:this.tipoConta,
+      numero:this.numero,
+      numeroPais:this.numeroPais
     }
   }
 }

@@ -20,7 +20,9 @@ export default class PessoaFisica extends Pessoa implements IPessoaFisica  {
       id:this.id,
       nome:this.nome,
       timestamp:this.timestamp,
-      tipoConta:this.tipoConta
+      tipoConta:this.tipoConta,
+      numero:this.numero,
+      numeroPais:this.numeroPais
     }
   }
 }

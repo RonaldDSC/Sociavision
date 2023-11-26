@@ -1,0 +1,86 @@
+.modal-backdrop{
+  position: fixed;
+  background-color: rgba(0,0,0,0.4);
+  z-index: 1000;
+  top: 0;
+}
+
+.modal-numero {
+  padding: 4px;
+  max-width: 500px;
+  background-color: var(--white);
+  padding: 32px;
+  border-radius: 10px;
+  box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
+  position: relative;
+}
+
+.modal-numero h1{
+  font-size: 22px;
+  margin-bottom: 4px;
+}
+
+.modal-numero h2{
+  opacity: 0.7;
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 12px;
+}
+
+#campo-numero {
+  margin-top: 4px;
+}
+
+#numero-pais {
+  width: 60px;
+  margin-right: 4px;
+}
+
+.btn-enviar {
+  margin: 0 32px;
+  margin-top: 12px;
+  background-color: var(--indigo-300);
+  color: var(--white);
+  transition: 200ms;
+}
+
+.btn-enviar:hover {
+  margin-left: 0px;
+  margin-right: 0px;  
+  color: var(--indigo-100);
+  transition: 200ms;
+}
+
+.fechar {
+  position: absolute;
+  top: 4px;
+  right: 0;
+  background-color: transparent;
+  border: none;
+}
+
+.fechar:hover {
+  opacity: 0.6;
+  transition-duration: 200ms;  
+}
+
+.fechar:not(:hover) {
+  opacity: 1;
+  transition-duration: 200ms;    
+}
+
+#whats-svg, #fechar-svg {
+  width: 30px;
+  margin-right: 4px;
+}
+
+@media (max-width: 600px) {
+  .modal-numero h1{
+    font-size: 16px;
+  }
+  
+  .modal-numero h2{
+    font-size: 12px;
+  } 
+
+}

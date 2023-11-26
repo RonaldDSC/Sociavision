@@ -41,6 +41,10 @@ const lerInputs = () => {
 const validarCampos = (pessoa:IPessoaJuridica,senha:string) => {
   const erros = validacao.validarDados(pessoa,senha)
 
+  for (const error of document.getElementsByClassName("errorInput")) {
+    error.remove()    
+  }
+
   if (erros) {
     Object.keys(erros).forEach((campoError) => {
             

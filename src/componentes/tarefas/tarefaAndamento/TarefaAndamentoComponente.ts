@@ -2,6 +2,7 @@ import "./styles.css"
 import chevron from "@assets/svgs/fluent_chevron-right-32-filled.svg"
 import { DataServico } from "@/servicos/data/data"
 import TarefaModelo from "@/modelos/tarefa/TarefaModelo"
+import { ENomesPlanos } from "@/modelos/plano/planoModelo"
 
 interface IProps extends TarefaModelo {
   container:Element,
@@ -9,22 +10,22 @@ interface IProps extends TarefaModelo {
 }
 
 export default function TarefaAndamentoComponente({
-  container,aoClicarProsseguir,dataExp,detalhe,plano,preco
+  container,aoClicarProsseguir,dataExp,resumo,plano,preco
 }:IProps) {
   const root = document.createElement("div")
   root.className = "tarefa expandido tarefa-andamento"
 
   let titulo = "Tarefa"
   switch (plano) {
-    case "basico":
+    case ENomesPlanos.basico:
       titulo = "Básico"
       break;     
       
-    case "intermediario":
+    case ENomesPlanos.intermediario:
       titulo = "Intermediário"  
       break;
       
-    case "premium":
+    case ENomesPlanos.premium:
       titulo = "Premium"  
       break;
   }
@@ -42,7 +43,7 @@ export default function TarefaAndamentoComponente({
 
       <h2>Resumo da tarefa</h2>
       <p class="cartao-detalhe">
-        ${detalhe}
+        ${resumo}
       </p>
     </div>
 

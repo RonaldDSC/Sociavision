@@ -4,6 +4,8 @@ import IComprasRepositorio from "./comprasInterface";
 import CompraModelo from "@/modelos/compraModelo";
 import { TPagamentos } from "@/modelos/pagamento/pagamentoModelo";
 import { ENomesPlanos, TPlanos } from "@/modelos/plano/planoModelo";
+import UsuarioRepositorio from "../usuarios/UsuarioRepositorio";
+import { TPessoas } from "@/modelos/pessoa/pessoaModelo";
 
 export default class ComprasRepositorio extends IComprasRepositorio {
 
@@ -47,23 +49,37 @@ export default class ComprasRepositorio extends IComprasRepositorio {
     return false
   } 
   
-  async pegarDadosCompra(): Promise<ICompra | null> {
-    const {usuarioLogado} = new AutenticacaoRepositorio()
+  async pegarDadosCompra(idUsuario?:string): Promise<ICompra | null> {
+    let usuario:TPessoas | null = null
 
-    const usuario = await usuarioLogado()    
+    if (idUsuario) {
+      const {pegarUsuario} = new UsuarioRepositorio()
+      usuario = await pegarUsuario(idUsuario)   
 
+    } else {
+      const {usuarioLogado} = new AutenticacaoRepositorio()  
+      usuario = await usuarioLogado()
+
+    }
+    
     if (usuario) {      
       const { get } = new FirestoreDatabase()
 
       const result = await get({
         tabela:"planos",
         subTabela:`${usuario.id}`
-      })
+      }) 
       
-      if (result[0]) {
+      const historico = await get({
+        tabela:"planos",
+        subTabela:`${usuario.id}/historico`
+      }) 
+      
+      
+      if (result[0] && historico) {
         return {
-          plano:result[0].data().plano,
-          historico:result[0].data().historico
+          plano:result[0].plano,
+          historico
         } as ICompra
       }
       

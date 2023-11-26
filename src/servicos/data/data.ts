@@ -1,4 +1,4 @@
-import { formatDuration, intervalToDuration } from "date-fns";
+import { formatDuration, intervalToDuration, parseISO } from "date-fns";
 
 
 const quantoAteData = (inicio:string , ate:string ) => {
@@ -26,6 +26,11 @@ const quantoAteData = (inicio:string , ate:string ) => {
   return contagem
 }
 
+const formatarIso = (date:string) => {
+  return parseISO(date).toLocaleDateString()
+}
+
 export const DataServico = {
-  quantoAteData
+  quantoAteData,
+  formatarIso
 }

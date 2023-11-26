@@ -12,6 +12,10 @@
   text-wrap: nowrap;
 }
 
+.tarefa-andamento {
+  border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
 .tarefa-andamento .btn-cartao:active {
   box-shadow: 0px 0px 0px 4px var(--black);
 }

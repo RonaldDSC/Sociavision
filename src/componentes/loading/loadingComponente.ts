@@ -9,15 +9,21 @@ export default function LoadingComponente(container:Element) {
   const containerAnim = document.createElement("div")
   containerAnim.className = "align-center"
 
-  Lottie.loadAnimation({
+  const anim = Lottie.loadAnimation({
     container:containerAnim,
     rendererSettings:{progressiveLoad:true},
     renderer:"svg",
     animationData:loading,
-    loop:true
-  })
-  
-  backdrop.appendChild(containerAnim)
+    loop:true,
+  }) 
+
+  anim.addEventListener("DOMLoaded",()=> {    
+    backdrop.appendChild(containerAnim)
+    
+    container.appendChild(backdrop)
+    
+    backdrop.style.opacity = "1"
+  })    
   
   const esconder = () => {
     backdrop.style.opacity = "0"    
@@ -25,10 +31,6 @@ export default function LoadingComponente(container:Element) {
       container.removeChild(document.getElementsByClassName("loadingComp")[0])      
     },200)
   }
-
-  container.appendChild(backdrop)
-  
-  backdrop.style.opacity = "1"
 
   return {esconder}
 }

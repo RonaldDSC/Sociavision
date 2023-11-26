@@ -20,7 +20,9 @@ export default class PessoaParceira extends Pessoa implements IPessoaParceira  {
       id:this.id,
       nome:this.nome,
       timestamp:this.timestamp,
-      tipoConta:this.tipoConta
+      tipoConta:this.tipoConta,
+      numero:this.numero,
+      numeroPais:this.numeroPais
     }
   }
   

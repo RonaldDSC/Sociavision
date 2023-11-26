@@ -7,9 +7,9 @@ interface IProps {
   container:Element,
   titulo:string
   pendente?:boolean,
-  aoClicarChat: () => void
+  aoClicarChat?: () => void
   aoClicarCancelar: () => void
-  aoClicarFinalizar: () => void
+  aoClicarFinalizar?: () => void
 }
 
 export default function TarefaChatComponente({
@@ -28,7 +28,7 @@ export default function TarefaChatComponente({
       </button>
       <div>
         <button class="cancelar-btn">Cancelar</button>
-        <button class="finalizar-btn">Finalizar</button>
+        ${!pendente ? '<button class="finalizar-btn">Finalizar</button>':""}        
       </div>
     </div>  
   `
@@ -39,9 +39,15 @@ export default function TarefaChatComponente({
   const btnCancelar = root.getElementsByClassName("cancelar-btn")[0] as HTMLButtonElement
   const btnChat = root.getElementsByClassName("whatsapp-btn")[0] as HTMLButtonElement
 
-  btnFinalizar.addEventListener("click", aoClicarFinalizar)
   btnCancelar.addEventListener("click", aoClicarCancelar)
-  btnChat.addEventListener("click", aoClicarChat)
+
+  if (aoClicarFinalizar) {
+    btnFinalizar.addEventListener("click", aoClicarFinalizar)    
+  }
+  
+  if (aoClicarChat) {
+    btnChat.addEventListener("click", aoClicarChat)    
+  }
 
   if (pendente) {
     btnChat.disabled = true    

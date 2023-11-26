@@ -58,7 +58,7 @@
   width: 30px;  
 }
 
-#campo-whatsapp {
+#campo-numero {
   margin-top: 12px;
   margin-bottom: 16px;
 }
@@ -84,8 +84,7 @@
 
 .btn-enviar:hover {
   margin-left: 0px;
-  margin-right: 0px;
-  
+  margin-right: 0px;  
   color: var(--indigo-100);
   transition: 200ms;
 }
@@ -114,6 +113,4 @@
     margin-left: 0px;
     margin-top: 24px;
   }
-
-
 }

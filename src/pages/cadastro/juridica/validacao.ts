@@ -2,7 +2,7 @@ import {IPessoaJuridica} from "@/modelos/pessoa/pessoaJuridicaModelo"
 import { ValidationYup } from "@/servicos/validation/yupValidation"
 import * as yup from 'yup'
 
-interface TValidacao extends Omit<IPessoaJuridica,"id" | "timestamp"> {
+interface TValidacao extends Omit<IPessoaJuridica,"id" | "timestamp" | "numero" | "numeroPais"> {
   senha:string
 }
 

@@ -18,7 +18,6 @@
 
 .campo {
   max-width: 500px;
-  height: 40px;
   background-color: var(--white);
   border: 1px solid var(--indigo-200);
   border-radius: 10px;
@@ -32,6 +31,11 @@
 
 .campo span {
   font-size: 1rem;
+  text-wrap: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-left: 4px;
+  text-transform: capitalize;
 }
 
 .campo-grande {
@@ -58,7 +62,7 @@
   width: 30px;  
 }
 
-#campo-whatsapp {
+#campo-numero {
   margin-top: 12px;
   margin-bottom: 16px;
 }

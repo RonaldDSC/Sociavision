@@ -1,9 +1,12 @@
 import { ENomesPlanos } from "../plano/planoModelo"
 
 export default interface TarefaModelo {
-  id:string
-  plano: keyof typeof ENomesPlanos
-  preco:string
-  dataExp:string
-  detalhe:string
+  idTarefa:string
+  idParceiro?:string
+  plano: ENomesPlanos
+  preco: string
+  dataExp: string
+  resumo: string
 }
+
+export type TTarefaStatus = "pendente" | "andamento" | "finalizando"

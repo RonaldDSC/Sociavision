@@ -23,6 +23,11 @@ const lerInputs = () => {
 
 const validarCampos = (credenciais: IEmailESenha) => {
   const erros = validacao.validarEmailESenha(credenciais)
+  
+  for (const error of document.getElementsByClassName("errorInput")) {
+    error.remove()    
+  }
+
   if (erros) {
     Object.keys(erros).forEach((campo) => {
       

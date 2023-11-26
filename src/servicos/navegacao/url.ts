@@ -16,18 +16,18 @@ const pegarParametroAtual = () => {
 const inserirParametros = (url:string,params:Record<string,string | number>) => {
   let urlComParams = url
   
-  const filtro = Object.keys(params).filter(key => key !== "" || undefined)
+  const filtro = Object.keys(params).filter(key => key !== "" || undefined) 
   
-  if(filtro.length != 0) {
-    urlComParams += "?"
-    for (const [chave,valor] of Object.entries(params)) {      
+  if(filtro.length !== 0) {    
+    for (const [chave,valor] of Object.entries(params)) {   
       if (chave && valor) {
         urlComParams +=`&${chave}=${valor}`        
       }
     }
+    urlComParams = urlComParams.replace("&","?")
   }
 
-  return urlComParams.replace("&","")
+  return urlComParams
 }
 
 const copiarParametroAtual = (url:string) => {

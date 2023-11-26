@@ -10,7 +10,7 @@ export default abstract class IFirestoreInterface {
 
   abstract update(props:IUpdateDatabaseProps): Promise<void>
 
-  abstract delete(props:IDeleteDatabaseProps): Promise<void>
+  abstract remove(props:IDeleteDatabaseProps): Promise<void>
 }
 
 export interface IPossuiTabelas {
@@ -24,7 +24,6 @@ export interface IGetDatabaseProps extends IPossuiTabelas {
 }
 
 export interface ICreateDatabaseProps extends IPossuiTabelas {
-  idValor?:string,
   valor: DocumentData,
 }
 
@@ -33,5 +32,6 @@ export interface IUpdateDatabaseProps extends IPossuiTabelas {
 }
 
 export interface IDeleteDatabaseProps extends IPossuiTabelas {
-  id: string
+  propriedade?:string
+  where?: QueryFieldFilterConstraint
 }

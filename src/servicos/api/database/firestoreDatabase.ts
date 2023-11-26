@@ -1,4 +1,4 @@
-import { DocumentData, Firestore, addDoc, collection, deleteDoc, doc, getDoc, getDocs, getFirestore, query, setDoc } from "firebase/firestore";
+import { DocumentData, Firestore, addDoc, collection, deleteDoc, doc, getDoc, getDocs, getFirestore, query, setDoc, updateDoc } from "firebase/firestore";
 import CustomFirebaseApp from "../firebase/customFirebaseApp";
 import IFirestoreInterface, { ICreateDatabaseProps, IDeleteDatabaseProps, IGetDatabaseProps, IUpdateDatabaseProps } from "./firestoreInterface";
 
@@ -20,7 +20,10 @@ class FirestoreDatabase extends CustomFirebaseApp implements IFirestoreInterface
       if(contadorBarras % 2 === 0) {
         const ref = doc(this.db, tabela, subTabela)
         const querySnapshot = await getDoc(ref);
-        result = [querySnapshot]
+        const data = querySnapshot.data()
+        if (data) {          
+          result = [data]         
+        }
         
       } else {
         const ref = collection(this.db, tabela, subTabela)
@@ -58,13 +61,41 @@ class FirestoreDatabase extends CustomFirebaseApp implements IFirestoreInterface
   }
 
   update = async (props: IUpdateDatabaseProps): Promise<void> => {
-    const {tabela, valor, subTabela} = props
-    await setDoc(doc(this.db, tabela, subTabela || ""), valor, {merge:true});    
+    const {tabela,subTabela,valor} = props 
+    
+    if (subTabela) {
+      const contadorBarras = (subTabela.match(/\//g) || []).length
+
+      if(contadorBarras % 2 === 0) {
+        const ref = doc(this.db, tabela, subTabela)    
+        await updateDoc(ref,valor);
+
+      } else {
+        throw new Error("Não é permitido excluir coleções")        
+      }
+    } else {
+      const ref = doc(this.db, tabela)    
+      await updateDoc(ref,valor);
+    }    
   }
 
-  delete = async (props: IDeleteDatabaseProps): Promise<void> => {
-    const {id,tabela} = props
-    await deleteDoc(doc(this.db, tabela, id));
+  remove = async (props: IDeleteDatabaseProps): Promise<void> => {
+    const {tabela,subTabela} = props 
+    
+    if (subTabela) {
+      const contadorBarras = (subTabela.match(/\//g) || []).length
+
+      if(contadorBarras % 2 === 0) {
+        const ref = doc(this.db, tabela, subTabela)    
+        await deleteDoc(ref);
+
+      } else {
+        throw new Error("Não é permitido excluir coleções")        
+      }
+    } else {
+      const ref = doc(this.db, tabela)    
+      await deleteDoc(ref);
+    }
   } 
 }
 
