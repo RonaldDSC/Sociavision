@@ -10,7 +10,7 @@ const validarDados = (dados:IPessoaJuridica, senha:string) => {
   const validacao:yup.ObjectSchema<TValidacao> = yup.object().shape({
     nome:yup.string().required(),
     email:yup.string().required().email(),
-    cnpj:yup.number().required().test('len',"CNPJ deve conter 14 dígitos", val=> String(val).length < 6),
+    cnpj:yup.number().required().test('len',"CNPJ deve conter 14 dígitos", val=> String(val).length > 6),
     nomeOrg: yup.string().required(),
     senha:yup.string().required().min(8)
   })

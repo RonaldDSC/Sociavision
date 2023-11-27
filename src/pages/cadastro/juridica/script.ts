@@ -8,12 +8,13 @@ import LoadingComponente from '@/componentes/loading/loadingComponente'
 import PessoaJuridica from '@/modelos/pessoa/pessoaJuridicaModelo'
 import { RotasServico } from '@/servicos/navegacao/rotas'
 
-RotasServico.rotaProtegida()
+const observador = RotasServico.rotaProtegida()
 atualizaHrefs()
 
 const btn = document.getElementsByClassName("enviar-btn")[0] as HTMLButtonElement
 
 const cadastrar = async () => {
+  observador()
   btn.disabled = true
   const carregando = LoadingComponente(document.body)
 
@@ -24,16 +25,24 @@ const cadastrar = async () => {
   const possuiErros = ProcessaCadastro.validarCampos(dados,senha)
 
   if (!possuiErros) {    
-    const {cadastrar} = new AutenticacaoRepositorio()
-    
-    await cadastrar({email:dados.email,senha:senha},new PessoaJuridica(dados))
-    .catch(error => {
-      AvisoComponente(document.body,"Ocorreu um erro",error.message)
-    })    
+    const {cadastrar} = new AutenticacaoRepositorio()    
+    await cadastrar({email:dados.email,senha:senha},new PessoaJuridica(dados))  
   }
 
   carregando.esconder()
   btn.disabled = false
 }
 
-btn.addEventListener("click",cadastrar);
+btn.addEventListener("click",async () => {
+  await cadastrar()
+  .then(() => {
+    const observador = RotasServico.rotaProtegida()
+
+    setTimeout(() => {
+      observador()      
+    }, 5000);
+  })
+  .catch(() => {    
+    AvisoComponente(document.body,"Ocorreu um erro","Algo inesperado aconteceu ao realizar o cadastro")
+  })
+});

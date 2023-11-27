@@ -10,4 +10,4 @@ export default abstract class Pagamento {
 
 export type TPagamentos = PagamentoCartaoCredito | PagamentoBoleto | PagamentoPix
 
-export enum ETipoPagamento { boleto = "Boleto", PIX = "Pix", cartaoCredito = "Cartão de credito" }
+export enum ETipoPagamento { boleto = "Boleto", PIX = "Pix", cartaoCredito = "Cartão de credito", sistema = "sistema"}

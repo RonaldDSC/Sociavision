@@ -13,7 +13,7 @@ export default class PessoaJuridica extends Pessoa implements IPessoaJuridica  {
   }  
 
   toJson(): Omit <PessoaJuridica, "toJson"> {    
-    return {
+    const json: Omit <PessoaJuridica, "toJson"> = {
       cnpj:this.cnpj,
       nomeOrg:this.nomeOrg,
       email:this.email,
@@ -21,9 +21,17 @@ export default class PessoaJuridica extends Pessoa implements IPessoaJuridica  {
       nome:this.nome,
       timestamp:this.timestamp,
       tipoConta:this.tipoConta,
-      numero:this.numero,
-      numeroPais:this.numeroPais
     }
+
+    if (this.numero) {
+      json.numero = this.numero      
+    }
+    
+    if (this.numeroPais) {
+      json.numeroPais = this.numeroPais      
+    }
+
+    return json
   }
 }
 

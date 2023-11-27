@@ -13,7 +13,7 @@ export default class PessoaParceira extends Pessoa implements IPessoaParceira  {
   }
 
   toJson(): Omit <PessoaParceira, "toJson"> {    
-    return {
+    const json: Omit <PessoaParceira, "toJson"> = {
       cpf:this.cpf,
       dataNasc:this.dataNasc,
       email:this.email,
@@ -21,9 +21,17 @@ export default class PessoaParceira extends Pessoa implements IPessoaParceira  {
       nome:this.nome,
       timestamp:this.timestamp,
       tipoConta:this.tipoConta,
-      numero:this.numero,
-      numeroPais:this.numeroPais
     }
+
+    if (this.numero) {
+      json.numero = this.numero      
+    }
+    
+    if (this.numeroPais) {
+      json.numeroPais = this.numeroPais      
+    }
+
+    return json
   }
   
 }

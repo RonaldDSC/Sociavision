@@ -32,7 +32,7 @@ export default class ComprasRepositorio extends IComprasRepositorio {
       await Promise.all([
         create({
           tabela:"planos",
-          valor:{plano,dadosPagamento:dadosPagamento.toJson()},
+          valor:{plano},
           subTabela:`${usuario.id}`
         }),      
 

@@ -10,7 +10,7 @@ const validarDados = (dados:IPessoaFisica, senha:string) => {
   const validacao:yup.ObjectSchema<TValidacao> = yup.object().shape({
     nome:yup.string().required(),
     email:yup.string().required().email(),
-    cpf:yup.number().required().test('len',"CPF deve conter 11 dígitos", val=> String(val).length < 6),
+    cpf:yup.number().required().test('len',"CPF deve conter 11 dígitos", val=> String(val).length > 6),
     dataNasc: yup.string().required(),
     senha:yup.string().required().min(8)
   })  

@@ -8,12 +8,13 @@ import LoadingComponente from '@/componentes/loading/loadingComponente'
 import PessoaFisica from '@/modelos/pessoa/pessoaFisicaModelo'
 import { RotasServico } from '@/servicos/navegacao/rotas'
 
-RotasServico.rotaProtegida()
+const observador = RotasServico.rotaProtegida()
 atualizaHrefs()
 
 const btn = document.getElementsByClassName("enviar-btn")[0] as HTMLButtonElement
 
 const cadastrar = async () => {
+  observador()
   btn.disabled = true
   const carregando = LoadingComponente(document.body)
 
@@ -36,4 +37,16 @@ const cadastrar = async () => {
   btn.disabled = false
 }
 
-btn.addEventListener("click",cadastrar);
+btn.addEventListener("click",async () => {
+  await cadastrar()
+  .then(() => {
+    const observador = RotasServico.rotaProtegida()
+
+    setTimeout(() => {
+      observador()      
+    }, 5000);
+  })
+  .catch(() => {    
+    AvisoComponente(document.body,"Ocorreu um erro","Algo inesperado aconteceu ao realizar o cadastro")
+  })
+});

@@ -42,13 +42,15 @@ const redirecionarProxPagina = (fallbackUrl?:string) => {
     window.location.replace(fallbackUrl) 
 }
 
-const rotaProtegida = async () => {
+const rotaProtegida = () => {
   return new AutenticadorFirebase().autentificador.onAuthStateChanged(async (user) => {
     
     const rotaAutenticacao = possuiSubdominio("/login") || possuiSubdominio("/cadastro")
     
     const rotaExclusivaCliente = possuiSubdominio("/dashboard")
     const rotaExclusivaParceiro = possuiSubdominio("/parceiro")
+
+    console.log("user");    
 
     if (user) {
       const {usuarioLogado} = new AutenticacaoRepositorio()
@@ -58,7 +60,7 @@ const rotaProtegida = async () => {
         const {pegarDadosCompra} = new ComprasRepositorio()
         const dados = await pegarDadosCompra()
 
-        if(dados?.plano === undefined) {
+        if(!dados?.plano) {
           NavegacaoServico.navegar("/")
         }
       }

@@ -1,3 +1,4 @@
+
 import Pessoa, { ETipoPessoa, IPessoa } from "./pessoaModelo"
 
 export default class PessoaFisica extends Pessoa implements IPessoaFisica  {
@@ -13,17 +14,25 @@ export default class PessoaFisica extends Pessoa implements IPessoaFisica  {
   } 
   
   toJson(): Omit <PessoaFisica, "toJson"> {    
-    return {
+    let json:Omit <PessoaFisica, "toJson"> = {
       cpf:this.cpf,
       dataNasc:this.dataNasc,
       email:this.email,
       id:this.id,
       nome:this.nome,
       timestamp:this.timestamp,
-      tipoConta:this.tipoConta,
-      numero:this.numero,
-      numeroPais:this.numeroPais
+      tipoConta:this.tipoConta,     
     }
+
+    if (this.numero) {
+      json.numero = this.numero      
+    }
+    
+    if (this.numeroPais) {
+      json.numeroPais = this.numeroPais      
+    }
+
+    return json
   }
 }
 

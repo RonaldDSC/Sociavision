@@ -6,6 +6,8 @@ import { ETipoPessoa, TPessoas } from "@/modelos/pessoa/pessoaModelo";
 import PessoaFisica, { IPessoaFisica } from "@/modelos/pessoa/pessoaFisicaModelo";
 import PessoaJuridica, { IPessoaJuridica } from "@/modelos/pessoa/pessoaJuridicaModelo";
 import PessoaParceira, { IPessoaParceira } from "@/modelos/pessoa/pessoaParceiraModelo";
+import { ICompra } from "../compras/comprasRepositorio";
+import PlanoBasico from "@/modelos/plano/planoBasicoModelo";
 
 class AutenticacaoRepositorio implements IAutenticacaoRepositorio<IEmailESenha,TPessoas> {
   async usuarioLogado(): Promise<TPessoas  | null> {
@@ -53,8 +55,8 @@ class AutenticacaoRepositorio implements IAutenticacaoRepositorio<IEmailESenha,T
   async cadastrar(credenciais: IEmailESenha, usuario:TPessoas): Promise<TPessoas> {
     
     const {cadastroComEmail} = new AutenticadorFirebase()    
-    const {user} = await cadastroComEmail(credenciais)
-    usuario.id = user.uid
+    const usuarioAuth = await cadastroComEmail(credenciais)
+    usuario.id = usuarioAuth.user.uid
     
     const novoUsuario = usuario.toJson()
     
@@ -68,6 +70,33 @@ class AutenticacaoRepositorio implements IAutenticacaoRepositorio<IEmailESenha,T
       },
       subTabela:novoUsuario.id
     })
+
+    const novoPlano = new PlanoBasico()
+
+    let { historico,plano }:ICompra = {
+      plano:novoPlano.nome,
+      historico:[
+        {
+          timestamp: new Date().toISOString(),
+          moeda: "BRL",
+          preco:0.00,
+          dadosPagamento:{metodo:"sistema"},
+          produto:novoPlano.toJson()  
+        }          
+      ]
+    }
+    
+    await create({
+      tabela:"planos",
+      valor:{plano},
+      subTabela:`${novoUsuario.id}`
+    })
+
+    await create({
+      tabela:"planos",
+      valor: historico[0],
+      subTabela:`${novoUsuario.id}/historico`
+    })   
 
     return usuario
   }
