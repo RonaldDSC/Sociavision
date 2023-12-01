@@ -77,6 +77,10 @@ const lerInputCartao = () => {
 const validarCartao = (dados:IPagamentoCartaoCredito) => {
   const erros = Validacao.validarCartao(dados)
 
+  for (const error of document.getElementsByClassName("errorInput")) {
+    error.remove()    
+  }
+
   if (erros) {
     Object.keys(erros).forEach((campoError) => {
             
@@ -124,6 +128,10 @@ const lerInputPix = () => {
 
 const validarPix = (dados:IPagamentoPix) => {
   const erros = Validacao.validarPix(dados)
+
+  for (const error of document.getElementsByClassName("errorInput")) {
+    error.remove()    
+  }
 
   if (erros) {
     Object.keys(erros).forEach((campoError) => {

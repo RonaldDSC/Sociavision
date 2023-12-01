@@ -169,6 +169,10 @@ input {
   cursor: auto;
 }
 
+.demo {
+  opacity: 0.7;
+}
+
 @media (max-width: 900px) {
   #painel-direito {
     display: none;

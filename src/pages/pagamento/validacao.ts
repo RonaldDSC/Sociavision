@@ -11,7 +11,7 @@ const validarCartao = (dados:IPagamentoCartaoCredito) => {
     numero:yup.number().required()
       .test(
         'len',"Deve ser entre 13 e 16 números", 
-        val => String(val).length <= 13 || String(val).length >= 16
+        val => String(val).length >= 13 && String(val).length <= 16
       ),
     titular:yup.string().required()
       .test('len',"Este campo é obrigatório", val => val.trim().length  !== 0
