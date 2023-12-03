@@ -22,9 +22,9 @@ load().finally(() => {
 
 
 async function load() {
-  await init() 
   await Dados.recuperarDados() 
   await UsuarioNavBarComponente()
+  await init()
 }
 
 
